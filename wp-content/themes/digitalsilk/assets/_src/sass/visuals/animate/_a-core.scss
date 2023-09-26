@@ -1,0 +1,19 @@
+a {
+    transition: color var(--base-transition);
+}
+
+input[type=text] {
+    transition: border var(--base-transition), background-color var(--base-transition);
+}
+
+h1, h2, h3, h4 {
+    transition: font-size var(--base-transition);
+}
+
+svg {
+    transition: fill var(--base-transition), stroke var(--base-transition), background-color var(--base-transition), color var(--base-transition);
+}
+
+img {
+    transition: transform .5s, opacity var( --base-transition);
+}

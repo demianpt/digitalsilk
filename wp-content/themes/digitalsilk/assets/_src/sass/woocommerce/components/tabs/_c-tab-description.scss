@@ -1,0 +1,49 @@
+/**
+ * Woocommerce: Description Tab
+ *
+ */
+@if $--wc-components__tabs-description == ON {
+  .woocommerce-Tabs-panel--custom_description {
+    --tab-col-1: 55%;
+    --tab-col-2: 45%;
+    --tab-col-gap: 10px;
+
+    .ds-wc-tab-desc {
+      &__item {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--tab-col-gap);
+        @include media('>tablet') {
+          flex-direction: row-reverse;
+        }
+      }
+
+      &__content {
+        flex: 0 0 calc(var(--tab-col-1) - var(--tab-col-gap) / 2);
+      }
+
+      &__title {
+        h3 {
+          @extend .h2;
+        }
+
+        @include media('<=tablet') {
+          background-position: top center;
+          text-align: center;
+        }
+      }
+
+      &__img {
+        flex: 0 0 calc(var(--tab-col) - var(--tab-col-gap) / 2);
+        max-width: calc(var(--tab-col) - var(--tab-col-gap) / 2);
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

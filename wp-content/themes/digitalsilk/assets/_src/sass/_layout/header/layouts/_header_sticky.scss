@@ -1,0 +1,36 @@
+.is-sticky {
+
+	@include media(">desktop") {
+		--header-main-vertical-padding: 1px;
+		--header-main-bg: var(--header-sticky-bg, var(--primary-color1));
+
+		.site-header__main {
+			box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+		}
+
+		.site-header__logo {
+			max-height: 50px;
+
+			img, svg {
+				max-height: 50px;
+			}
+		}
+
+		.site-header__top {
+			.site-header__row {
+				max-height: 0;
+				overflow: hidden;
+				padding: 0;
+			}
+		}
+
+		.nav-main__btn.-desktop {
+			display: block;
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+	}
+}

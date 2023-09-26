@@ -1,0 +1,77 @@
+{
+  "name": "ds-gulp-webpack-starter",
+  "version": "2.0 beta",
+  "description": "Gulp Webpack Starter -  static and WordPress site builder.",
+  "engines": {
+    "node": ">=14.16.1"
+  },
+  "keywords": [
+    "gulp",
+    "webpack",
+    "html",
+    "sass",
+    "js",
+    "browsersync",
+    "gulp-webpack",
+    "gulp-starter",
+    "gulp-builder",
+    "wordpress",
+    "builder",
+    "toolkit"
+  ],
+  "author": "DS FE team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "start": "gulp",
+    "start:wc": "gulp woocommerce",
+    "build": "cross-env NODE_ENV=production gulp",
+    "build:light": "cross-env NODE_ENV=production gulp light"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "ansi-colors": "^4.1.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "browser-sync": "^2.29.3",
+    "cross-env": "^7.0.3",
+    "del": "^6.1.1",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "fancy-log": "^2.0.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "node-notifier": "^10.0.1",
+    "path": "^0.12.7",
+    "penthouse": "^2.3.3",
+    "plugin-error": "^1.0.1",
+    "sass": "^1.52.1",
+    "webpack": "^5.72.1",
+    "webpack-build-notifier": "^2.3.0",
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-hot-middleware": "^2.25.1",
+    "xml2js": "^0.4.23"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
+  }
+}

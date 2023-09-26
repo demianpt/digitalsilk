@@ -1,0 +1,89 @@
+{
+  "urls": [
+    {
+      "link": "http://fairdinkum.ragersoul.com/",
+      "name": "home",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/test/",
+      "name": "test",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/test/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/home-demo/",
+      "name": "home-demo",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/home-demo/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/customer-support/",
+      "name": "customer-support",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/customer-support/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/privacy-policy/",
+      "name": "privacy-policy",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/privacy-policy/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/contact-us/",
+      "name": "contact-us",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/contact-us/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/test-2/",
+      "name": "test-2",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/test-2/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/consulting-services/",
+      "name": "consulting-services",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/consulting-services/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/it-consulting/",
+      "name": "it-consulting",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/it-consulting/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/vcio/",
+      "name": "vcio",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/vcio/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/vendor-management/",
+      "name": "vendor-management",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/vendor-management/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/business-intelligence/",
+      "name": "business-intelligence",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/business-intelligence/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/managed-it-services/",
+      "name": "managed-it-services",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/managed-it-services/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/cyber-security/",
+      "name": "cyber-security",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/cyber-security/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/cloud-services/",
+      "name": "cloud-services",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/cloud-services/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/disaster-recovery/",
+      "name": "disaster-recovery",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/disaster-recovery/"
+    },
+    {
+      "link": "http://fairdinkum.ragersoul.com/about-us/",
+      "name": "about-us",
+      "staging": "https://digital:silk@fdi.dsstaging1.com/about-us/"
+    }
+  ]
+}

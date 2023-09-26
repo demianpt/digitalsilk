@@ -1,0 +1,74 @@
+/**
+ * WooCommerce: Social icons section
+ */
+@if $--wc-components__socials == ON {
+  .woocommerce {
+    --wc-socials-radius: 50px;
+    --wc-socials-color: #fff;
+    --wc-socials-bg: var(--secondary-color2);
+    --wc-socials-color-hover: var(--primary-color2)
+  }
+
+  .single-product {
+    .summary {
+      .addtoany_list {
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        line-height: 1 !important;
+
+        a {
+          display: flex;
+          align-items: center;
+        }
+
+        &::before {
+          content: 'Share:';
+          margin-right: 16px;
+        }
+
+        span {
+          width: 25px !important;
+          height: 25px !important;
+          border-radius: 500px !important;
+
+          &.a2a_s_facebook {
+            background: #33B8FF !important;
+          }
+
+          &.a2a_s_email {
+            background: var(--secondary-color2) !important;
+          }
+
+          &.a2a_s_a2a {
+            background: var(--primary-color2) !important;
+          }
+
+          svg {
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  // Shared classes
+  .shipping-icons-svg {
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    border-radius: var(--wc-socials-radius);
+    color: var(--wc-socials-color);
+    background-color: var(--wc-socials-bg);
+    box-sizing: border-box;
+
+    &:hover {
+      color: var(--wc-socials-color-hover);
+      transform: scale(1.05);
+
+      path {
+        fill: var(--wc-socials-color-hover);
+      }
+    }
+  }
+}

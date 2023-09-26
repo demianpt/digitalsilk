@@ -1,0 +1,28 @@
+.footer-nav {
+
+    .current-menu-item > a {
+        color: var(--primary-color2);
+    }
+
+    &.h-direction {
+        @include media(">=tablet") {
+            display: flex;
+            align-items: center;
+            gap: var(--footer-link-gap_h, 1vw);
+        }
+    }
+
+    &.v-direction {
+        li {
+            margin-bottom: var(--footer-link-gap_v);
+        }
+    }
+
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}
+

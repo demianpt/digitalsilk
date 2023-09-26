@@ -1,0 +1,45 @@
+/**
+ * Woocommerce: Form Selects
+ */
+
+// Select2 plugin styling
+body .select2-container--default {
+  z-index: 98 !important;
+}
+
+.select2-container--default {
+  box-sizing: border-box;
+  background: var(--input-background-color, #fff);
+  color: var(--input-color);
+  border: var(--input-border-width, 1px) solid var(--input-border-color, #666);
+  border-radius: var(--input-border-radius, 5px);
+  font-size: var(--input-font-size, 16px);
+  font-weight: var(--input-font-weight, 400);
+  line-height: var(--wc-input-line-height);
+
+  .select2-selection--single {
+    height: 100%;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: var(--input-padding-top-bottom, 4px) var(--input-padding-left-right, 10px);
+
+    .select2-selection__rendered {
+      padding-left: 0;
+      font-size: var(--input-font-size, 16px);
+      font-weight: var(--input-font-weight, 400);
+      line-height: inherit;
+      color: var(--input-color);
+    }
+
+    .select2-selection__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .select2-results__option--highlighted[data-selected] {
+    background: var(--primary-color2);
+  }
+}

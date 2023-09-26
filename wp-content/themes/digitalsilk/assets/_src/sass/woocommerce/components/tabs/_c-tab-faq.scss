@@ -1,0 +1,50 @@
+/**
+ * Woocommerce: FAQ Tab
+ *
+ */
+@if $--wc-components__tabs-faq == ON {
+  .woocommerce {
+    --wc-faq-wrapper: 850px;
+    --wc-faq-wrapper-mt: 3.5vmin;
+  }
+
+  .woocommerce-Tabs-panel--faq {
+    .ds-wc-tab-tabs {
+      width: var(--wc-faq-wrapper);
+      max-width: 100%;
+      margin: 0 auto;
+
+      &__faq-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .c-heading {
+          background-position: top center;
+          text-align: center;
+          margin-bottom: .8rem;
+
+          &__title {
+            @extend .h2;
+            display: block;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &__wrapper {
+        margin-top: var(--wc-faq-wrapper-mt);
+
+        .l-tbnav {
+          margin-bottom: 4.5vmin;
+          margin-left: auto;
+          margin-right: auto;
+          @include media('>desktop') {
+            max-width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

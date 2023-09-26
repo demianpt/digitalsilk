@@ -1,0 +1,59 @@
+:is(a, button, input, textarea, summary) {
+	--outline-size: max(2px, 0.08em);
+	--outline-style: solid;
+	--outline-color: currentColor;
+}
+
+/*:is(a, button, input, textarea, summary):focus {
+	outline: var(--outline-size) var(--outline-style) var(--outline-color);
+	outline-offset: var(--outline-offset, var(--outline-size));
+}*/
+
+:is(a, button, input, textarea, summary):focus-visible {
+	outline: var(--outline-size) var(--outline-style) var(--outline-color);
+	outline-offset: var(--outline-offset, var(--outline-size));
+}
+:is(input):focus-visible {
+	outline: none;
+}
+
+/* Focus customizations */
+
+input {
+	--outline-style: dashed;
+}
+
+summary {
+	--outline-color: blue;
+	--outline-offset: 0.5em;
+	--outline-style: dotted;
+}
+
+.skip-link {
+	border: 0;
+	clip: rect(1px,1px,1px,1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+	&:focus {
+		background-color: #eee;
+		clip: auto !important;
+		clip-path: none;
+		color: #444;
+		display: block;
+		font-size: 1em;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000;
+	}
+}

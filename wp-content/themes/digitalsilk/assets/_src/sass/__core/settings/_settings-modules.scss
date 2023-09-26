@@ -1,0 +1,59 @@
+:root {
+	--l-block-gap-vertical: 15px;
+	--l-block-gap-horizontal: 20px;
+
+	--c-block-title-size: #{"clamp(var(--h4-font-size-mobile), var(--h-clamp-formula), var(--h4-font-size))"};
+	--c-block-title-weight: var(--h4-font-weight);
+	--c-block-title-transform: var(--h4-text-transform);
+	--c-block-title-color: var(--titles-color);
+	--c-block-text-size: var(--base-text-size);
+	--с-block-padding: 15px;
+	--c-block-align: left;
+	--c-block-bg: #fff;
+	--c-block-color: inherit;
+	--c-block-shadow: 0 0 4px 2px rgba(0,0,0,.05);
+	--c-block-radius: 0;
+
+	--blockquote-style: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iMzUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgb3BhY2l0eT0iLjIiIGZpbGw9IiM1QTZDN0QiPjxwYXRoIGQ9Ik0uOSAxNC43IDUuNy40aDUuMmwtNCAxMy40aDR2MTAuOEguOXYtOS45Wm0xNS4yIDBMMjAuOS40aDUuMmwtNCAxMy40aDR2MTAuOGgtMTB2LTkuOVpNMzguMiAyMS4yaC00VjEwLjRoMTB2OS45bC00LjggMTQuM2gtNS4ybDQtMTMuNFptMTUuMiAwaC00VjEwLjRoMTB2OS45bC00LjggMTQuM2gtNS4ybDQtMTMuNFoiLz48L2c+PC9zdmc+);
+}
+
+/* WYSIWYG */
+
+.is-wysiwyg {
+	--wysiwyg-margin: 1.5em;
+	--wysiwyg-li-padding: 0 0 0 40px;
+	--wysiwyg-li-bgp: 0 .4em;
+	--wysiwyg-li-margin: 1em;
+
+	--list-item-style: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyMyAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTMuMzA0OSAwIDExLjM1MiAxLjgxMjlsNi4zNDM0IDUuOTAxNEgwdjIuNTcxNGgxNy42OTU0bC02LjM1NzMgNS45MDE0TDEzLjMwNDkgMTggMjMgOWwtOS42OTUxLTlaIiBmaWxsPSIjNzVEMkQzIi8+PC9zdmc+);
+}
+
+/* Social Icons */
+
+.social-list {
+	--social-icon-color: var(--primary-color1);
+	--social-icon-color-hover: var(--primary-color3);
+	--social-icon-bg: var(--primary-color2);
+	--social-icon-bg-hover: var(--primary-color1);
+	--social-icon-radius: 5px;
+	--social-icon-size: 28px;
+}
+
+/* Blog post card */
+
+.l-posts {
+	--l-block-col: 3;
+
+	--с-block-padding: 15px 0;
+	--c-block-bg: transparent;
+	--c-block-radius: 15px;
+	--c-block-shadow: none;
+
+	--l-post-img-radius: 20px 20px 0 0;
+	--l-post-img-ratio: 4 / 3;
+	--l-post-date-size: 14px;
+	--l-post-tag-size: 14px;
+	--l-post-tag-color: #666;
+	--l-post-tag-transform: uppercase;
+	--l-post-tag-weight: 600;
+}

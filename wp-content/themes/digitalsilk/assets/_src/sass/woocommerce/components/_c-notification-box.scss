@@ -1,0 +1,124 @@
+/**
+ * WooCommerce: Notification boxes (coupons, notices etc)
+ */
+
+.woocommerce {
+  --wc-notification-box-margin-b: 4rem;
+  --wc-notification-box-padding-tb: 3rem;
+  --wc-notification-box-padding-lr: 4rem;
+
+  @include media("<=desktop") {
+    --wc-notification-box-margin-b: 3rem;
+    --wc-notification-box-padding-tb: 2.5rem;
+    --wc-notification-box-padding-lr: 4rem;
+  }
+
+  @include media("<=tablet") {
+    --wc-notification-box-margin-b: 2.5rem;
+    --wc-notification-box-padding-tb: 2rem;
+    --wc-notification-box-padding-lr: 3rem;
+  }
+}
+
+// Coupon info
+@include media(">phone-l") {
+  .woocommerce-form-coupon-toggle {
+    .woocommerce-info {
+      &::before {
+        display: block;
+        width: 31px;
+        height: 21px;
+        background-image: url(../../images/woocommerce/icon-coupon.svg);
+        background-size: cover;
+        content: "";
+      }
+    }
+  }
+}
+
+// Apply coupon box
+.woocommerce-form-coupon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--wc-notification-box-margin-b);
+
+  > p:first-child {
+    flex: 0 0 100%;
+  }
+
+  .form-row-first {
+    width: 223px; // TODO
+    margin-right: 1.25em;
+  }
+}
+
+// Notices box
+.woocommerce-notices-wrapper > * {
+  display: flex;
+  align-items: center;
+  padding: var(--wc-notification-box-padding-tb) var(--wc-notification-box-padding-lr);
+  margin-bottom: var(--wc-notification-box-margin-b);
+  background: white;
+  border: 1px solid var(--secondary-color2);
+  border-radius: 5px;
+}
+
+// Error box
+.woocommerce-error li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  // TODO Fix spacing on Login/Register
+  .woocommerce-account & {
+    white-space: pre-wrap;
+  }
+}
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-noreviews,
+p.no-comments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  margin-bottom: var(--wc-notification-box-margin-b);
+  padding: var(--wc-notification-box-padding-tb) var(--wc-notification-box-padding-lr);
+  color: var(--primary-text-color);
+  background: white;
+  border: 1px solid var(--wc-color-notice);
+  border-radius: 5px;
+  @include media('>tablet') {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .button {
+    order: 1;
+    text-decoration: none;
+    @include media('>tablet') {
+      margin-left: auto;
+    }
+  }
+
+  strong {
+    margin-right: 5px;
+  }
+}
+
+.woocommerce-info {
+  border-color: var(--wc-color-success);
+}
+
+.woocommerce-error {
+  border-color: var(--wc-color-error);
+}

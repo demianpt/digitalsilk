@@ -1,0 +1,66 @@
+/**
+ * Strictly Layout Styles
+ * TODO: Refactor this
+ */
+
+/*
+ * Old code
+ */
+.admin-bar {
+  .woocommerce-checkout {
+    #wc_checkout_add_ons label + br {
+      display: none;
+    }
+  }
+
+  @include media(">tablet") {
+    .storefront-sticky-add-to-cart {
+      &--slideInDown {
+        top: 32px;
+      }
+    }
+  }
+}
+
+.woocommerce-active {
+  .site-branding {
+    float: left;
+  }
+}
+
+//.woocommerce-page {
+//  &.woocommerce-cart .entry-header,
+//  &.woocommerce-checkout .entry-header,
+//  &.woocommerce-account .entry-header,
+//  .woocommerce-products-header {
+//    text-align: center;
+//  }
+//  .product-cta {
+//    min-height: 568px;
+//    display: flex;
+//    align-items: center;
+//    text-align: center;
+//    color: #fff;
+//
+//    .product-cta__title {
+//      font-size: var(--h1-font-size);
+//      margin-bottom: var(--h2-margin-bottom);
+//    }
+//    .product-cta__subtitle {
+//      font-size: var(--h3-font-size);
+//      margin-bottom: var(--h2-margin-bottom);
+//    }
+//  }
+//
+//  @include media(">tablet") {
+//    h1:last-child {
+//      margin-bottom: 0;
+//    }
+//    .up-sells,
+//    .related.products {
+//      > h2:first-child {
+//        text-align: center;
+//      }
+//    }
+//  }
+//}

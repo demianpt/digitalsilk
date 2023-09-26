@@ -1,0 +1,136 @@
+/**
+ * Woocommerce: Related products
+ */
+@if $--wc-shop__related-products == ON {
+  .woocommerce {
+    --wc-related-width: 1050px;
+    --wc-related-product-col: 1;
+    --wc-related-product-gap-vertical: 50px;
+    --wc-related-product-gap-horizontal: 85px;
+    --wc-related-product-margin-top: 20vmin;
+    @include media('>tablet') {
+      --wc-related-product-col: 3;
+      --wc-related-product-gap-vertical: 30px;
+    }
+  }
+
+  .upsells.products,
+  .related.products {
+    max-width: var(--wc-related-width);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--wc-related-product-margin-top);
+
+    > h2 {
+      @extend .h2;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .products {
+      position: relative;
+      grid-template: auto/repeat(var(--wc-related-product-col), minmax(0, 1fr));
+      row-gap: var(--wc-related-product-gap-vertical);
+      column-gap: var(--wc-related-product-gap-horizontal);
+    }
+
+    .product {
+      .woocommerce-product-gallery {
+        width: 50%;
+        padding-right: 15px;
+      }
+
+      .summary {
+        width: 50%;
+        padding-left: 15px;
+
+        .entry-title {
+          font-size: 4.8rem;
+          font-family: var(--font-family-secondary);
+          margin-bottom: 15px;
+          padding-right: 70px;
+          line-height: 1.1;
+          font-weight: 400;
+        }
+
+        > span {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 2.4rem;
+        }
+
+        .price {
+          font-size: var(--smaller-text-size);
+          line-height: .9;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          color: var(--primary-text-color);
+          margin-bottom: 20px;
+          font-weight: 600;
+
+          .amount {
+            font-size: 3.6rem;
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color1);
+            font-family: var(--font-family-secondary);
+            font-weight: 400;
+            margin: 0 5px 0;
+            line-height: .9;
+
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+
+        .product_meta {
+          margin-top: 20px;
+        }
+
+        .woocommerce-review-link {
+          color: var(--primary-text-color);
+          text-decoration: underline;
+        }
+
+        .woocommerce-product-details__short-description {
+          color: var(--primary-text-color);
+          margin-bottom: 30px;
+        }
+      }
+
+      .onsale {
+        --wc-badge-offset: 25px;
+        right: var(--wc-badge-offset);
+      }
+
+      .quick-view-detail-button {
+        width: 100%;
+        flex-grow: 1;
+      }
+
+      .woocommerce-variation-price {
+        font-size: var(--smaller-text-size);
+        line-height: .9;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        color: var(--primary-text-color);
+        margin-bottom: 20px;
+        font-weight: 600;
+
+        .price {
+          margin-bottom: 0;
+        }
+      }
+
+      .view-product-link {
+        @include media('<=desktop') {
+          display: none;
+        }
+      }
+    }
+  }
+}
+

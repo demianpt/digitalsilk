@@ -1,0 +1,89 @@
+/**
+ * Woocommerce: Reviews
+ *
+ */
+// Product rating / stars
+@if $--wc-components__reviews-stars == ON {
+  .woocommerce {
+    --wc-review-icon-size: 26px;
+    --wc-review-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 15'%3E%3Cpath d='M8 12.0576L12.944 15L11.636 9.45079L16 5.71895L10.2472 5.23184L8 0L5.7528 5.23184L0 5.71895L4.364 9.45079L3.056 15L8 12.0576Z' /%3E%3C/svg%3E");
+    --wc-review-icon-color: var(--primary-color3);
+    --wc-review-icon-color-inactive: rgba(0, 38, 31, 0.5);
+  }
+
+  .stars {
+    display: inline-block;
+    margin: 0;
+
+    > span {
+      display: flex;
+    }
+
+    a {
+      width: var(--wc-review-icon-size);
+      height: var(--wc-review-icon-size);
+      font-size: 0;
+      color: transparent;
+      background-color: var(--wc-review-icon-color-inactive);
+      -webkit-mask-image: var(--wc-review-icon);
+      mask-image: var(--wc-review-icon);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      transition: background-color 0.3s;
+    }
+
+    // Passive icons
+    a,
+    a:hover ~ a,
+    &.selected a.active ~ a {
+      background: var(--wc-review-icon-color-inactive);
+    }
+
+    // Active icons
+    &:hover a,
+    a:hover,
+    &.selected a:not(.active),
+    &.selected a.active {
+      background-color: var(--wc-review-icon-color);
+    }
+  }
+
+  .star-rating {
+
+    display: inline-block;
+
+    &__wrapper {
+      display: flex;
+      position: relative;
+
+      .star {
+        width: var(--wc-review-icon-size);
+        height: var(--wc-review-icon-size);
+        font-size: 0;
+        color: transparent;
+        background-color: var(--wc-review-icon-color-inactive);
+        mask-image: var(--wc-review-icon);
+        -webkit-mask-image: var(--wc-review-icon);
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        transition: background-color 0.3s;
+      }
+    }
+
+    &__overlay {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: var(--wc-review-icon-color);
+      mask-image: var(--wc-review-icon);
+      -webkit-mask-image: var(--wc-review-icon);
+      mask-repeat: repeat-x;
+      -webkit-mask-repeat: repeat-x;
+      mask-size: var(--wc-review-icon-size) auto;
+      -webkit-mask-size: var(--wc-review-icon-size) auto;
+    }
+  }
+}

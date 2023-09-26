@@ -1,0 +1,25 @@
+/**
+ * Woocommerce: Shipping methods
+ */
+
+.woocommerce-shipping-methods {
+  margin-bottom: 2rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: var(--wc-label-margin-bottom, 0.5em);
+
+    input {
+      margin-left: 10px;
+    }
+
+    label {
+      display: inline;
+      text-align: right;
+      margin: 0;
+      line-height: 1.2;
+    }
+  }
+}

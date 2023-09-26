@@ -1,0 +1,113 @@
+body:not([class*="woocommerce-page"]) {
+    .content-single {
+        font-size: var(--blog-text-size, 2.2rem);
+        font-weight: var(--blog-text-font-weight, 400);
+        max-width: var(--blog-width, 650px);
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20px;
+        padding-bottom: 10vmin;
+
+        @include media(">desktop", "<desktop-l") {
+            --blog-width: 650px;
+        }
+        @include media(">desktop") {
+            min-height: 600px;
+            padding-top: var(--header-hight);
+        }
+    }
+
+    .is-wysiwyg {
+        a {
+            color: var(--primary-link-color);
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            [color-mode="dark"] &,
+            .colors-inverted & {
+                color: var(--primary-link-color-alt);
+            }
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--titles-color);
+
+            [color-mode="dark"] &,
+            .colors-inverted & {
+                color: var(--titles-color-alt);
+            }
+        }
+
+        p, ul:not(.blocks-gallery-grid), ol, table, img, blockquote, video, iframe, .wp-block-gallery {
+            margin-bottom: var(--wysiwyg-margin);
+        }
+
+        ul:not(.blocks-gallery-grid) {
+            list-style-type: none;
+            li {
+                padding: var(--wysiwyg-li-padding);
+                background-image: var(--list-item-style);
+                background-position: var(--wysiwyg-li-bgp);
+                background-repeat: no-repeat;
+            }
+        }
+
+        ol {
+            list-style: decimal;
+            margin-left: 25px;
+        }
+
+        li {
+            margin-bottom: var(--wysiwyg-li-margin);
+        }
+
+        img, video, iframe, picture {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        figcaption {
+            width: 100%;
+            font-style: italic;
+            text-align: center;
+            color: rgba(var(--body-text-color), .8);
+            font-size: .9em;
+        }
+
+        blockquote {
+            padding: 5px 30px 15px 30px;
+            border-left: 5px solid var(--border-color);
+            font-size: 1.15em;
+
+            ul {
+                font-style: italic;
+                margin-bottom: 0;
+                font-size: .9em;
+            }
+
+            p {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        iframe {
+            width: 100%;
+            @include media(">desktop") {
+                min-height: 400px;
+            }
+        }
+    }
+
+    .simple-page {
+        @include media(">desktop") {
+            padding-top: var(--header-hight);
+        }
+    }
+
+}

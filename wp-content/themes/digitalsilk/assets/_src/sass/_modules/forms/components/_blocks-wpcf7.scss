@@ -1,0 +1,27 @@
+
+.wpcf7-not-valid-tip {
+	color: var(--validation-error-color);
+	font-size: var(--message-font-size);
+	padding: 5px 0 0;
+}
+
+.wpcf7-list-item {
+	margin-left: 0;
+}
+
+.wpcf7 {
+	position: relative;
+
+	.ajax-loader,
+	.wpcf7-spinner {
+		position: absolute;
+		transform: translateX(-50%);
+		left: 50%;
+	}
+}
+
+.wpcf7-form.invalid {
+	.wpcf7-response-output {
+		display: none;
+	}
+}

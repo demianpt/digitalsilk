@@ -1,0 +1,29 @@
+/**
+ * WooCommerce: Top Filter Widgets (Filters and Categories)
+ * NOTE: Top filters will always be in forms of a dropdown
+ */
+  .shop-filters .products_shop_filter {
+    display: flex;
+
+    > li {
+      &:not(:last-child) {
+        margin: 0 1em 1em 0; // TODO
+      }
+
+      // Filter title
+      > span {
+        display: block;
+        padding: 0 0 1em;
+        font-size: 2rem; // TODO
+        font-weight: 700;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+
+      //
+      > *:not(span) {
+        // max-height: 0;
+        // overflow: hidden;
+      }
+    }
+  }

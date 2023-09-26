@@ -1,0 +1,34 @@
+.l-accordion {
+	&[data-animation="css"] {
+		.c-accordion__content {
+			display: none;
+			transform: scale(0);
+			opacity: 0;
+			transition: transform var(--base-transition) ease-in-out, opacity var(--base-transition) ease-in-out;
+		}
+		.is-active {
+			.c-accordion__content {
+				display: block;
+				transform: scale(1);
+				opacity: 1;
+				animation: acc-anim var(--base-transition) ease-in-out;
+			}
+		}
+	}
+}
+
+@keyframes acc-anim {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	1% {
+		display: block;
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -1,0 +1,106 @@
+/**
+ * Woocommerce: Tables
+ * TODO: Refactor this
+ */
+
+:root {
+  --wc-table-tr-padding: 0 1rem;
+  --wc-table-th-padding: 2.4rem 1.4rem;
+  --wc-table-td-padding: 2.4rem 1.4rem;
+  --wc-table-th-fw: 400;
+  --wc-table-td-fw: 400;
+  --wc-table-padding-lr: 1.4rem;
+  --wc-table-padding-l-first-column: 0;
+  --wc-table-padding-l-last-column: 0;
+
+  --wc-table-row-border-width: 1px;
+  --wc-table-row-border-style: dashed;
+  --wc-table-row-border-color: rgba(0, 134, 107, 0.25);
+
+  --wc-table-button-padding: 0.8rem 1.8rem;
+  --wc-table-links-color: var(--primary-color1);
+  --wc-table-links-color-hover: var(--primary-color2);
+
+  @include media("<=desktop-m") {
+    --wc-table-th-padding: 2.4rem 1.3rem;
+    --wc-table-td-padding: 1.4rem 1.3rem;
+    --wc-table-padding-lr: 2.8rem;
+  }
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+
+  thead {
+    th {
+      vertical-align: baseline;
+      font-weight: var(--wc-table-th-fw);
+    }
+  }
+
+  tbody {
+    font-weight: var(--wc-table-td-fw);
+  }
+}
+
+.woocommerce-table,
+.woocommerce-orders-table,
+.shop_table,
+.tinvwl-table-manage-list {
+  margin-bottom: var(--wc-vertical-space);
+
+  thead {
+    tr {
+      border-bottom: var(--wc-table-row-border-width) var(--wc-table-row-border-style) var(--wc-table-row-border-color);
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: transparent;
+      border-bottom: var(--wc-table-row-border-width) var(--wc-table-row-border-style) var(--wc-table-row-border-color);
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+
+  th {
+    padding: var(--wc-table-th-padding);
+    line-height: 1.3;
+  }
+
+  td {
+    padding: var(--wc-table-td-padding);
+  }
+
+  th,
+  td {
+    a {
+      color: var(--wc-table-links-color);
+      transition: color .3s ease;
+
+      &:hover {
+        color: var(--wc-table-links-color-hover);
+        transition: color .3s ease;
+      }
+
+      &.button {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}

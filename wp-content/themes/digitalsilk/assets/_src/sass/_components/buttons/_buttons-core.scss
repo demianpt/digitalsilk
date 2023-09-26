@@ -1,0 +1,197 @@
+/** Buttons Core Component */
+
+.btn {
+    --btn-ico-color: currentColor;
+    --icon-shift: 10px;
+
+    display: inline-flex;
+    align-items: center;
+    backface-visibility: hidden;
+    background-color: transparent;
+    position: relative;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    white-space: nowrap;
+    transition: transform var(--base-transition), border var(--base-transition), background var(--base-transition);
+}
+
+.c-btn {
+    @extend .btn;
+
+    font-size: var(--btn-font-size, 1.8rem);
+    font-family: var(--btn-font-family);
+    text-transform: var(--btn-text-transform, none);
+    font-weight: var(--btn-font-weight, 400);
+    box-shadow: var(--btn-box-shadow, none);
+    border-radius: var(--btn-border-radius, 0);
+    margin: 2px;
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: var(--btn-padding-top-bottom, 10px) var(--btn-padding-left-right, 20px);
+    transition: transform var(--base-transition), color var(--base-transition);
+
+    > span {
+        box-sizing: border-box;
+    }
+
+    /* Button Visual Variants */
+
+    &.-primary,
+    &.-secondary {
+        .c-btn__ico {
+            padding-left: calc(var(--btn-padding-left-right, 20px) / 2);
+        }
+    }
+
+    &.-primary {
+        background-color: var(--btn-primary-bg);
+        color: var(--btn-primary-color);
+        border: var(--btn-primary-border) solid var(--btn-primary-border-color);
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--btn-primary-bg-hover);
+                color: var(--btn-primary-color-hover);
+                border-color: var(--btn-primary-border-color-hover)
+            }
+        }
+    }
+
+    &.-secondary {
+        background-color: var(--btn-secondary-bg);
+        color: var(--btn-secondary-color);
+        border: var(--btn-secondary-border) solid var(--btn-secondary-border-color);
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--btn-secondary-bg-hover);
+                color: var(--btn-secondary-color-hover);
+                border-color: var(--btn-secondary-border-color-hover)
+            }
+        }
+    }
+
+    &.-link {
+        color: var(--btn-link-color);
+        box-shadow: none !important;
+        padding: 0;
+
+        .c-btn__ico {
+            max-width: 35px;
+            margin-left: 10px;
+            svg {
+                color: var(--link-icon-color, currentColor);
+            }
+            svg, img {
+                max-height: 1em;
+            }
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--btn-link-color-hover);
+            }
+        }
+
+        &.icon-left {
+            .c-btn__ico {
+                margin-right: 10px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    /* Button Size Variants */
+
+    &.-small {
+        --btn-padding-left-right: 20px;
+        --btn-padding-top-bottom: 10px;
+
+        font-size: .8em;
+
+        .icon {
+            max-width: 60%;
+        }
+    }
+
+    &.-large {
+        font-size: 1.4em;
+    }
+
+    /* Button Icon */
+
+    &__ico {
+        min-width: 20px;
+        max-width: 40px;
+        position: relative;
+        transition: transform var(--base-transition), filter var(--base-transition), opacity var(--base-transition);
+        pointer-events: none;
+        display: flex;
+
+        svg, img {
+            margin: auto;
+            max-height: 1.5em;
+        }
+
+        svg {
+            fill: var(--btn-ico-color);
+            color: var(--btn-ico-color);
+        }
+
+        img {
+            transition: transform var(--base-transition), filter var(--base-transition), opacity var(--base-transition);
+            max-width: 100%;
+        }
+    }
+
+    &.icon-left {
+        flex-direction: row-reverse;
+    }
+
+    .icon-reversed {
+        transform: scaleX(-1);
+    }
+
+    .c-btn-bar & {
+        vertical-align: middle;
+    }
+
+    @media (hover: hover) {
+
+        &:hover {
+            .c-btn__ico {
+                transform: translateX(5px);
+
+                &.icon-reversed {
+                    transform: translateX(-5px) scaleX(-1);
+                }
+            }
+        }
+    }
+
+}
+
+/* CF7 Submit Button */
+
+.wpcf7-submit,
+.gform_button,
+.gform-button {
+    @extend .c-btn, .-primary;
+    font-size: var(--btn-font-size, 1.8rem);
+    font-family: var(--btn-font-family);
+    text-transform: var(--btn-text-transform, none);
+    font-weight: var(--btn-font-weight, 400);
+    box-shadow: var(--btn-box-shadow, none);
+    border-radius: var(--btn-border-radius, 0);
+    padding: var(--btn-padding-top-bottom) var(--btn-padding-left-right);
+    transition: all var(--base-transition);
+
+    @media (hover: hover) {
+        &:hover {
+            box-shadow: 0 2px 2px rgba(0, 7, 63, 0.2);
+        }
+    }
+}

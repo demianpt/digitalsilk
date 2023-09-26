@@ -1,0 +1,53 @@
+.scroll-down {
+	position: absolute;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	font-size: 16px;
+	padding-top: 15px;
+	transform-origin: top left;
+	transform: rotate(-90deg) translateX(-50%);
+	z-index: 3;
+
+	.colors-inverted &,
+	.style-dark & {
+		color: #fff;
+	}
+
+	&.sd-left {
+		left: 0;
+		@include media('>desktop-l') {
+			left: 15px;
+		}
+	}
+	&.sd-right {
+		right: 0;
+		@include media('>desktop-l') {
+			right: 15px;
+		}
+	}
+	&.sd-left,
+	&.sd-right {
+		display: flex;
+		align-items: center;
+		top: 50%;
+		img {
+			transform: rotate(90deg);
+			margin-right: 20px;
+		}
+	}
+	&.sd-center {
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 50px;
+		display: flex;
+		flex-direction: column-reverse;
+		img {
+			display: block;
+			margin: 10px auto;
+		}
+	}
+
+	@include media('<=desktop') {
+		display: none;
+	}
+}

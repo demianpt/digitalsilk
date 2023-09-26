@@ -1,0 +1,14 @@
+.page-template-template-simple-text,
+.single-post,
+.search,
+.page-template-template-styleguide,
+.page-template-default {
+	.site-header__main {
+		background-color: var(--header-sticky-bg, var(--primary-color1));
+	}
+	.site-content {
+		@include media(">desktop") {
+			padding-top: var(--header-hight);
+		}
+	}
+}

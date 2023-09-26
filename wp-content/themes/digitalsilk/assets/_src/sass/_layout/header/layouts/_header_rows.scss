@@ -1,0 +1,33 @@
+/* Header Main Row */
+
+.site-header__main {
+	--header-link-color: var(--header-main-color);
+	--header-link-color-hover: var(--header-main-color-hover);
+	--header-horizontal-gap: var(--header-main-gap-between-items);
+
+	font-weight: var(--header-main-font-weight);
+	text-transform: var(--header-main-text-transform, uppercase);
+	font-size: var(--header-main-font-size, 16px);
+	background-color: var(--header-main-bg);
+
+	.site-header__row {
+		padding-block: var(--header-main-vertical-padding);
+	}
+}
+
+/* Header Top Row */
+
+.site-header__top {
+	--header-link-color: var(--header-top-color);
+	--header-link-color-hover: var(--header-top-color-hover);
+	--header-horizontal-gap: var(--header-top-gap-between-items);
+
+	background-color: var(--header-top-bg);
+	font-size: var(--header-top-size);
+	color: var(--header-top-color);
+
+	.inner-frame {
+		justify-content: space-between;
+		padding-block: var(--header-top-vertical-padding);
+	}
+}

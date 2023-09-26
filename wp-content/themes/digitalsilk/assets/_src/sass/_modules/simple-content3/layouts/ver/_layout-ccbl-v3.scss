@@ -1,0 +1,26 @@
+.l-ccbl-v3 {
+	@include media('>=tablet') {
+		--ccbl-icon-size: 154px;
+
+		grid-template: auto/repeat(2, 1fr);
+		grid-template-areas:
+        "item1 item-img"
+        "item2 item-img"
+        "item3 item-img"
+        "item4 item-img"
+        "item5 item-img";
+		column-gap: var(--l-block-gap);
+	}
+
+	.l-ccbl__item {
+		.c-image {
+			@include aspect-ratio(1, 1);
+
+			&__media {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+}

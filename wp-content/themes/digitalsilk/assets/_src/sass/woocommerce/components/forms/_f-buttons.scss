@@ -1,0 +1,130 @@
+/**
+ * Woocommerce: Buttons
+ * All buttons are connected to the DSMP core, except show/hide filter button
+ * TODO: Discuss do we need al those variables to style one button (filter button)???
+ */
+
+.woocommerce {
+  // Fillter button configuration
+  --wc-filter-btn-padding-tb: 0;
+  --wc-filter-btn-padding-lr: 0;
+  --wc-filter-btn-font-size: 1.6rem;
+  --wc-filter-btn-font-family: var(--btn-font-family);
+  --wc-filter-btn-font-weight: 400;
+  --wc-filter-btn-text-transform: uppercase;
+  --wc-filter-btn-primary-color: var(--primary-color1);
+  --wc-filter-btn-primary-bg: transparent;
+  --wc-filter-btn-primary-border: 0;
+  --wc-filter-btn-primary-border-color: transparent;
+  --wc-filter-btn-border-radius: 0;
+  --wc-filter-btn-icon-size: 24px;
+  --wc-filter-btn-primary-color-hover: var(--primary-color1);
+  --wc-filter-btn-primary-bg-hover: "transparent";
+  --wc-filter-btn-primary-border-color-hover: "transparent";
+}
+
+.woocommerce-button {
+  transition: transform 0.3s, border 0.3s, background 0.3s, color 0.3s;
+  backface-visibility: hidden;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+// Default buttons, from DSMP core
+
+a.button,
+button.button,
+input.button,
+#respond input#submit {
+  @extend .woocommerce-button;
+  display: inline-block;
+  padding: var(--btn-padding-top-bottom, 10px) var(--btn-padding-left-right, 20px);
+  margin: 2px; // TODO
+  font-size: var(--btn-font-size, 1.8rem);
+  font-family: var(--btn-font-family);
+  font-weight: var(--button-font-weight, 400);
+  text-transform: var(--btn-text-transform, none);
+  align-items: center;
+  color: var(--btn-primary-color);
+  background-color: var(--btn-primary-bg);
+  border: var(--btn-primary-border) solid var(--btn-primary-border-color);
+  border-radius: var(--btn-border-radius, 0);
+  box-shadow: var(--btn-box-shadow, none);
+
+  @include media(">desktop") {
+    &:hover {
+      color: var(--btn-primary-color-hover);
+      background-color: var(--btn-primary-bg-hover);
+      border-color: var(--btn-primary-border-color-hover);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  // TODO: Check this
+  // &:disabled,
+  // &.disabled,
+  // &:disabled[disabled] {
+  //   cursor: not-allowed;
+  //   opacity: 0.5;
+  // }
+}
+
+//Buttons with icons injected with js
+@if $--wc-buttons-with-icons == ON {
+ .woocommerce-form-login .button,
+ .woocommerce-form-register .button,
+ .cart-collaterals .button,
+ .coupon .button,
+ .woocommerce-form-coupon .button,
+ .woocommerce-message .button,
+ .single-product .related.products .view-product-link {
+    display: inline-flex;
+    padding: 0;
+  }
+}
+
+// Show/hide filters button
+.filter-btn {
+  @extend .woocommerce-button;
+  padding: var(--wc-filter-btn-padding-tb, 10px) var(--wc-filter-btn-padding-lr, 20px);
+  font-size: var(--wc-filter-btn-font-size, 1.8rem);
+  font-family: var(--wc-filter-btn-font-family);
+  font-weight: var(--wc-filter-btn-font-weight, 400);
+  text-transform: var(--wc-filter-btn-text-transform, none);
+  align-items: center;
+  color: var(--wc-filter-btn-primary-color);
+  background-color: var(--wc-filter-btn-primary-bg);
+  border: var(--wc-filter-btn-primary-border) solid var(--wc-filter-btn-primary-border-color);
+  border-radius: var(--wc-filter-btn-border-radius, 0);
+
+  // Show/hide filters button
+  @include media(">desktop") {
+    display: none;
+
+    &.is-active {
+      display: flex;
+    }
+  }
+
+  &:hover {
+    color: var(--wc-filter-btn-primary-color-hover);
+    background-color: var(--wc-filter-btn-primary-bg-hover);
+    border-color: var(--wc-filter-btn-primary-border-color-hover);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  svg {
+    width: var(--wc-filter-btn-icon-size);
+    margin-right: 0.7em;
+    color: var(--primary-color1);
+  }
+}

@@ -1,0 +1,101 @@
+/**
+ * WooCommerce: Sidebar
+ */
+@if $--wc-shop__sidebar == ON {
+  .woocommerce {
+    --wc-products-sidebar-col: 100%;
+    --wc-products-sidebar-min-width: 245px;
+    --wc-products-gap: 80px;
+
+    --wc-sidebar-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.5);
+    --wc-sidebar-mobile-width: 340px;
+    --wc-sidebar-mobile-overlay-bg: rgba(0, 0, 0, 0.5);
+
+    --sidebar-item-color: var(--primary-text-color);
+    --sidebar-item-border: 0;
+    --sidebar-item-border-color: transparent;
+
+    @include media(">tablet") {
+      --wc-products-sidebar-col: 25%;
+    }
+  }
+
+  // Sidebar filters and categories
+  .woocommerce-sidebar {
+    position: relative;
+    left: calc(var(--wc-products-sidebar-col) * -1);
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    transition: visibility 0.01s ease;
+
+    @include media(">desktop") {
+      &.is-visible {
+        left: 0;
+        visibility: visible;
+        transition: left 0.2s ease, visibility 0.1s ease 0.01s;
+      }
+    }
+
+    @include media("<=desktop") {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      overflow: hidden;
+      visibility: visible;
+      transition: left 0.3s;
+      z-index: 100000; // wpadmin bar is 99999
+
+      // Extended/visible
+      &.is-visible-on-mobile {
+        left: 0;
+
+        #close-filter-mobile-overlay {
+          left: 0;
+        }
+      }
+
+      &-widgets {
+        position: relative;
+        width: var(--wc-sidebar-mobile-width);
+        max-width: 90%;
+        padding: 20px; // TODO
+        background: #fff; // TODO
+        z-index: 1;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      // Background overlay
+      #close-filter-mobile-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background-color: var(--wc-sidebar-mobile-overlay-bg);
+      }
+    }
+  }
+
+  // Filter button
+  @include media(">desktop") {
+    #close-filter-mobile {
+      display: none;
+    }
+  }
+
+  @include media("<=desktop") {
+    // Hide close filter button, since show filter butotn will always be visible
+    #close-filter {
+      display: none;
+    }
+
+    #close-filter-mobile {
+      display: inline-flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+  }
+}

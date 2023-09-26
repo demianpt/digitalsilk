@@ -1,0 +1,20 @@
+.c-accordion {
+
+	--acc-title-size: inherit;
+	--acc-title-weight: 700;
+	--acc-title-padding: 10px 20px;
+	--acc-title-color: var(--titles-color);
+	--acc-title-bg: rgba(0, 0, 0, .1);
+	--acc-title-color-active: var(--titles-color);
+	--acc-title-bg-active: var(--secondary-color2);
+
+	--acc-content-size: inherit;
+	--acc-content-weight: 400;
+	--acc-content-padding: 10px 20px;
+	--acc-content-color: inherit;
+	--acc-content-bg: transparent;
+
+	--acc-item-space: .1em;
+	--acc-icon-width: 60px;
+
+}

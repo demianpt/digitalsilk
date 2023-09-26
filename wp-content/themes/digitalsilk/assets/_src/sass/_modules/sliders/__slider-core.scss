@@ -1,0 +1,42 @@
+/**
+ ###################
+ #   Module SLIDERS: Module structure and variations
+ ###################
+ */
+
+.m-slider {
+	position: relative;
+
+	.swiper-slide {
+		height: auto;
+	}
+
+	&__container {
+		z-index: 0;
+	}
+
+	&__slide {
+		@include media('<desktop') {
+			height: auto;
+		}
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+}
+
+.has-tabs {
+
+	--slider-tab-height: 120px;
+
+	.m-banner {
+		padding-bottom: 60px;
+
+		@include media('>=desktop') {
+			padding-bottom: var(--slider-tab-height);
+		}
+	}
+}

@@ -1,0 +1,23 @@
+.footer-burger-menu {
+	position: relative;
+}
+
+.footer-burger-menu__holder {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: var(--secondary-color1);
+	padding: 20px;
+	transition: opacity var(--base-transition), transform var(--base-transition);
+	opacity: 0;
+	transform: translateY(10%);
+
+	.is-active & {
+		opacity: 1;
+		transform: translateY(-100%);
+	}
+
+	.menu-item {
+		white-space: nowrap;
+	}
+}

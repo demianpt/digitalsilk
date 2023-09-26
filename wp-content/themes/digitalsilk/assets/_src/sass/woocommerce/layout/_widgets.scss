@@ -1,0 +1,76 @@
+/**
+ * Woocommerce: Widgets
+ * TODO: Refactor this
+ */
+
+.widget {
+  ul.products {
+    li.product {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.widget_products {
+  a {
+    display: block;
+  }
+}
+
+.widget_shopping_cart {
+  .product_list_widget {
+    margin-bottom: 0;
+
+    li {
+      padding-left: 2em;
+      position: relative;
+
+      a.remove {
+        position: absolute;
+        top: 1em;
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  p.total,
+  p.buttons {
+    padding: 1em 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  p.total {
+    border-bottom: 1px solid;
+  }
+
+  .buttons {
+    a {
+      display: block;
+      margin-bottom: ms(-2);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.site-header {
+  .widget_shopping_cart {
+    p.total,
+    p.buttons,
+    li {
+      padding-left: ms(2);
+      padding-right: ms(2);
+    }
+  }
+}

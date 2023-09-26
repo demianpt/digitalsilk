@@ -1,0 +1,68 @@
+/**
+ * Woocommerce: Table Cart
+ */
+
+// Set if the table has border
+
+.woocommerce {
+  --wc-acc-orders-th-fs: 2rem;
+  --wc-acc-orders-th-fw: 500;
+  --wc-acc-orders-th-ff: var(--font-family-secondary);
+  --wc-acc-orders-th-bg: var(--secondary-color1);
+  --wc-acc-orders-th-ptb: 2.2rem;
+  --wc-acc-orders-th-plr: 2rem;
+  --wc-acc-orders-td-fs: var(--base-font-size);
+  --wc-acc-orders-td-fw: 400;
+  --wc-acc-orders-td-ff: var(--font-family-primary);
+  --wc-acc-orders-td-bg: #fff;
+  --wc-acc-orders-td-ptb: 1.6rem;
+  --wc-acc-orders-td-plr: 2rem;
+  --wc-acc-orders-thumbnail-size: 100px;
+  --wc-acc-orders-checkbox-size: 15px;
+}
+
+
+// Table for account orders
+table.account-orders-table {
+  thead {
+    th {
+      background: var(--wc-acc-orders-th-bg);
+      font-size: var(--wc-acc-orders-th-fs);
+      font-weight: var(--wc-acc-orders-th-fw);
+      font-family: var(--wc-acc-orders-th-ff);
+      text-transform: uppercase;
+      padding: var(--wc-acc-orders-th-ptb) var(--wc-acc-orders-th-plr);
+
+      &:first-child {
+        padding-left: calc(var(--wc-acc-orders-th-plr) * 1.5);
+      }
+
+      &:last-child {
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      background: var(--wc-acc-orders-td-bg);
+      font-size: var(--wc-acc-orders-td-fs);
+      font-weight: var(--wc-acc-orders-td-fw);
+      font-family: var(--wc-acc-orders-td-ff);
+      padding: var(--wc-acc-orders-td-ptb) var(--wc-acc-orders-td-plr);
+
+      &:first-child {
+        padding-left: calc(var(--wc-acc-orders-th-plr) * 1.5);
+      }
+
+      &:last-child {
+        text-align: left;
+      }
+
+      &.woocommerce-orders-table__cell-order-actions {
+        --btn-padding-top-bottom: 14px;
+        --btn-padding-left-right: 1.6em;
+      }
+    }
+  }
+}

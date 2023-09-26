@@ -1,0 +1,41 @@
+.social-list {
+
+    display: grid;
+    grid-template-columns: repeat( auto-fit, var(--social-icon-size) );
+    grid-auto-flow: column;
+
+    @include media("<=desktop") {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    &__item {
+        align-items: center;
+    }
+
+    &__link {
+        border-radius: var(--social-icon-radius);
+        color: var(--social-icon-color);
+        background-color: var(--social-icon-bg);
+        width: var(--social-icon-size);
+        height: var(--social-icon-size);
+        display: flex;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--social-icon-color-hover);
+                background-color: var(--social-icon-bg-hover);
+                transform: scale(1.05);
+            }
+        }
+
+    }
+
+    &__icon {
+        padding: 5px;
+        max-width: 80%;
+        max-height: 80%;
+        margin: auto;
+    }
+
+}

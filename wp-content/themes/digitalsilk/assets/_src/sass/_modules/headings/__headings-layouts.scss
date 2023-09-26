@@ -1,0 +1,27 @@
+/* Heading Layout */
+
+.l-heading-v1 {
+
+}
+
+.l-heading-v2 {
+
+	--h2-letter-spacing: .1em;
+	--h2-font: var(--font-family-primary);
+	--h2-font-weight: 500;
+	--h2-text-transform: uppercase;
+
+	--pretitle-color: var(--secondary-color2);
+	--pretitle-font-size: 2rem;
+	--pretitle-letter-spacing: 0;
+
+	--subtitle-color: var(--primary-color1);
+	--subtitle-font-size: 1.8rem;
+	--subtitle-letter-spacing: 0;
+
+	--h2-font-size: 2.8rem;
+
+	.c-heading__title {
+		font-size: 2.8rem;
+	}
+}

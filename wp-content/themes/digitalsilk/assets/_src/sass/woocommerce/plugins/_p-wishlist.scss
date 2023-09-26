@@ -1,0 +1,49 @@
+/**
+ * WooCommerce: Wishlist
+ *
+ */
+@if $--wc-plugins__wishlist == ON {
+  .woocommerce {
+    --wc-wishlist-size: 50px;
+    --wc-wishlist-icon-size: 30px;
+    --wc-wishlist-color: var(--primary-color1);
+    --wc-wishlist-color-active: var(--primary-color2);
+  }
+
+  .tinv-header {
+    display: none;
+  }
+
+  .tinv-wishlist {
+    margin-left: 7px;
+
+    .tinvwl_add_to_wishlist_button {
+      &.tinvwl-icon-heart {
+        &.no-txt {
+          width: var(--wc-wishlist-size);
+          height: var(--wc-wishlist-size);
+          vertical-align: middle;
+          border: 1px solid var(--wc-wishlist-color);
+          border-radius: 500px;
+          margin: 0;
+          transition: all .3s ease;
+
+          &:before {
+            font-size: var(--wc-wishlist-icon-size);
+            margin: 0;
+            transform: translate(-50%, -50%);
+          }
+
+          &:not(.disabled-add-wishlist) {
+            &.tinvwl-product-in-list,
+            &:hover {
+              border-color: var(--wc-wishlist-color-active);
+              color: var(--wc-wishlist-color-active);
+              transition: all .3s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+}

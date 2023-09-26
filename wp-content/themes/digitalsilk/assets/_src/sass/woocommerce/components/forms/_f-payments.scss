@@ -1,0 +1,262 @@
+/**
+ * Woocommerce: Form Payments
+ */
+.woocommerce {
+  --wc-payment-accordion-title-fs: 1.6rem;
+  --wc-payment-accordion-title-fw: 400;
+  --wc-payment-accordion-title-lh: 1.2;
+  --wc-payment-accordion-title-color: var(--primary-text-color);
+  --wc-payment-accordion-title-background: var(--primary-color2);
+  --wc-payment-accordion-title-padding: 1.8rem 3.4rem;
+  --wc-payment-accordion-content-fs: 1.6rem;
+  --wc-payment-accordion-content-padding: 2.4rem 3.2rem;
+  --wc-payment-accordion-content-background: #fff;
+  --wc-payment-radio-button-color: var(--primary-text-color);
+}
+
+// Place order button
+#payment .place-order {
+  width: 100%;
+  float: none;
+  margin-bottom: 0;
+
+  .button {
+    width: 100%;
+    white-space: pre-wrap;
+  }
+}
+
+// Payment accordions
+#payment {
+  margin-bottom: var(--wc-vertical-space);
+
+  .create-account {
+    clear: both;
+  }
+
+  // Payment accordion
+  ul.payment_methods {
+    margin-bottom: var(--wc-vertical-space);
+    border: 1px solid var(--wc-cart-table-totals-border-color);
+    border-radius: var(--wc-cart-table-totals-border-radius);
+
+    > .woocommerce-PaymentMethod,
+    > .wc_payment_method {
+      border-bottom: 1px solid var(--wc-cart-table-totals-border-color);
+
+      > label {
+        font-size: var(--wc-payment-accordion-title-fs);
+        font-weight: var(--wc-payment-accordion-title-fw);
+        line-height: var(--wc-payment-accordion-title-lh);
+        color: var(--wc-payment-accordion-title-color);
+        background: var(--wc-payment-accordion-title-background);
+        padding: var(--wc-payment-accordion-title-padding);
+        margin: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        @extend .woocommerce-radio-wrapper;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    li {
+      input[type='radio'] {
+        @extend .woocommerce-radio-input;
+
+        & + span, & + label {
+          @extend .woocommerce-radio-label;
+
+          &::before {
+            margin-right: 10px;
+            position: relative;
+            top: unset;
+            background: transparent;
+            border-color: var(--wc-payment-radio-button-color);
+          }
+
+          &::before, &::after {
+            transform: none;
+          }
+
+          &::after {
+            left: unset;
+            top: unset;
+            margin-left: 3px;
+            order: -1;
+            background: var(--wc-payment-radio-button-color);
+          }
+        }
+
+        &:checked {
+          & + span, & + label {
+            @extend .woocommerce-radio-label-checked;
+          }
+        }
+      }
+
+      &:first-child {
+        label {
+          border-radius: var(--wc-cart-table-totals-border-radius) var(--wc-cart-table-totals-border-radius) 0 0;
+        }
+      }
+
+      &:last-child:not(.woocommerce-notice) {
+        padding-bottom: 0;
+        border-bottom: 0;
+
+        .payment_box,
+        input[type='radio']:not(:checked) + label {
+          border-radius: 0 0 var(--wc-cart-table-totals-border-radius) var(--wc-cart-table-totals-border-radius);
+        }
+      }
+
+      img {
+        display: none;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .payment_box {
+        padding: var(--wc-payment-accordion-content-padding);
+        background: var(--wc-payment-accordion-content-background);
+        font-size: var(--wc-payment-accordion-content-fs);
+        border-top: 1px solid var(--wc-cart-table-totals-border-color);
+
+        fieldset {
+          border: 0;
+          margin: 0;
+
+          label {
+            width: auto;
+            margin-left: 0;
+          }
+
+          .form-row {
+            margin-bottom: 1em;
+
+            input[type="checkbox"] {
+              margin-right: 5px;
+            }
+          }
+
+          #cvv {
+            width: 22% !important;
+          }
+
+          .help {
+            width: 75%;
+            float: right;
+          }
+        }
+
+        .woocommerce-SavedPaymentMethods {
+          padding-top: 1em;
+          margin: 0;
+        }
+
+        ul.wc-saved-payment-methods {
+          margin-left: 0;
+        }
+
+        .wc-credit-card-form-card-number,
+        .wc-credit-card-form-card-expiry,
+        .wc-credit-card-form-card-cvc {
+          font-size: var(--wc-payment-accordion-content-fs);
+        }
+
+        .wc-credit-card-form-card-number {
+          background-repeat: no-repeat;
+          background-position: right ms(-2) center;
+          background-size: 31px 20px;
+          background-image: url(../../../assets/images/credit-cards/unknown.svg);
+
+          &.visa {
+            background-image: url(../../../assets/images/credit-cards/visa.svg);
+          }
+
+          &.mastercard {
+            background-image: url(../../../assets/images/credit-cards/mastercard.svg);
+          }
+
+          &.laser {
+            background-image: url(../../../assets/images/credit-cards/laser.svg);
+          }
+
+          &.dinersclub {
+            background-image: url(../../../assets/images/credit-cards/diners.svg);
+          }
+
+          &.maestro {
+            background-image: url(../../../assets/images/credit-cards/maestro.svg);
+          }
+
+          &.jcb {
+            background-image: url(../../../assets/images/credit-cards/jcb.svg);
+          }
+
+          &.amex {
+            background-image: url(../../../assets/images/credit-cards/amex.svg);
+          }
+
+          &.discover {
+            background-image: url(../../../assets/images/credit-cards/discover.svg);
+          }
+        }
+      }
+    }
+  }
+
+  .terms {
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-bottom: 1em;
+
+    label {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+}
+
+// Payment checkbox
+//.payment_box {
+//  .woocommerce-validated {
+//    @extend .woocommerce-checkbox-wrapper;
+//
+//    input {
+//      @extend .woocommerce-checkbox-input;
+//
+//      &:checked + label {
+//        @extend .woocommerce-checkbox-label-checked;
+//      }
+//    }
+//
+//    label {
+//      @extend .woocommerce-checkbox-label;
+//      display: inline-block !important;
+//    }
+//  }
+//}
+
+// Stripe input fields
+// TODO: Find better solution
+//.wc-stripe-elements-field,
+//.wc-stripe-iban-element-field {
+//  height: calc(
+//          var(--input-font-size) * var(--wc-input-line-height) + (var(--input-padding-top-bottom) * 2) +
+//          (var(--input-border-width) * 2)
+//  );
+//
+//  div,
+//  iframe {
+//    height: 100% !important;
+//  }
+//}

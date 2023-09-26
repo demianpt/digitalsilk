@@ -1,0 +1,70 @@
+/* Header */
+
+:root {
+	--header-hight: 100px; 		        // header height
+}
+
+.site-header {
+	--header-sticky-type: fixed;
+	--header-sticky-bg: rgba(255, 255, 255, 0.9);
+
+	--header-top-bg: var(--primary-color3);
+	--header-top-color: var(--secondary-color2);
+	--header-top-color-hover: var(--secondary-color3);
+	--header-top-size: 14px;
+	--header-top-vertical-padding: 10px;
+	--header-top-gap-between-items: 10px;
+
+	--header-main-bg: #fff;
+	--header-main-color: var(--primary-color3);
+	--header-main-color-hover: var(--primary-color2);
+	--header-main-font-size: 18px;
+	--header-main-font-weight: 400;
+	--header-main-text-transform: uppercase;
+	--header-main-gap-between-items: 15px;
+	--header-main-vertical-padding: 10px;
+	--header-main-nav-height: 40px;
+
+	--header-logo-width: 100%;
+	--header-logo-height: 40px;
+
+	--dropdown-bg: #fff;
+	--dropdown-color: var(--primary-color1);
+	--dropdown-color-active: var(--primary-color2);
+	--dropdown-font-size: 16px;
+	--dropdown-font-weight: 600;
+	--dropdown-padding: 40px 25px 20px;
+	--dropdown-width: 200px;
+
+	--content-width: var(--desktop-width-xl);
+
+	@include media('<=desktop') {
+		--header-hight: 50px;
+
+		--burger-width: 24px;
+		--burger-segment-hight: 3px;
+		--burger-segment-gap: 7px;
+		--burger-segment-radius: 5px;
+		--burger-color: #fff;
+		--burger-bg: var(--primary-color1);
+
+		--header-mobile-bg: var(--primary-color2);
+
+		--link-size-l1: 16px;
+		--link-size-l2: 14px;
+		--link-color: #fff;
+		--link-gap: 10px;
+	}
+}
+
+.site-search {
+	--search-size: 30px;
+	--search-btn-bg: transparent;
+	--search-btn-radius: 4px;
+	--search-height: 30px;
+	--search-width: 250px;
+	--search-radius: 4px;
+	--search-outer-bg: var(--primary-color3);
+	--search-outer-gap: 5px;
+	--search-outer-border: #333;
+}

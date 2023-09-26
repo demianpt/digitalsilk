@@ -1,0 +1,54 @@
+/**
+ * WooCommerce: Wishlist button...different variations
+ * NOTE: We are using "TI WooCommerce Wishlist" plugin for this
+ */
+@if $--wc-plugins__wishlist == ON {
+  // Product listing Button Settings
+  .woocommerce-archive-content .tinvwl-loop-button-wrapper {
+    position: relative;
+
+    // Before 'add to cart' button
+    &.tinvwl-before-add-to-cart {
+      margin-bottom: 0.5em;
+    }
+
+    // Above thumbnail
+    &.tinvwl-above_thumb-add-to-cart {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: var(--primary-color1);
+    }
+
+    // Icon only, to text after and before add to cart button
+    &.tinvwl-after-add-to-cart,
+    &.tinvwl-before-add-to-cart {
+      .tinvwl-icon-heart.no-txt {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    // Icon only, after 'add to cart' button
+    &.tinvwl-after-add-to-cart .tinvwl-icon-heart.no-txt {
+      transform: translateY(-50%);
+    }
+  }
+
+  // Button
+  a.tinvwl_add_to_wishlist_button {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  // "Add to Wishlist" on Product page
+
+  // Wishlist Product Settings
+
+  // Wishlist Table Settings
+
+  // Social Networks Sharing Options
+
+  // Wishlist Product Counter
+}

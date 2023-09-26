@@ -1,0 +1,10 @@
+.l-ccbl-v1 {
+	@include media('>=tablet') {
+		grid-template: auto/repeat(3, 1fr);
+		grid-template-areas:
+        "item1 item-img item2"
+        "item3 item-img item4"
+        "item5 item-img item6"
+        "item7 item-img item8";
+	}
+}

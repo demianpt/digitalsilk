@@ -1,0 +1,99 @@
+.site-header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: transform var(--base-transition), background-color var(--base-transition), box-shadow var(--base-transition);
+    z-index: 99;
+
+    @include media('<=desktop') {
+        max-height: var(--header-hight);
+        position: sticky;
+    }
+    @include media('>desktop') {
+        position: var(--header-sticky-type, sticky);
+        .admin-bar & {
+            top: 28px;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        @include media(">desktop") {
+            transition: all var(--base-transition);
+            max-width: 100%;
+        }
+
+        img, svg {
+            max-width: 250px;
+            max-height: 100px;
+            min-width: 60px;
+            width: var(--header-logo-width);
+            height: var(--header-logo-height);
+            object-fit: contain;
+            object-position: left center;
+
+            @include media("<=desktop") {
+                max-width: 150px;
+                max-height: 30px;
+            }
+            @include media(">desktop") {
+                transition: all var(--base-transition);
+            }
+        }
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        transition: all var(--base-transition);
+    }
+
+    &__col {
+        display: flex;
+        align-items: center;
+        transition: padding var(--base-transition);
+
+        &.-left {
+            justify-content: flex-start;
+        }
+        &.-center {
+            justify-content: center;
+            text-align: center;
+        }
+        &.-right {
+            justify-content: flex-end;
+        }
+
+        @include media("<=desktop") {
+            align-items: center;
+        }
+        @include media(">desktop") {
+            gap: calc(var(--header-horizontal-gap, 1vw) * 2);
+        }
+    }
+
+    .social-list {
+        gap: var(--header-horizontal-gap);
+    }
+
+}
+
+:target {
+/*    display: block;
+    position: relative;
+    top: -150px;
+    visibility: hidden;*/
+    &:before {
+        content: '';
+        display: block;
+        height:      1px;
+        margin-top: 50px;
+        visibility: hidden;
+    }
+}

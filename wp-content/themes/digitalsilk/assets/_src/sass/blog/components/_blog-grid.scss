@@ -1,0 +1,111 @@
+/**
+ ############################
+ #   MODULE: BLOG NEWS GRID
+ ############################
+ */
+
+.blog-grid {
+    display: grid;
+    grid-template: auto/repeat(var(--grid-item-col, 4),minmax(0,1fr));
+    gap: var(--grid-item-gap);
+
+    @include media("<tablet") {
+        --grid-item-col: 1;
+        --grid-img-height: 150px;
+    }
+    @include media(">tablet") {
+        margin-bottom: 10vmin;
+        margin-top: 10px;
+    }
+
+    .not-found {
+        grid-column: span 3;
+    }
+
+    &__item {
+
+        .listing-style-1 & {
+            // Blog Grid Style 1: Standard grid with equal columns
+        }
+
+        // Blog Grid Style 2: First item in the grid has double size
+
+        .listing-style-2 & {
+
+            &:first-child {
+                @include media(">desktop") {
+                    grid-row: span 2;
+                    grid-column: span 2;
+                    .c-block__media {
+                        height: calc(var(--grid-img-height) * 2);
+                    }
+                    .c-block__title {
+                        font-size: var(--h2-font-size);
+                    }
+                }
+            }
+        }
+
+        margin-bottom: 0 !important;
+
+    }
+
+    .c-block {
+        display: block;
+        overflow: hidden;
+        height: 100%;
+        position: relative;
+        transition: opacity var(--base-transition);
+
+        @include media("<tablet") {
+            --c-block-gap-vertical: 15px;
+            --c-block-gap-horizontal: 15px;
+        }
+
+        &__media {
+
+            overflow: hidden;
+
+            &-link {
+                display: block;
+                height: 100%;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                transition: transform .5s
+            }
+        }
+
+        &__body {
+
+        }
+
+        &__title {
+
+        }
+
+        &:hover {
+            .c-block__media {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+            .c-block__title {
+
+            }
+        }
+
+    }
+
+}
+
+#ajax-posts {
+    position: relative;
+}
+
+.c-loadmore {
+    text-align: center;
+    padding: 2em 0;
+}

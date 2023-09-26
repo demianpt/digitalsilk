@@ -1,0 +1,94 @@
+/**
+ #################
+ #   Module FORMS
+ #################
+ */
+
+// Core Structure
+
+.l-form {
+	max-width: var(--form-max-width, 550px);
+}
+
+.c-form {
+	&, .gform_wrapper.gravity-theme {
+		label {
+			display: block;
+			width: 100%;
+			font-size: var(--label-font-size, 1.6rem);
+			line-height: var(--label-line-height, 1.5);
+			font-weight: var(--label-font-weight, 400);
+			color: var(--label-color);
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=phone],
+		input[type=tel],
+		input[type=number],
+		input[type=date],
+		input[type=file],
+		textarea,
+		select {
+			box-sizing: border-box;
+			width: 100%;
+			max-width: 100%;
+			padding: var(--input-padding-top-bottom, 4px) var(--input-padding-left-right, 10px);
+			background: var(--input-background-color, #fff);
+			color: var(--input-color);
+			border: var(--input-border-width, 1px) solid var(--input-border-color, #666);
+			border-radius: var(--input-border-radius, 5px);
+
+			font-size: var(--input-font-size, 16px);
+			font-weight: var(--input-font-weight, 400);
+
+			@include media("<=desktop") {
+				font-size: 16px;
+			}
+
+			&:focus {
+				outline: none;
+				border-color: #555;
+			}
+
+			&.wpcf7-not-valid {
+				border-color: var(--validation-error-color);
+			}
+		}
+
+		textarea {
+			height: 120px;
+			padding-top: calc(var(--input-padding-top-bottom, 4px) * 2);
+		}
+	}
+
+	&__row {
+		width: 100%;
+		margin-bottom: var(--form-row-margin-top-bottom);
+
+		@include media(">tablet") {
+			display: grid;
+			grid-auto-flow: column;
+			grid-gap: var(--form-row-margin-top-bottom);
+		}
+	}
+
+	&__item {
+		flex-basis: 0;
+		flex-grow: 1;
+		max-width: 100%;
+	}
+
+	&__embed {
+		iframe {
+			max-width: 100%;
+		}
+	}
+}
+
+.c-map-iframe {
+	iframe {
+		width: 100%;
+		max-width: 100%;
+	}
+}

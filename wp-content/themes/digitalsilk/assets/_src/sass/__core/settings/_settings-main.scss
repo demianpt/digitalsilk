@@ -1,0 +1,51 @@
+:root {
+
+    /* Layout Settings */
+
+    --phone-width: 576px;
+    --tablet-width: 768px;
+    --desktop-width: 1112px;
+    --desktop-width-sm: 1024px;
+    --desktop-width-m: 1280px;
+    --desktop-width-l: 1440px;
+    --desktop-width-xl: 1640px;
+    --desktop-width-1920: 1920px;
+    --content-width: var(--desktop-width-m); // Default content width (1280)
+    --blog-width: 800px;
+    --page-gutter: 20px;
+    --grid-gutter: 24px;
+    --vertical-gap: 5vmin;              // vertical space between page sections (.gap-top, .gap-top-s, .gap-top-l, .gap-bot, .gap-bot-s, .gap-bot-l)
+    --base-transition: .3s;		        // default transition for hovers
+
+    @include media('<=desktop') {
+        --vertical-gap: 20px;
+        --page-gutter: 20px;
+        --content-width: var(--tablet-width);
+    }
+    @include media('>desktop', '<=desktop-l') {
+        --content-width: var(--desktop-width-sm);
+    }
+
+    /* Colors */
+
+    --primary-color1: #00536c;
+    --primary-color2: #aabe24;
+    --primary-color3: #073e4f;
+    --secondary-color1: #ffffff;
+    --secondary-color2: #c7e8f1;
+    --secondary-color3: #eeee22;
+
+    --body-bg: #f3fbfe;
+    --body-bg-alt: #333;
+    --body-text-color: #333;
+    --body-text-color-alt: var(--secondary-color2);  // inverted color
+    --titles-color: var(--primary-color1);
+    --titles-color-alt: var(--secondary-color2);    // inverted color
+    --titles-color-accent: var(--secondary-color3);    // inverted color
+    --primary-link-color: var(--primary-color1);
+    --primary-link-color-alt: var(--secondary-color2);  // inverted color
+    --border-color: #333;
+
+}
+
+

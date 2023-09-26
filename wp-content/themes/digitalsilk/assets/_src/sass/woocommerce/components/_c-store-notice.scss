@@ -1,0 +1,104 @@
+/**
+ * Woocommerce: Store notice
+ *
+ */
+:root {
+  --wc-notice-height: 37px;
+  --wc-notice-fs: 10px;
+  --wc-notice-fw: 400;
+  --wc-notice-background: var(--primary-color2);
+  --wc-notice-link-color: var(--primary-text-color);
+  --wc-notice-close: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1 1.001 14.999M1 1l13.999 13.999' stroke='%2300261F' stroke-width='2'/%3E%3C/svg%3E");
+  --wc-notice-close-size: 12px;
+  --wc-notice-close-pos-right: 20px;
+  @include media('>desktop') {
+    --wc-notice-close-pos-right: 50px;
+    --wc-notice-fs: 1.6rem;
+    --wc-notice-close-size: 14px;
+  }
+}
+
+.woocommerce-store-notice {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--wc-notice-background);
+  width: 100%;
+  height: var(--wc-notice-height);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--wc-notice-fs);
+  font-weight: var(--wc-notice-fw);
+  padding: 5px 40px;
+  @include media('<=phone-l') {
+    line-height: 1;
+    --wc-notice-close-pos-right: 10px;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin: 0 0 0 5px;
+    display: inline-block;
+    color: var(--wc-notice-link-color);
+  }
+
+  &__dismiss-link {
+    font-size: 0;
+    background-image: var(--wc-notice-close);
+    background-size: var(--wc-notice-close-size);
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+    transition: all .3s ease;
+    position: absolute;
+    right: var(--wc-notice-close-pos-right);
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover {
+      opacity: 0.7;
+      transition: all .3s ease;
+    }
+  }
+}
+
+.woocommerce-demo-store {
+  .site-header {
+    top: var(--wc-notice-height);
+  }
+
+  .woocommerce-store-notice {
+    &[style*="display: none"],
+    &[style*="display:none"] {
+      + .site-header {
+        top: 0 !important;
+      }
+    }
+  }
+
+  &.age-prompt-active {
+    .woocommerce-store-notice {
+      display: none !important;
+    }
+  }
+
+  .m-banner.animation-hero .m-banner__inner {
+    padding-top: calc(var(--navbar-hight) + 20px + var(--wc-notice-height));
+  }
+}
+
+body {
+  &.woocommerce,
+  &.woocommerce-page {
+    &.woocommerce-demo-store {
+      main.site-content {
+        padding-top: calc(var(--wc-top-offset, 0) + var(--wc-notice-height));
+      }
+    }
+  }
+}

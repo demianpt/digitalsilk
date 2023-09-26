@@ -1,0 +1,43 @@
+.l-tbpanel {
+
+	&__item {
+		display: none;
+
+		padding: var(--tbpanel-padding);
+		background: var(--tbpanel-bg);
+
+		@include media('<=desktop') {
+			.js-tabs-to-acc-wrapper & {
+				display: block;
+			}
+		}
+
+		.l-accordion {
+			display: none;
+		}
+
+		&.is-active {
+			display: block;
+
+			.l-accordion {
+				.is-block & {
+					display: block;
+				}
+			}
+		}
+	}
+
+	/* Mobile Title */
+
+	&__label {
+		@include media('>desktop') {
+			display: none;
+		}
+		@include media('<=desktop') {
+			display: block;
+			padding: 20px;
+			background-color: var(--primary-color2);
+			color: #fff;
+		}
+	}
+}

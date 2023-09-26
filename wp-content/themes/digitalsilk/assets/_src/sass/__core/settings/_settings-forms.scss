@@ -1,0 +1,26 @@
+/* Forms */
+
+:root {
+	--label-font-size: 1.6rem;
+	--label-font-weight: 300;
+	--label-color: var(--primary-color3);
+	--input-border-width: 1px;
+	--input-border-radius: px;
+	--input-padding-top-bottom: 10px;
+	--input-padding-left-right: 15px;
+	--input-font-size: 1.8rem;
+	--input-font-weight: 400;
+	--input-color: var(--primary-color1);
+	--input-background-color: var(--secondary-color1);
+	--input-border-color: var(--primary-color2);
+	--form-row-margin-top-bottom: 15px;
+	--form-row-margin-left-right: 0px;
+	--message-font-size: 1.6rem;
+	--message-line-height: 1.5;
+	--message-font-weight: 400;
+
+	--validation-error-color: #da747b;
+	--validation-success-color: #50b2a0;
+	--validation-notice-color: #ffb700;
+
+}

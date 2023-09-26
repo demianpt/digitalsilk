@@ -1,0 +1,20 @@
+// Core settings
+@import '__core/core-mixins';
+
+// Project/theme specific styles
+@import 'visuals/_decorate';
+
+@import "blog/blog_core";
+
+@import "blog/components/blog-grid";
+@import "blog/components/blog-article";
+@import "blog/components/filter";
+@import "blog/components/pagination";
+@import "blog/components/breadcrumbs";
+@import "blog/components/wp-default-classes";
+@import "blog/components/loader";
+
+@import 'blog/widgets/darkmode';
+@import 'blog/widgets/addtoany';
+@import 'blog/widgets/cta-custom-box';
+@import 'blog/widgets/toc';

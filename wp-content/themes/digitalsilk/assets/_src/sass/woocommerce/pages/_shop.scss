@@ -1,0 +1,83 @@
+/**
+ * Shop page
+ * TODO: Refactor this...WIP
+ */
+
+.woocommerce {
+  --wc-shop-sorting-width: 188px;
+  --wc-shop-input-border-radius: 60px;
+  --wc-shop-input-border-color: var(--secondary-color2);
+  --wc-shop-input-border-width: .75px;
+  --wc-shop-input-padding: 10px 16px;
+  --wc-shop-input-fs: var(--input-font-size);
+  --wc-shop-input-height: 50px;
+}
+
+// Shop page
+.woocommerce-archive-content {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10vmin;
+  transition: max-width 0.3s;
+
+  // Number of products when sidebar is visible
+  &.-has-sidebar {
+    --wc-grid-col: var(--wc-grid-with-sidebar-col);
+
+    .woocommerce-sidebar {
+      @include media(">desktop") {
+        flex: 0 0 var(--wc-products-sidebar-col);
+        min-width: var(--wc-products-sidebar-min-width);
+        height: 100%;
+      }
+    }
+  }
+
+  &.-sidebar-left {
+    .woocommerce-sidebar {
+      @include media(">desktop") {
+        padding-right: var(--wc-products-gap);
+      }
+    }
+  }
+
+  &.-sidebar-right {
+    .woocommerce-sidebar {
+      @include media(">desktop") {
+        padding-left: var(--wc-products-gap);
+      }
+    }
+  }
+
+  @include media("<=desktop") {
+    .woocommerce-sidebar {
+      width: 100%;
+    }
+  }
+
+  &.-sidebar-left {
+    flex-direction: row;
+
+    @include media("<=tablet") {
+      flex-direction: column;
+    }
+  }
+
+  &.-sidebar-right {
+    flex-direction: row-reverse;
+
+    @include media("<=tablet") {
+      flex-direction: column;
+    }
+  }
+}
+
+.woocommerce-loop {
+  flex: 1;
+  margin-bottom: var(--wc-vertical-space, 30px);
+
+  .products {
+    border-bottom: 1px dashed var(--primary-color1);
+    padding-bottom: var(--wc-vertical-space, 30px);
+  }
+}

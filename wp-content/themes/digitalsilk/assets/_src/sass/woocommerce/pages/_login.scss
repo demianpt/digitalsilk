@@ -1,0 +1,86 @@
+/**
+ * Woocommerce: My Account pages
+ * TODO: Refactor this...WIP
+ */
+
+.woocommerce {
+  --wc-login-col-1-width: 50%;
+  --wc-login-col-2-width: 50%;
+  --wc-login-col-gap: 50px;
+  --wc-login-col-subtitle-margin: 3.5rem;
+  --wc-login-title-fs: var(--h2-font-size);
+  --wc-login-title-fw: 700;
+  --wc-login-title-ff: var(--font-family-secondary);
+  --wc-login-title-lh: 1.2;
+}
+
+.woocommerce-account {
+  div.woocommerce {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .woocommerce-notices-wrapper {
+    width: 100%;
+  }
+
+  @include media(">tablet") {
+    .woocommerce-navigation-wrapper {
+      flex: 0 0 var(--wc-acc-nav-col);
+      margin-right: var(--wc-acc-nav-mr, 0);
+    }
+
+    .woocommerce-nav-toggle {
+      display: none;
+    }
+  }
+}
+
+// Login/Register pages
+#customer_login {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 100%;
+  gap: var(--wc-login-col-gap);
+  margin: auto;
+  max-width: calc(var(--content-width) + var(--page-gutter, 20px) * 2);
+
+  @include media("<=desktop") {
+    flex-direction: column;
+  }
+
+  > .col-1 {
+    flex: 0 0 calc(var(--wc-login-col-1-width) - var(--wc-login-col-gap) / 2);
+  }
+
+  > .col-2 {
+    flex: 0 0 calc(var(--wc-login-col-2-width) - var(--wc-login-col-gap) / 2);
+  }
+
+  h2 {
+    margin-bottom: var(--wc-login-col-subtitle-margin);
+    font-size: var(--wc-login-title-fs);
+    font-weight: var(--wc-login-title-fw);
+    font-family: var(--wc-login-title-ff);
+    line-height: var(--wc-login-title-lh);
+  }
+
+  a {
+    color: var(--primary-text-color);
+  }
+
+  .woocommerce-form-register {
+    a {
+      font-weight: 600;
+
+      &:hover {
+        color: var(--primary-color1);
+      }
+    }
+  }
+}
+
+.woocommerce-privacy-policy-link {
+  color: var(--btn-link-color);
+}

@@ -1,0 +1,132 @@
+.c-block-dsbls {
+
+    color: #fff;
+    position: relative;
+
+    .c-block__body {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        @include gradient-vertical(transparent, rgba(7, 23, 49, 0.8));
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    @include media('>desktop') {
+        justify-content: flex-end;
+        flex-direction: column;
+        display: flex;
+        padding: 30px;
+        border-right: 1px solid rgba(255, 255, 255, .3);
+        width: 100%;
+    }
+
+    @include media('>desktop-m') {
+        padding: 50px;
+    }
+
+    @include media('<=desktop') {
+        position: relative;
+        justify-content: flex-end;
+        flex-direction: column;
+        min-height: 350px;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(7, 23, 49, 0.4);
+        transition: background-color var(--base-transition) ease-in;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    @include media('<tablet') {
+        min-width: 100%;
+    }
+
+    &:last-child {
+        border-right: none;
+    }
+
+    &:hover {
+        @include media('>desktop') {
+            background-color: rgba(7, 23, 49, 0.4);
+            transition: background-color var(--base-transition) ease-in;
+        }
+        cursor: pointer;
+    }
+
+    &.is-active {
+        @include media('>desktop') {
+            background-color: rgba(7, 23, 49, 0.4);
+            transition: background-color var(--base-transition) ease-out;
+            &:after {
+                height: 30%;
+                @include gradient-vertical(transparent, rgba(7, 23, 49, 1));
+            }
+        }
+
+        .c-block__text {
+            max-height: 10em;
+            transition: max-height var(--base-transition) ease-in;
+        }
+    }
+
+    .c-block {
+        &__title {
+            color: #fff;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75em;
+        }
+
+        &__body {
+            @include media('<=desktop') {
+                padding: 30px 20px;
+            }
+
+            @include media('<=phone-l') {
+                text-align: center;
+            }
+        }
+
+        &__text {
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1.625;
+            margin-bottom: 0.325em;
+            @include media('>desktop') {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height var(--base-transition) ease-out;
+            }
+        }
+    }
+
+    .c-picture {
+        @include media('>desktop') {
+            display: none;
+        }
+
+        img {
+            @include media('<=desktop') {
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                z-index: -1;
+                top: 0;
+                bottom: 0;
+            }
+        }
+    }
+}

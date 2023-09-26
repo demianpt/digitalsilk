@@ -1,0 +1,25 @@
+.l-team {
+
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+
+	/* Simple Grid */
+
+	&__list {
+		@include media('<tablet') {
+
+		}
+		@include media('>=tablet') {
+			display: grid;
+			grid-template: auto/repeat(var(--grid-col), minmax(0, 1fr));
+			gap: var(--grid-col-gap);
+		}
+
+		.l-team__item {
+			display: block;
+			width: 100%;
+		}
+	}
+
+}

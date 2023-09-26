@@ -1,0 +1,34 @@
+// Core settings
+@import '__core/core-mixins';
+
+// Helpers and utilities
+@import '__helpers/a11y';
+@import '__helpers/util-classes';
+@import '__helpers/flexboxgrid';
+
+// Project/theme specific styles
+@import 'visuals/_decorate',
+        'visuals/_animate';
+
+// Site Structure
+@import '_layout/_footer';
+@import '_layout/wysiwyg';
+@import '_layout/page404';
+
+// Site Modules
+@import "_modules/simple-content1";
+@import "_modules/simple-content2";
+@import "_modules/simple-content3";
+@import "_modules/counters";
+@import "_modules/tabs";
+@import "_modules/accordions";
+@import "_modules/sliders";
+@import "_modules/forms";
+@import "_modules/teams";
+@import "_modules/testimonials";
+@import "_modules/posts";
+@import "_modules/sidenav";
+
+// Site Components
+@import "_components/video";
+@import '_components/socials';

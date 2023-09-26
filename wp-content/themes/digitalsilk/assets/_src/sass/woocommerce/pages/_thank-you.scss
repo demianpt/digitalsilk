@@ -1,0 +1,115 @@
+/**
+ * Woocommerce: Thank you page
+ * TODO: Refactor this...WIP
+ */
+.woocommerce {
+  --wc-thank-you-tr-background-1: #FBF7E6;
+  --wc-thank-you-tr-background-2: #F0EBD6;
+  --wc-thank-you-table-fw: 600;
+  --wc-thank-you-table-fs: 1.8rem;
+  --wc-thank-you-table-lh: 1.33;
+  --wc-thank-you-table-color: var(--primary-text-color);
+  --wc-thank-you-table-padding: 15px 20px;
+  @include media('>desktop') {
+    --wc-thank-you-table-padding: 32px;
+  }
+}
+
+.ds-wc-order-recieved {
+  &__header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    @include media('>tablet') {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  &__note {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    @include media('>tablet') {
+      flex-direction: row;
+    }
+  }
+
+  &__message {
+    @include media('<=tablet') {
+      margin-bottom: var(--wc-vertical-space);
+    }
+  }
+}
+
+ul.order_details {
+  margin-bottom: 64px;
+  margin-top: 30px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--wc-thank-you-table-padding); // TODO
+    font-weight: var(--wc-thank-you-table-fw);
+    font-size: var(--wc-thank-you-table-fs);
+    line-height: var(--wc-thank-you-table-lh);
+    background-color: var(--wc-thank-you-tr-background-2);
+    color: var(--wc-thank-you-table-color);
+
+    &:nth-child(odd) {
+      background: var(--wc-thank-you-tr-background-1);
+    }
+
+    strong {
+      font-weight: normal;
+      @include media('>desktop') {
+        width: 17%;
+      }
+    }
+  }
+}
+
+.woocommerce-columns--addresses {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @include media('>desktop') {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .woocommerce-column {
+    &--1, &--2 {
+      width: 100%;
+      margin-bottom: 4rem;
+      @include media('>desktop') {
+        width: 50%;
+
+      }
+
+      address {
+        line-height: 1.55;
+      }
+
+      padding: var(--wc-thank-you-table-padding);
+    }
+
+    &--1 {
+      background: var(--wc-thank-you-tr-background-1);
+    }
+
+    &--2 {
+      background: var(--wc-thank-you-tr-background-2);
+    }
+  }
+}

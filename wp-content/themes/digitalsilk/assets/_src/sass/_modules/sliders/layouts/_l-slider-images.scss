@@ -1,0 +1,35 @@
+.l-slider-images {
+
+	.m-slider__slide {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include media('<tablet') {
+			width: 80px;
+		}
+
+		&.is-greyscale {
+			filter: grayscale(1);
+			transition: filter var(--base-transition);
+			&:hover {
+				filter: grayscale(0);
+			}
+		}
+	}
+
+	.m-slider__media {
+		width: 100%;
+		text-align: center;
+
+		img {
+			max-width: 75px;
+			max-height: 150px;
+
+			@include media('>tablet') {
+				max-width: 90%;
+			}
+		}
+	}
+}

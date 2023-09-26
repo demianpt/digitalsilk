@@ -1,0 +1,92 @@
+/**
+ ################
+ #   Module BANNERS: Core
+ ################
+ */
+
+.m-banner {
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	display: flex;
+
+	&__container {
+		position: relative;
+		min-height: var(--bannerHeight, auto);
+		padding-left: 0;
+		padding-right: 0;
+		display: flex;
+		align-items: center;
+
+		.header-lap & {
+			padding-top: var(--header-hight);
+		}
+
+		@include media('<=desktop') {
+			min-height: 30vh;
+			overflow: hidden;
+		}
+	}
+
+	&__media {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		img, picture, video, iframe {
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		.has-overlay & {
+			@include has-overlay(var(--overlay-color), var(--overlay-opacity))
+		}
+
+	}
+
+	.fixed-header.single-product & {
+		max-height: 200px;
+		overflow: hidden;
+		margin-bottom: 30px;
+	}
+
+	/**
+	 ***************
+	 **  Variations
+	 ***************
+	 *  .m-banner--small, --medium, --full
+	 */
+
+	@include media('>=desktop') {
+
+		&--blog {
+			--bannerHeight: var(--banner-height--blog, 420px);
+			text-align: center;
+		}
+
+		&--small {
+			--bannerHeight: var(--banner-height--small, 300px);
+		}
+
+		&--medium {
+			--bannerHeight: var(--banner-height--medium, 450px);
+		}
+
+		&--full {
+			--bannerHeight: var(--banner-height--full, 100vh);
+			.m-banner__container {
+				max-height: 960px;
+			}
+		}
+	}
+}
+
+

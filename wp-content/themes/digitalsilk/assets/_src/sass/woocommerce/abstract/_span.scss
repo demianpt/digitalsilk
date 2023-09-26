@@ -1,0 +1,1169 @@
+// Default Settings
+// ----------------
+// PRIVATE: The basic settings
+$susy-defaults: (
+        columns: 4,
+        gutters: .25,
+);
+
+$susy: (
+        columns: 12,
+        gutters: 1,
+        math: fluid,
+        output: float,
+        gutter-position: after,
+
+        use-custom: (
+                box-sizing: false
+        )
+);
+
+// Susy Defaults
+// -------------
+// PRIVATE: Add defaults to Susy
+@mixin susy-defaults(
+  $defaults
+) {
+  $susy-defaults: map-merge($susy-defaults, $defaults) !global;
+}
+
+// Susy End Defaults
+// -----------------
+// - PRIVATE
+@include susy-defaults((
+        last-flow: to,
+));
+
+
+// Valid Keyword Values
+// --------------------
+// - PRIVATE: DONT'T TOUCH
+$susy-keywords: (
+        container: auto,
+        math: static fluid,
+        output: isolate float,
+        container-position: left center right,
+        flow: ltr rtl,
+        gutter-position: before after split inside inside-static,
+        box-sizing: border-box content-box,
+        span: full,
+        edge: first alpha last omega full,
+        spread: narrow wide wider,
+        gutter-override: no-gutters no-gutter,
+        role: nest,
+        clear: break nobreak,
+        debug image: show hide show-columns show-baseline,
+        debug output: background overlay,
+);
+
+// Map Functions
+// =============
+
+
+// Truncate List
+// -------------
+// - Return a list, truncated to a given length
+@function _susy-truncate-list(
+  $list,
+  $length
+) {
+  $_return: ();
+
+  @for $i from 1 through length($list) {
+    $_return: if($i <= $length, append($_return, nth($list, $i)), $_return);
+  }
+
+  @return $_return;
+}
+
+
+// Deep Get
+// --------
+// - Return a value deep in nested maps
+@function _susy-deep-get(
+  $map,
+  $keys...
+) {
+  $_return: $map;
+
+  @each $key in $keys {
+    @if type-of($_return) == map {
+      $_return: map-get($_return, $key);
+    }
+  }
+
+  @return $_return;
+}
+
+
+// Deep Set
+// --------
+// - Set a value deep in nested maps
+@function _susy-deep-set(
+  $map,
+  $keys-value...
+) {
+  $_value: nth($keys-value, -1);
+  $_keys: _susy-truncate-list($keys-value, length($keys-value) - 1);
+  $_length: length($_keys);
+  $_return: ();
+
+  @for $i from 1 through $_length {
+    $_n: 0 - $i;
+    $_level: _susy-truncate-list($_keys, $_length + $_n);
+    $_level: _susy-deep-get($map, $_level...);
+    $_merge: nth($_keys, $_n);
+    $_merge: ($_merge: $_value);
+    $_return: if($_level, map-merge($_level, $_merge), $_merge);
+    $_value: $_return;
+  }
+
+  @return $_return;
+}
+
+
+// Deep Merge
+// ----------
+// Return 2 objects of any depth, merged
+@function _susy-deep-merge(
+  $map1,
+  $map2
+) {
+
+  @if type-of($map1) != map or type-of($map2) != map {
+    $map1: $map2;
+  } @else {
+    @each $key, $value in $map2 {
+      $_new: ($key: _susy_deep-merge(map-get($map1, $key), $value));
+      $map1: map-merge($map1, $_new);
+    }
+  }
+
+  @return $map1;
+}
+
+
+// Deep Has-Key
+// ------------
+// - Return true if a deep key exists
+@function _susy-deep-has-key(
+  $map,
+  $keys...
+) {
+  $_return: null;
+  $_stop: false;
+
+  @each $key in $keys {
+    @if not($_stop) {
+      $_return: map-has-key($map, $key);
+    }
+
+    @if $_return {
+      $map: map-get($map, $key);
+    } @else {
+      $_stop: true;
+    }
+  }
+
+  @return $_return;
+}
+
+// Susy Support [mixin]
+// --------------------
+// Send property-value pairs to the proper support modules.
+// - $prop  : <css property>
+// - $val   : <css value>
+@mixin susy-support(
+  $prop,
+  $val
+) {
+  // Background Support
+  @if $prop == background-image {
+    background-image: $val;
+  } @else if $prop == background-size {
+    background-size: $val;
+  } @else if $prop == background-origin {
+    background-origin: $val;
+  } @else if $prop == background-clip {
+    background-clip: $val;
+  }
+
+    // Box-Sizing Support
+  @else if $prop == box-sizing {
+    //@include susy-box-sizing($val);
+    //@include box-sizing($val);
+    box-sizing: $val;
+  }
+
+    // Rem Support
+  @else {
+    #{$prop}: $val;
+  }
+}
+
+
+// Output
+// ------
+// Output CSS with proper browser support.
+// - $styles  : <map of css property-value pairs>
+@mixin output(
+  $styles
+) {
+  @each $prop, $val in $styles {
+    @include susy-support($prop, $val);
+  }
+}
+
+// Parse Susy Keywords and Maps
+// ----------------------------
+@function parse-settings(
+  $short: $susy
+) {
+  $_return: ();
+
+  @if type-of($short) == map {
+    $_return: $short;
+  } @else {
+    @each $item in $short {
+      // strings
+      @if type-of($item) == string {
+        @each $key, $value in $susy-keywords {
+          @if index($value, $item) {
+            $_key-value: append($key, $item);
+            $_return: _susy-deep-set($_return, $_key-value...);
+          }
+        }
+        // maps
+      } @else if type-of($item) == map {
+        $_return: map-merge($_return, $item);
+      }
+    }
+  }
+
+  @return $_return;
+}
+
+// Parse Columns & Gutters
+// -----------------------
+@function parse-layout(
+  $short
+) {
+  $_return: ();
+  $_columns: ();
+  $_gutters: null;
+
+  @if not(unitless(nth(nth($short, 1), 1))) {
+    $_gutters: nth($short, 1);
+  } @else {
+    $_columns: (columns: nth($short, 1));
+    $_gutters: if(length($short) > 1, nth($short, 2), $_gutters);
+  }
+
+  @if type-of($_gutters) == list and length($_gutters) > 0 {
+    $_gutters: (
+            gutters: nth($_gutters, 2) / nth($_gutters, 1),
+            column-width: nth($_gutters, 1),
+    );
+  } @else {
+    $_gutters: if($_gutters, (gutters: $_gutters), ());
+  }
+
+  $_return: map-merge($_return, $_columns);
+  $_return: map-merge($_return, $_gutters);
+
+  @return $_return;
+}
+
+// Parse Grid/Context
+// ------------------
+@function parse-grid(
+  $short: $susy
+) {
+  $_return: parse-settings($short);
+  $_layout: ();
+
+  @if type-of($short) == map {
+    $_return: $short;
+  } @else {
+    @each $item in $short {
+      // number or list
+      @if type-of($item) == number or type-of($item) == list {
+        @if type-of($item) == list or unitless($item) {
+          $_layout: append($_layout, $item);
+        } @else {
+          $_return: map-merge($_return, (container: $item));
+        }
+      }
+    }
+
+    $_layout: if(length($_layout) > 0, parse-layout($_layout), $_layout);
+  }
+  @return map-merge($_return, $_layout);
+}
+
+// Parse Span
+// ----------
+@function parse-span(
+  $short,
+  $key: span
+) {
+  $_return: ();
+
+  @if type-of($short) == map {
+    $_return: $short;
+  } @else {
+    $_at: index($short, at);
+
+    @if $_at {
+      $_loci: $_at + 1;
+      $_location: nth($short, $_loci);
+      $_return: map-merge($_return, (location: $_location));
+      $short: set-nth($short, $_at, null);
+      $short: set-nth($short, $_loci, null);
+    }
+
+    $_i: 1;
+    $_span: ();
+
+    @while $_i <= length($short) {
+      $_this: nth($short, $_i);
+
+      @if type-of($_this) == number {
+        $_span: append($_span, $_this);
+        $short: set-nth($short, $_i, null);
+      } @else if $_this == of {
+        $short: set-nth($short, $_i, null);
+        $_i: length($short) + 1;
+      }
+
+      $_i: $_i + 1;
+    }
+
+    @if length($_span) > 0 {
+      $_span: if(length($_span) == 1, nth($_span, 1), $_span);
+      $_return: map-merge($_return, ($key: $_span));
+    }
+
+    $_return: map-merge($_return, parse-grid($short));
+  }
+
+  @return $_return;
+}
+
+// Float Span Output
+// -----------------
+// - $width             : <length>
+// - [$float]           : from | to
+// - [$margin-before]   : <length>
+// - [$margin-after]    : <length>
+// - [$padding-before]  : <length>
+// - [$padding-after]   : <length>
+// - [$flow]            : ltr | rtl
+@mixin float-span-output(
+  $width,
+  $float            : from,
+  $margin-before    : null,
+  $margin-after     : null,
+  $padding-before   : null,
+  $padding-after    : null,
+  $flow             : map-get($susy-defaults, flow)
+) {
+  $to     : to($flow);
+  $from   : from($flow);
+
+  $output: (
+          width: $width,
+          float: if($float == to, $to, null) or if($float == from, $from, null),
+          margin-#{$from}: $margin-before,
+          margin-#{$to}: $margin-after,
+          padding-#{$from}: $padding-before,
+          padding-#{$to}: $padding-after,
+  );
+
+  @include output($output);
+}
+
+// Float Last
+// ----------
+// - [$flow]  : ltr | rtl
+@mixin float-last(
+  $flow: map-get($susy-defaults, flow),
+  $last-flow: map-get($susy-defaults, last-flow),
+  $margin: 0
+) {
+  $to: to($flow);
+
+  $output: (
+          float: if($last-flow == to, $to, null),
+          margin-#{$to}: $margin,
+  );
+
+  @include output($output);
+}
+
+// Last
+// ----
+// - [$context]: <settings>
+@mixin last(
+  $context: $susy
+) {
+  $inspect  : $context;
+  $context  : parse-grid($context);
+
+  //@include susy-inspect(last, $inspect);
+
+  $output: (
+          flow: susy-get(flow, $context),
+          last-flow: susy-get(last-flow, $context),
+          margin: if(is-split($context), null, 0),
+  );
+
+  @include float-last($output...);
+}
+
+// Susy Slice
+// ----------
+// Return a subset of columns at a given location.
+// - $span        : <number>
+// - $location    : <number>
+// - [$columns]   : <number> | <list>
+@function susy-slice(
+  $span,
+  $location,
+  $columns: susy-get(columns)
+) {
+  $columns: valid-columns($columns);
+  $sub-columns: $span;
+
+  @if not(is-symmetrical($columns)) {
+    $location: $location or 1;
+    $sub-columns: ();
+    @for $i from $location to ($location + $span) {
+      $sub-columns: append($sub-columns, nth($columns, $i));
+    }
+  }
+
+  @return $sub-columns;
+}
+
+// Nested [function]
+// -----------------
+// Return a subset grid for nested context.
+// - $context   : <span>
+@function nested(
+  $context
+) {
+  $context    : parse-span($context);
+  $span       : susy-get(span, $context);
+  $location   : get-location($context);
+  $columns    : susy-get(columns, $context);
+
+  @return susy-slice($span, $location, $columns);
+}
+
+// Nested [mixin]
+// --------------
+// Use a subset grid for a nested context
+// - $context   : <span>
+// - @content   : <content>
+@mixin nested(
+  $context
+) {
+  $inspect  : $context;
+  $context  : parse-span($context);
+  $old      : susy-get(columns);
+  $susy     : map-merge($susy, (columns: nested($context))) !global;
+
+  //@include susy-inspect(nested, $inspect);
+  @content;
+
+  $susy     : map-merge($susy, (columns: $old)) !global;
+}
+
+// Susy Get
+// --------
+// Return one setting from a grid
+// - $key     : <keyword>
+// - $layout  : <settings>
+@function susy-get(
+  $key,
+  $layout: map-merge($susy-defaults, $susy)
+) {
+  $layout: parse-grid($layout);
+  $_options: $layout $susy $susy-defaults;
+  $_break: false;
+  $_return: null;
+
+  @each $opt in $_options {
+    @if type-of($opt) == map and not($_break) {
+      $_keyset: _susy-deep-has-key($opt, $key...);
+      @if $_keyset {
+        $_return: _susy-deep-get($opt, $key...);
+        $_break: true;
+      }
+    }
+  }
+
+  @return $_return;
+}
+
+// Break
+// -----
+// Apply to any element that should force a line break.
+@mixin break {
+  @include output((clear: both));
+}
+
+
+// NoBreak
+// -------
+// Cancel the break() effect, e.g. when using media queries.
+@mixin nobreak {
+  @include output((clear: none));
+}
+
+// Span [mixin]
+// ------------
+// Set a spanning element using shorthand syntax.
+// - $span  : <span>
+@mixin span(
+  $span
+) {
+  $inspect: $span;
+  $span: parse-span($span);
+  $output: span-math($span);
+  $nesting: susy-get(span, $span);
+  $clear: susy-get(clear, $span);
+
+  $box: susy-get(box-sizing, $span);
+  $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
+  $box: $box or if(is-inside($span) and $content-box, border-box, null);
+
+  @if $clear == break {
+    @include break;
+  } @else if $clear == nobreak {
+    @include nobreak;
+  }
+
+  @include output((box-sizing: $box));
+  @include float-span-output($output...);
+
+  @if valid-columns($nesting, silent) {
+    @include nested($span) { @content; }
+  } @else {
+    @content;
+  }
+}
+
+// Span [function]
+// ---------------
+// Return the width of a span.
+// - $span  : <span>
+@function span(
+  $span
+) {
+  @return get-span-width($span);
+}
+
+// Get Isolation
+// -------------
+// Return the isolation offset width
+// - $input: <map>
+@function get-isolation(
+  $input
+) {
+  $location   : get-location($input);
+  $columns    : susy-get(columns, $input);
+  $width      : null;
+
+  @if type-of($location) == number and not(unitless($location)) {
+    $width: $location;
+  } @else if $location {
+    $push: $location - 1;
+    @if $push > 0 {
+      $push: map-merge($input, (
+              span: $push,
+              location: 1,
+              spread: wide,
+      ));
+      $width: get-span-width($push);
+    }
+  }
+
+  @if susy-get(gutter-position, $input) == split
+      and susy-get(gutters, $input) > 0 {
+    $width: if($width == null, gutters($input), $width + gutters($input));
+  }
+
+  @return $width or 0;
+}
+
+// Span Math
+// ---------
+// Get all the span results.
+// - $span: <map>
+@function span-math(
+  $span
+) {
+  $nest             : if(susy-get(role, $span) == nest, true, false);
+  $split-nest       : if(is-split($span) and $nest, true, false);
+  $edge             : get-edge($span);
+  $location         : get-location($span);
+
+  $float            : from;
+  $padding-before   : null;
+  $padding-after    : null;
+  $margin-before    : null;
+  $margin-after     : null;
+
+  // calculate widths
+  $spread: index(map-values($span), spread);
+  $span: if($split-nest and not($spread), map-merge($span, (spread: wide)), $span);
+  $width: get-span-width($span);
+  $gutters: get-gutters($span);
+
+  // apply gutters
+  @if is-inside($span) {
+    @if not(susy-get(role, $span)) {
+      $padding-before: map-get($gutters, before);
+      $padding-after: map-get($gutters, after);
+    }
+  } @else {
+    @if not($split-nest) {
+      $margin-before: map-get($gutters, before);
+      $margin-after: map-get($gutters, after);
+    }
+  }
+
+  // special margin handling
+  @if susy-get(output, $span) == isolate and $location {
+    $margin-before: get-isolation($span);
+    $margin-after: -100%;
+  } @else if $edge {
+    $is-split: is-split($span);
+    $pos: susy-get(gutter-position, $span);
+
+    @if $edge == last {
+      $float: susy-get(last-flow, $span);
+    }
+
+    @if not($is-split) {
+      @if $edge == full or ($edge == first and $pos == before) {
+        $margin-before: 0;
+      }
+      @if $edge == full or ($edge == last and $pos == after) {
+        $margin-after: 0;
+      }
+    }
+
+  }
+
+  @return (
+          width           : $width,
+          float           : $float,
+          margin-before   : $margin-before,
+          margin-after    : $margin-after,
+          padding-before  : $padding-before,
+          padding-after   : $padding-after,
+          flow            : susy-get(flow, $span),
+  );
+}
+
+// Valid Columns
+// -------------
+// Check that a column setting is valid.
+@function valid-columns(
+  $columns,
+  $silent: false
+) {
+  $type: type-of($columns);
+  $return: null;
+
+  @if $type == number and unitless($columns) {
+    $return: $columns;
+  } @else if $type == list {
+    $fail: null;
+    @each $col in $columns {
+      @if type-of($col) == number {
+        $fail: $fail or if(unitless($col), null, true);
+      } @else {
+        $fail: true;
+      }
+    }
+    $return: if($fail, $return, $columns);
+  }
+
+  @if $return != $columns and not($silent) {
+    $return: null;
+    $warn: '$columns must be a unitless number or list of unitless numbers.';
+    @warn $warn + ' Current value [#{$type}]: #{$columns}';
+  }
+
+  @return $return;
+}
+
+// Margin Output
+// -------------
+// - $before  : <length>
+// - $after   : <length>
+// - [$flow]  : ltr | rtl
+@mixin margin-output(
+  $before,
+  $after,
+  $flow: map-get($susy-defaults, flow)
+) {
+  $to: to($flow);
+  $from: from($flow);
+
+  $output: (
+          margin-#{$from}: $before,
+          margin-#{$to}: $after,
+  );
+
+  @include output($output);
+}
+
+// Get Direction
+// -------------
+// Return the 'from' or 'to' direction of a ltr or rtl flow.
+// - [$flow]  : ltr | rtl
+// - [$key]   : from | to
+@function get-direction(
+  $flow: map-get($susy-defaults, flow),
+  $key: from
+) {
+  $return: if($flow == rtl, (from: right, to: left), (from: left, to: right));
+  @return map-get($return, $key);
+}
+
+// To
+// --
+// Return the 'to' direction of a flow
+// - [$flow]  : ltr | rtl
+@function to(
+  $flow: map-get($susy-defaults, flow)
+) {
+  @return get-direction($flow, to);
+}
+
+// From
+// ----
+// Return the 'from' direction of a flow
+// - [$flow]  : ltr | rtl
+@function from(
+  $flow: map-get($susy-defaults, flow)
+) {
+  @return get-direction($flow, from);
+}
+
+// Padding Output
+// --------------
+// - $before  : <length>
+// - $after   : <length>
+// - [$flow]  : ltr | rtl
+@mixin padding-output(
+  $before,
+  $after,
+  $flow: map-get($susy-defaults, flow)
+) {
+  $to: to($flow);
+  $from: from($flow);
+
+  $output: (
+          padding-#{$from}: $before,
+          padding-#{$to}: $after,
+  );
+
+  @include output($output);
+}
+
+// Gutter Syntax
+// =============
+
+// Gutters
+// -------
+// Set gutters on an element.
+// - [$span]   : <settings>
+@mixin gutters(
+  $span: $susy
+) {
+  $inspect  : $span;
+  $span     : parse-gutters($span);
+  $_gutters : get-gutters($span);
+
+  $_output: (
+          before: map-get($_gutters, before),
+          after: map-get($_gutters, after),
+          flow: susy-get(flow, $span),
+  );
+
+  @if is-inside($span) {
+    @include padding-output($_output...);
+  } @else {
+    @include margin-output($_output...);
+  }
+}
+
+@mixin gutter(
+  $span: $susy
+) {
+  @include gutters($span);
+}
+
+
+// Gutter
+// ------
+// Return the width of a gutter.
+// - [$span]   : <settings>
+@function gutter(
+  $span: $susy
+) {
+  $span: parse-gutters($span);
+
+  $_gutters: get-gutters($span);
+  $_gutters: map-get($_gutters, before) or map-get($_gutters, after);
+
+  @return $_gutters;
+}
+
+@function gutters(
+  $span: $susy
+) {
+  @return gutter($span);
+}
+
+
+// Get Gutter Width
+// ----------------
+// Return gutter width.
+// - [$context]: <context>
+@function get-gutter-width(
+  $context: $susy
+) {
+  $context  : parse-gutters($context);
+
+  $_gutters : susy-get(gutters, $context);
+  $_gutter  : susy-get(gutter-override, $context);
+
+  @if $_gutters and ($_gutters > 0) and not($_gutter) {
+    $_column-width: susy-get(column-width, $context);
+    $_math: gutter-math($context);
+    @if $_math == static {
+      $_gutter: $_gutters * valid-column-math($_math, $_column-width);
+    } @else {
+      $_columns : susy-get(columns, $context);
+      $_spread  : if(is-split($context), wide, susy-get(spread, $context));
+      $_gutter  : percentage($_gutters / susy-sum($_columns, $_gutters, $_spread));
+    }
+  }
+
+  $_gutter: if($_gutter == 'no-gutters' or $_gutter == 'no-gutter', null, $_gutter);
+
+  @return $_gutter;
+}
+
+// Parse Gutters
+// -------------
+@function parse-gutters(
+  $short: $susy
+) {
+  $_gutters: parse-span($short, gutter-override);
+  $_span: susy-get(gutter-override, $_gutters);
+
+  @if $_span and not(map-get($_gutters, columns)) {
+    $_context: ();
+    $_new: ();
+
+    @each $item in $_span {
+      @if type-of($item) == number and unitless($item) {
+        $_context: append($_context, $item);
+      } @else {
+        $_new: append($_new, $item);
+      }
+    }
+
+    $_context: parse-grid($_context);
+    $_new: if(length($_new) == 0, null, $_new);
+    $_new: if(length($_new) == 1, nth($_new, 1), $_new);
+    $_new: (gutter-override: if($_new != $_span, $_new, $_span));
+
+    $_gutters: map-merge($_gutters, $_new);
+    $_gutters: map-merge($_gutters, $_context);
+  }
+
+  @return $_gutters;
+}
+
+// Get Gutters
+// -----------
+// Return before and after gutter values.
+// - [$context]: <context>
+@function get-gutters(
+  $context: $susy
+) {
+  $context            : parse-gutters($context);
+
+  $_gutter-position   : susy-get(gutter-position, $context);
+  $_gutter            : get-gutter-width($context);
+
+  $_return            : (before: null, after: null);
+
+  @if is-split($context) and $_gutter {
+    $_gutter: $_gutter / 2;
+    $_return: map-merge($_return, (before: $_gutter, after: $_gutter));
+  } @else {
+    $_return: map-merge($_return, ($_gutter-position: $_gutter));
+  }
+
+  @return $_return;
+}
+
+
+// Is Inside
+// ---------
+// Returns true if gutters are inside.
+// $context: <context>
+@function is-inside(
+  $context
+) {
+  $_inside: inside inside-static;
+  $_gutter-position: susy-get(gutter-position, $context);
+
+  @return if(index($_inside, $_gutter-position), true, false);
+}
+
+
+// Is Split
+// --------
+// Returns true if gutters are split.
+// $context: <context>
+@function is-split(
+  $context
+) {
+  $_split: split inside inside-static;
+  $_gutter-position: susy-get(gutter-position, $context);
+
+  @return if(index($_split, $_gutter-position), true, false);
+}
+
+
+// Gutter Math
+// -----------
+// Return the math to use for gutter calculations
+// $context: <context>
+@function gutter-math(
+  $context: $susy
+) {
+  $_return  : susy-get(math, $context);
+  $_return  : if(susy-get(gutter-position, $context) == inside-static, static, $_return);
+
+  @return $_return;
+}
+
+
+// Valid Gutters
+// -------------
+// Check that a gutter setting is valid.
+@function valid-gutters(
+  $gutters,
+  $silent: false
+) {
+  $type: type-of($gutters);
+  $return: null;
+
+  @if $type == number and unitless($gutters) {
+    $return: $gutters;
+  } @else if not($silent) {
+    $warn: '$gutters must be a unitless number.';
+    @warn $warn + ' Current value [#{$type}]: #{$gutters}';
+  }
+
+  @return $return;
+}
+
+// Susy
+// ----
+// Find the sum of a column-span.
+// - $span        : <number>
+// - $location    : <number>
+// - [$columns]   : <number> | <list>
+// - [$gutters]   : <ratio>
+// - [$spread]    : false/narrow | wide | wider
+@function susy(
+  $span,
+  $location     : false,
+  $columns      : susy-get(columns),
+  $gutters      : susy-get(gutters),
+  $spread       : false
+) {
+  $columns: valid-columns($columns);
+  $gutters: valid-gutters($gutters);
+  $span: susy-slice($span, $location, $columns);
+
+  @return susy-sum($span, $gutters, $spread);
+}
+
+// Susy Count
+// ----------
+// Find the number of columns in a given layout
+// - [$columns]   : <number> | <list>
+@function susy-count(
+  $columns: susy-get(columns)
+) {
+  $columns: valid-columns($columns);
+  @return is-symmetrical($columns) or length($columns);
+}
+
+// Is Symmetrical
+// --------------
+// Returns true if a grid is symmetrical.
+// - [$columns]   : <number> | <list>
+@function is-symmetrical(
+  $columns: susy-get(columns)
+) {
+  $columns: valid-columns($columns);
+  @return if(type-of($columns) == number, $columns, null);
+}
+
+// Susy Sum
+// --------
+// Find the total sum of column-units in a layout
+// - [$columns]   : <number> | <list>
+// - [$gutters]   : <ratio>
+// - [$spread]    : false/narrow | wide | wider
+@function susy-sum(
+  $columns  : susy-get(columns),
+  $gutters  : susy-get(gutters),
+  $spread   : false
+) {
+  $columns: valid-columns($columns);
+  $gutters: valid-gutters($gutters);
+
+  $spread: if($spread == wide, 0, if($spread == wider, 1, -1));
+  $gutter-sum: (susy-count($columns) + $spread) * $gutters;
+  $column-sum: is-symmetrical($columns);
+
+  @if not($column-sum) {
+    @each $column in $columns {
+      $column-sum: ($column-sum or 0) + $column;
+    }
+  }
+
+  @return $column-sum + $gutter-sum;
+}
+
+// Validate Column Math
+// --------------------
+@function valid-column-math(
+  $math,
+  $column-width
+) {
+  @if $math == static and not($column-width) {
+    @error 'Static math requires a valid column-width setting.';
+  }
+
+  @return $column-width;
+}
+
+// Get Edge
+// --------
+// Calculate edge value based on location, if possible
+@function get-edge(
+  $span
+) {
+  $span       : parse-span($span);
+  $edge       : susy-get(edge, $span);
+
+  @if not($edge) {
+    $count: susy-count(susy-get(columns, $span));
+    $location: susy-get(location, $span);
+    $n: susy-get(span, $span);
+
+    $number: if(type-of($location) == number, true, false);
+    $index: if($number and unitless($location), true, false);
+
+    @if $n == $count {
+      $edge: full;
+    } @else if $location and $n and $index {
+      @if $location == 1 {
+        $edge: if($n == $count, full, first);
+      } @else if $location + $n - 1 == $count {
+        $edge: last;
+      }
+    }
+  }
+
+  @if $edge == alpha or $edge == omega {
+    $edge: if($edge == alpha, first, last);
+  }
+
+  @return $edge;
+}
+
+// Get Location
+// ------------
+// Calculate location value based on edge, if possible
+@function get-location(
+  $span
+) {
+  $span       : parse-span($span);
+  $location   : susy-get(location, $span);
+  $edge       : get-edge($span);
+  $n          : susy-get(span, $span);
+
+  @if $edge and not($location) and type-of($n) == number and unitless($n) {
+    @if $edge == first {
+      $location: 1;
+    } @else if $edge == last {
+      $location: susy-count(susy-get(columns, $span)) - $n + 1;
+    }
+  }
+
+  @return $location
+}
+
+// Get Span Width
+// --------------
+// Return span width.
+// - $span: <map>
+@function get-span-width(
+  $span
+) {
+  $span     : parse-span($span);
+
+  $n        : susy-get(span, $span);
+  $location : get-location($span);
+  $columns  : susy-get(columns, $span);
+  $gutters  : susy-get(gutters, $span);
+  $spread   : susy-get(spread, $span);
+
+  $context  : null;
+  $span-sum : null;
+  $width    : null;
+
+  @if $n == 'full' {
+    $pos: susy-get(gutter-position, $span);
+    $role: susy-get(role, $span);
+    $n: if($pos == split and $role != nest, susy-count($columns), 100%);
+  }
+
+  @if type-of($n) != number {
+    @warn "(#{type-of($n)}) #{$n} is not a valid span.";
+  } @else if unitless($n) {
+    $context: susy-sum($columns, $gutters, if(is-split($span), wide, narrow));
+    $spread: if(is-inside($span), $spread or wide, $spread);
+    $span-sum: susy($n, $location, $columns, $gutters, $spread);
+
+    $_math: susy-get(math, $span);
+    $_column-width: susy-get(column-width, $span);
+    @if $_math == static {
+      $width: $span-sum * valid-column-math($_math, $_column-width);
+    } @else {
+      $width: percentage($span-sum / $context);
+    }
+  } @else {
+    $width: $n;
+  }
+
+  @return $width;
+}

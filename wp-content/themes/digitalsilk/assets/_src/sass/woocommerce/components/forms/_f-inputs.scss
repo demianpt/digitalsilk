@@ -1,0 +1,96 @@
+/**
+ * Woocommerce: Form Inputs
+ */
+
+.woocommerce,
+.woocommerce-page {
+  label {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--wc-label-margin-bottom, 0.5em);
+    font-size: var(--label-font-size, 1.6rem);
+    line-height: var(--label-line-height, 1.5);
+    font-weight: var(--label-font-weight, 400);
+    color: var(--label-color);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="phone"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  input[type="file"],
+  input[type="password"],
+  input[type="search"],
+  textarea,
+  select,
+  .wc-stripe-elements-field,
+  .wc-stripe-iban-element-field {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: var(--input-padding-top-bottom, 4px) var(--input-padding-left-right, 10px);
+    background: var(--input-background-color, #fff);
+    color: var(--input-color);
+    border: var(--input-border-width, 1px) solid var(--input-border-color, #666);
+    border-radius: var(--input-border-radius, 5px);
+    font-size: var(--input-font-size, 16px);
+    font-weight: var(--input-font-weight, 400);
+    line-height: var(--wc-input-line-height);
+
+    &:focus {
+      outline: none;
+      border-color: #555;
+    }
+  }
+
+  // Since 'select' don't have line-height, we have to calculate height based on font size, line height, padding and border width
+  select {
+    height: calc(
+            var(--input-font-size) * var(--wc-input-line-height) + (var(--input-padding-top-bottom) * 2) +
+            (var(--input-border-width) * 2)
+    );
+  }
+
+  input {
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &.error-input {
+      //&:invalid {
+      border-color: var(--validation-error-color);
+    }
+  }
+
+  .woocommerce-LostPassword.lost_password a {
+    font-size: var(--button-font-size);
+    font-weight: var(--base-text-font-weight);
+    line-height: var(--base-text-line-height);
+    color: var(--primary-link-color);
+  }
+}
+
+.password-input {
+  display: block;
+  position: relative;
+}
+
+.show-password-input {
+  position: absolute;
+  right: 0;
+  top: var(--input-padding-top-bottom);
+  width: 32px;
+  height: calc(var(--input-font-size) * var(--wc-input-line-height));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='18' height='16' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cg transform='translate(128 128) scale(0.72 0.72)' style=''%3E%3Cg style='stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;' transform='translate(-175.05 -175.05000000000004) scale(3.89 3.89)' %3E%3Cpath d='M 89.307 43.082 C 74.775 25.601 59.868 16.737 45 16.737 c -14.869 0 -29.775 8.864 -44.307 26.345 c -0.924 1.112 -0.924 2.724 0 3.836 C 15.225 64.399 30.131 73.264 45 73.264 c 14.868 0 29.775 -8.864 44.307 -26.346 C 90.231 45.806 90.231 44.194 89.307 43.082 z M 45 62 c -9.374 0 -17 -7.626 -17 -17 s 7.626 -17 17 -17 s 17 7.626 17 17 S 54.374 62 45 62 z' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) ' stroke-linecap='round' /%3E%3Ccircle cx='45' cy='45' r='9' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0.5;
+
+  &.display-password {
+    opacity: 1;
+  }
+}

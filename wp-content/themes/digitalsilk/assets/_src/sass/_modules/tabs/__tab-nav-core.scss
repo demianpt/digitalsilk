@@ -1,0 +1,76 @@
+.l-tbnav {
+    display: flex;
+    gap: var(--tbnav-gap);
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    @include media('<=desktop') {
+        .js-tabs-to-acc-wrapper & {
+            display: none;
+        }
+    }
+
+    @include media('>desktop') {
+        .js-tabs-dropdown {
+            display: none;
+        }
+    }
+
+    &__item {
+        flex: 1 1 0;
+        position: relative;
+
+        @include media('<=desktop') {
+            .js-tabsTabDrop-wrapper & {
+                display: none;
+            }
+        }
+    }
+}
+
+.c-tbnav {
+    cursor: pointer;
+    transition: all var(--base-transition) ease-in;
+    padding: var(--tbnav-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: var(--tbnav-align);
+    background-color: var(--tbnav-bg);
+    color: var(--tbnav-color);
+    border: 1px solid var(--tbnav-border);
+
+    &.is-active {
+        box-shadow: var(--c-block-shadow);
+        border-color: var(--tbnav-border-active);
+    }
+
+    &:not(.is-active):hover {
+        box-shadow: 0 0 25px #CDEAEC;
+        border-color: #CDEAEC;
+    }
+
+    &__media {
+        margin-bottom: 1em;
+        padding: 10px;
+        width: 100%;
+    }
+
+    &__img {
+        max-height: 80px;
+        @include media("<tablet") {
+            max-height: 40px;
+        }
+    }
+
+    &__label {
+        font-size: var(--tbnav-size);
+        font-weight: var(--tbnav-weight);
+        text-transform: var(--tbnav-uppercase);
+    }
+
+    &__img {
+        max-height: 100px;
+    }
+}

@@ -1,0 +1,25 @@
+.site-header__top {
+	@include media("<=desktop") {
+		display: none;
+	}
+}
+
+.site-header__bottom {
+	@include media("<=desktop") {
+		display: none;
+	}
+}
+
+
+@include media("<=desktop") {
+	.nav-main__btn.-desktop {
+		display: none;
+	}
+}
+
+@include media(">desktop") {
+	.nav-main__btn,
+	.navbar-mobile {
+		display: none;
+	}
+}

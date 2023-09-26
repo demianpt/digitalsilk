@@ -1,0 +1,58 @@
+/* Navbar Main */
+
+.nav-main {
+	@include media(">desktop") {
+		&__links {
+			display: flex;
+			justify-content: flex-end;
+
+			> .menu-item {
+				position: relative;
+				display: flex;
+				align-items: center;
+
+				> a,
+				.plain-menu-item {
+					display: block;
+					white-space: nowrap;
+					color: var(--header-link-color);
+					padding-inline: var(--header-main-gap-between-items, 1vw);
+					line-height: var(--header-main-nav-height);
+					transition: color var(--base-transition), font-size var(--base-transition);
+
+					&:hover {
+						color: var(--header-link-color-hover);
+					}
+				}
+			}
+		}
+	}
+
+	.current-menu-item {
+		> a {
+			color: var(--header-link-color-hover);
+		}
+	}
+}
+
+/* Navbar Secondary */
+
+.nav-secondary {
+	&__links {
+		@include media(">desktop") {
+			display: flex;
+			justify-content: flex-end;
+			gap: var(--header-horizontal-gap, 1vw);
+		}
+	}
+
+	a {
+		display: block;
+		white-space: nowrap;
+		color: var(--header-link-color);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

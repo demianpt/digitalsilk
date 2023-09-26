@@ -1,0 +1,47 @@
+/**
+ * Woocommerce: General settings
+ */
+
+:root {
+  // General settings
+  --wc-top-offset: 3rem;
+  --wc-vertical-space: 3vmin;
+
+  @include media('>desktop') {
+    --wc-top-offset: 21vmin;
+    --wc-vertical-space: 5vmin;
+  }
+
+  @include media('>desktop-l') {
+    --wc-top-offset: 200px;
+  }
+}
+
+body {
+  &.woocommerce,
+  &.woocommerce-page {
+    overflow-x: hidden;
+
+    // Main wrapper
+    main.site-content {
+      width: 100%;
+      max-width: calc(var(--content-width) + var(--page-gutter, 20px) * 2);
+      padding: var(--wc-top-offset, 0) var(--page-gutter) var(--wc-vertical-space) var(--page-gutter);
+      margin-right: auto;
+      margin-left: auto;
+
+      .container {
+        max-width: 100%;
+        @include media('<=desktop') {
+          padding: 0;
+        }
+      }
+
+      img {
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}
+

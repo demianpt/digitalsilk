@@ -1,0 +1,96 @@
+/* Typography */
+
+@import '../mixins/font-face';
+
+// For google fonts please use https://google-webfonts-helper.herokuapp.com/fonts if possible
+
+// Examples (replace or remove if you don't need these fonts):
+
+@include addFontFace('roboto', '../../fonts/roboto', ('woff2', 'woff'), (
+		createFontMap('roboto-v30-latin-regular', 400),
+		createFontMap('roboto-v30-latin-500', 500),
+		createFontMap('roboto-v30-latin-700', 700)
+));
+
+@include addFontFace('raleway', '../../fonts/raleway', ('woff2', 'woff'), (
+		createFontMap('raleway-v17-latin-regular', 400),
+		createFontMap('raleway-v17-latin-500', 500),
+		createFontMap('raleway-v17-latin-700', 700)
+));
+
+
+:root {
+	--font-family-primary: "roboto", sans-serif;
+	--font-family-secondary: "raleway", sans-serif;
+
+	--base-text-size: 1.8rem;
+	--base-text-font: var(--font-family-primary);
+	--base-text-line-height: 1.6;
+	--base-text-font-weight: 400;
+	--larger-text-size: 2.2rem;
+	--larger-text-font-weight: 400;
+	--smaller-text-size: 1.6rem;
+	--smaller-text-font-weight: 400;
+	--blog-text-size: 1.8rem;
+	--blog-text-font-weight: 400;
+
+	--h-clamp-formula: 3vw + 1.5rem; // headings size transformation
+
+	--h1-font-size: 6rem;
+	--h1-font-size-mobile: 28px;
+	--h1-line-height: 1;
+	--h1-letter-spacing: 0;
+	--h1-margin-bottom: .5em;
+	--h1-font: var(--font-family-primary);
+	--h1-font-weight: 700;
+	--h1-text-transform: none;
+
+	--h2-font-size: 3.6rem;
+	--h2-font-size-mobile: 20px;
+	--h2-line-height: 1.5;
+	--h2-letter-spacing: 0;
+	--h2-margin-bottom: .5em;
+	--h2-font: var(--font-family-secondary);
+	--h2-font-weight: 700;
+	--h2-text-transform: none;
+
+	--h3-font-size: 2.6rem;
+	--h3-font-size-mobile: 18px;
+	--h3-line-height: 1.5;
+	--h3-letter-spacing: 0;
+	--h3-margin-bottom: .5em;
+	--h3-font: var(--font-family-secondary);
+	--h3-font-weight: 700;
+	--h3-text-transform: none;
+
+	--h4-font-size: 2.1rem;
+	--h4-font-size-mobile: 16px;
+	--h4-line-height: 1.5;
+	--h4-letter-spacing: 1;
+	--h4-margin-bottom: .5em;
+	--h4-font: var(--font-family-secondary);
+	--h4-font-weight: 700;
+	--h4-text-transform: none;
+
+	--pretitle-color: var(--primary-color2);
+	--pretitle-color-alt: var(--secondary-color2);
+	--pretitle-font-size: 2.8rem;
+	--pretitle-font-size-mobile: 20px;
+	--pretitle-line-height: 1.2;
+	--pretitle-letter-spacing: 0;
+	--pretitle-margin-bottom: .3em;
+	--pretitle-font: var(--font-family-primary);
+	--pretitle-font-weight: 400;
+	--pretitle-text-transform: none;
+
+	--subtitle-color: var(--primary-color2);
+	--subtitle-color-alt: var(--secondary-color2);
+	--subtitle-font-size: 2.8rem;
+	--subtitle-font-size-mobile: 20px;
+	--subtitle-line-height: 1.2;
+	--subtitle-letter-spacing: 1;
+	--subtitle-margin-bottom: .3em;
+	--subtitle-font: var(--font-family-primary);
+	--subtitle-font-weight: 400;
+	--subtitle-text-transform: none;
+}

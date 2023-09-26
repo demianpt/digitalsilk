@@ -1,0 +1,65 @@
+.blog-grid {
+	--grid-img-height: 305px;
+	--grid-item-col: 3;
+	--grid-item-gap: 20px;
+	--с-block-padding: 15px;
+}
+
+.blog-breadcrumb {
+	--breadcrumb-size: 16px;
+	--breadcrumb-color: var(--primary-color2);
+	--breadcrumb-color-current: var(--primary-color1);
+	--breadcrumb-gap: 5px;
+	--breadcrumb-bg: var(--secondary-color1);
+
+	[color-mode="dark"] & {
+		--breadcrumb-bg: var(--primary-color1);
+		--breadcrumb-color-current: var(--primary-color2);
+	}
+}
+
+.blog-filter {
+	--filter-bg: var(--primary-color3);
+	--filter-link-color: var(--primary-color1);
+	--filter-link-color-active: #fff;
+	--filter-link-size: 16px;
+	--filter-link-weight: 600;
+	--filter-vspace: 20px;
+}
+
+.dark-mode {
+	--dm-bg: var(--secondary-color1);
+	--dm-color: var(--primary-color1);
+	--dm-radius: 0;
+	--dm-toggler-bg: #CFE2EE;
+	--dm-dot: #fff;
+	--dm-height: 32px;
+	--dm-width: 71px;
+
+	[color-mode="dark"] & {
+		--dm-bg: var(--primary-color1);
+		--dm-color: var(--secondary-color1);
+		--dm-toggler-bg: var(--secondary-color3);
+	}
+}
+
+/* TOC plugin */
+
+#ez-toc-container {
+	--toc-title-bg: var(--primary-color3);
+	--toc-title-color: #fff;
+	--toc-title-padding: .55em 1.2em;
+	--toc-title-size: 1.8rem;
+	--toc-title-weight: 700;
+	--toc-bg: var(--secondary-color1);
+	--toc-color: var(--primary-color1);
+	--toc-link-l1-size: 1.8rem;
+	--toc-link-l1-weight: 600;
+	--toc-link-l1-padding: .5em 0;
+
+	[color-mode="dark"] & {
+		--toc-bg: var(--primary-color1);
+		--toc-color: var(--secondary-color1);
+	}
+}
+

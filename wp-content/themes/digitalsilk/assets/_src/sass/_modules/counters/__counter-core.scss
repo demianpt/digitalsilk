@@ -1,0 +1,60 @@
+/**
+ ####################
+ #   Module COUNTERS:
+ ####################
+ */
+
+.c-counter {
+	text-align: center;
+
+	&__number {
+		font-size: var(--counter-num-size);
+		line-height: var(--counter-num-lh);
+		font-weight: var(--counter-num-weight);
+	}
+
+	&__symbol {
+		font-size: var(--counter-symbol-size);
+		font-weight: var(--counter-symbol-weight);
+	}
+
+	&__data {
+		white-space: nowrap;
+	}
+
+	.c-block__media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&.is-vertical {
+		--с-block-align: center;
+
+		.c-block__media {
+
+			margin-bottom: 20px;
+			max-height: 150px;
+
+			.c-counter__img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				max-height: 90%;
+			}
+		}
+	}
+
+
+	&.is-horizontal {
+		--с-block-align: left;
+		display: flex;
+		align-items: center;
+
+		.c-block__media {
+			margin-right: 15px;
+			max-width: 100px;
+		}
+	}
+
+}

@@ -1,0 +1,72 @@
+/**
+ * Woocommerce: Coupon box
+ */
+.woocommerce {
+  --wc-cart-heading-fs: 7rem;
+  --wc-cart-heading-ff: var(--font-family-secondary);
+  --wc-cart-heading-fw: 400;
+  --wc-cart-heading-lh: 1.2;
+  --wc-cart-heading-color: var(--primary-text-color);
+  --wc-cart-heading-margin: 0.2em;
+
+  --wc-cart-subheading-fs: 3.6rem;
+  --wc-cart-subheading-margin: 0.5em;
+}
+
+.wc-heading-title {
+  margin-bottom: var(--wc-cart-heading-margin);
+  font-family: var(--wc-cart-heading-ff);
+  font-weight: var(--wc-cart-heading-fw);
+  font-size: var(--wc-cart-heading-fs);
+  line-height: var(--wc-cart-heading-lh);
+  color: var(--wc-cart-heading-color);
+  text-transform: capitalize;
+}
+
+.wc-subheading-title {
+  @extend .wc-heading-title;
+  font-size: var(--wc-cart-subheading-fs);
+  margin-bottom: var(--wc-cart-subheading-margin);
+}
+
+.cart-collaterals {
+  .cross-sells, .cart_totals {
+    h2 {
+      @extend .wc-subheading-title;
+    }
+  }
+}
+
+.woocommerce-checkout {
+  .woocommerce-billing-fields {
+    > h3 {
+      @extend .wc-subheading-title;
+    }
+  }
+
+  h3#order_review_heading {
+    @extend .wc-subheading-title;
+  }
+}
+
+.woocommerce-checkout {
+  .woocommerce-billing-fields {
+    > h3 {
+      @extend .wc-subheading-title;
+    }
+  }
+
+  h3#order_review_heading {
+    @extend .wc-subheading-title;
+  }
+}
+
+.woocommerce-order-received {
+  h1 {
+    @extend .wc-heading-title;
+  }
+
+  h2 {
+    @extend .wc-subheading-title;
+  }
+}

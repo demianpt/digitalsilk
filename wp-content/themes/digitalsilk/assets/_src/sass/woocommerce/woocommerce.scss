@@ -1,0 +1,88 @@
+/**
+ * Woocommerce: SCSS structure
+ */
+
+// Core theme settings
+@import "woo-custom/_custom__wc-config";
+
+@import '../__core/core-mixins';
+@import "../__helpers/util-classes";
+
+// Abstracts
+//@import "abstract/variables";
+@import "abstract/mixins";
+@import "abstract/span";
+@import "abstract/keyframes";
+@import "abstract/general";
+
+// Core
+@import "core/typography";
+@import "core/headings";
+
+// Layout
+@import "layout/ajax-layered-nav";
+// ?????
+@import "layout/header";
+@import "layout/layout";
+@import "layout/sidebar";
+@import "layout/widgets";
+
+// Components
+@import 'components/c-pagination';
+@import "components/forms/forms";
+
+// Imports inside
+@import "components/c-store-notice";
+@import "components/c-breadcrumbs";
+@import "components/c-notification-box";
+@import 'components/c-product-loop';
+@import 'components/c-badges';
+@import "components/c-socials";
+@import "components/c-product-gallery";
+@import "components/c-coupon-box";
+@import "components/c-shipping-methods";
+
+// Tables
+@import 'components/tables/c-tables';
+@import 'components/tables/c-table-products';
+@import 'components/tables/c-table-cart';
+@import 'components/tables/c-table-checkout';
+@import 'components/tables/c-table-thank-you';
+@import 'components/tables/c-table-account-orders';
+@import 'components/tables/c-table-account-wishlist';
+
+// Tabs for Product details page
+@import 'components/tabs/_c-tabs-layout';
+@import 'components/tabs/_c-tab-description';
+@import 'components/tabs/_c-tab-ingredients';
+@import 'components/tabs/_c-tab-reviews';
+@import 'components/tabs/_c-tab-faq';
+
+// Modules
+@import "modules/_m-related-products.scss";
+
+// Widgets
+@import "widgets/product-sorting";
+@import "widgets/sidebar-widgets";
+
+// Pages
+@import "pages/shop";
+@import "pages/products";
+@import "pages/login";
+@import "pages/account";
+@import "pages/cart";
+@import "pages/checkout";
+@import "pages/search";
+@import "pages/single-product";
+@import "pages/thank-you";
+
+// Plugins
+@import "plugins/p-quick-buy";
+@import "plugins/p-b-rocket-filters";
+@import "plugins/p-variation-swatches";
+@import "plugins/p-subscription";
+@import "plugins/p-wishlist";
+@import "plugins/p-waitlist";
+
+// Project specific
+@import "woo-custom/_custom__wc-core";

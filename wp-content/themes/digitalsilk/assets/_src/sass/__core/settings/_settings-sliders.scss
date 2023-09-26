@@ -1,0 +1,29 @@
+.m-slider {
+	--swiper-outer-gap: 80px;
+
+	--swiper-arrows-bg: rgba(255,255,255,.4);
+	--swiper-arrows-color: var(--primary-color1);
+	--swiper-arrows-shadow: 0 12px 14px rgba(33, 33, 33, 0.1), 0 4px 4px rgba(33, 33, 33, 0.1);
+	--swiper-navigation-size: 50px;
+
+	--swiper-pagination-radius: 20px;
+	--swiper-pagination-bullet-horizontal-gap: 10px;
+	--swiper-pagination-bullet-size: 24px;
+	--swiper-pagination-bullet-border: #ccc;
+	--swiper-pagination-bullet-inactive-color: transparent;
+	--swiper-pagination-bullet-border-active: var(--primary-color1);
+	--swiper-pagination-color: var(--primary-color1);
+	--swiper-pagination-bullet-inactive-opacity: .8;
+
+	--thumb-size: 65px;
+	--thumb-radius: 50%;
+	--thumb-bd-size: 2px;
+	--thumb-bd-color: var(--primary-color3);
+	--thumb-bd-color-active: var(--primary-color2);
+
+	@include media('<=desktop') {
+		--swiper-navigation-size: 35px;
+		--swiper-outer-gap: 40px;
+		--thumb-size: 30px;
+	}
+}

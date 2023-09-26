@@ -1,0 +1,44 @@
+/**
+ * Woocommerce: Config
+ */
+$--wc-shop__header: ON;
+$--wc-shop__sidebar: ON;
+$--wc-shop__related-products: ON;
+$--wc-shop__heed-help: ON;
+
+// Components
+$--wc-components__product-gallery: ON;
+$--wc-components__coupons: ON;
+$--wc-components__badges: ON;
+$--wc-components__tabs: ON;
+$--wc-components__tabs-faq: ON;
+$--wc-components__tabs-reviews: ON;
+$--wc-components__tabs-description: ON;
+$--wc-components__pagination: ON;
+
+//Product page
+$--wc-components__shipping-bar: ON;
+$--wc-components__socials: ON;
+
+// Plugins
+$--wc-plugins__variation-swatches: ON;
+$--wc-plugins__subscription: ON;
+$--wc-plugins__quick-buy: ON;
+$--wc-plugins__wishlist: ON;
+$--wc-plugins__waitlist: OFF;
+$--wc-plugins__b-rocket-filter: ON;
+
+// Widgets
+$--wc-widgets__product-sorting: ON;
+$--wc-widgets__sidebar-widgets: ON;
+
+// Look & Feel
+// Cart Tables
+$--wc-cart-table-border: ON;
+$--wc-buttons-with-icons: OFF;
+
+
+// Vars
+:root {
+
+}

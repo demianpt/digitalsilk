@@ -1,0 +1,138 @@
+/**
+ * WooCommerce: Wishlists page
+ * TODO: Refactor this...WIP
+ */
+
+@if $--wc-plugins__wishlist == ON {
+  .woocommerce {
+    --wc-wishlist-thumbnail-size: 100px;
+  }
+
+  .woocommerce-wishlist {
+    .social-buttons {
+      display: none;
+    }
+
+    div.tinv-wishlist {
+      display: block;
+      padding: 0;
+    }
+
+    .tinv-header {
+      display: none; // TODO: Check this
+      margin: 50px 0 30px; // TODO
+
+      h2 {
+        font-weight: bold;
+        font-size: var(--h1-font-size);
+        line-height: 1.3;
+        text-transform: capitalize;
+        color: var(--primary-color1);
+      }
+    }
+
+    table.tinvwl-table-manage-list {
+      tr {
+        padding: 0;
+      }
+
+      .product-stock i {
+        display: none;
+      }
+    }
+
+    // Remove button
+    .product-remove button {
+      display: block;
+      padding: 10px;
+      font-size: 0;
+      color: transparent;
+      aspect-ratio: 1/1;
+      background-image: url(../../images/woocommerce/icon-delete.svg);
+      background-size: 16px auto;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:focus {
+        outline: none;
+      }
+
+      i {
+        display: none;
+      }
+    }
+
+    // Thumbnail image
+    .product-thumbnail {
+      width: var(--wc-wishlist-thumbnail-size);
+    }
+
+    // NOTE: Since wishlist is a plugin, we don't have control over sidemenu active class
+    // This is hardcoded solution to show wishlist as active link
+    .woocommerce-MyAccount-navigation-link {
+      &.is-active a:after {
+        opacity: 0.5;
+      }
+
+      &--tinv_wishlist a:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Bottom wishlist section // Apply action, add to cart button etc
+  .tinvwl-input-group {
+    display: flex;
+    align-items: stretch;
+
+    .form-control {
+      float: none;
+      height: auto;
+      margin: 2px 0; // TODO: Same as button margin
+    }
+
+    &-btn {
+      width: auto;
+    }
+  }
+
+  // TODO...use same as cart sytling
+  @include media("<=tablet") {
+    .wishlist_item {
+      display: flex;
+      flex-wrap: wrap;
+
+      td {
+        padding: 0.2em 0.5em !important;
+      }
+    }
+
+    .tinv-wishlist {
+      table.tinvwl-table-manage-list tbody td {
+        &.product-cb,
+        &.product-remove {
+          display: inline-flex;
+          align-items: center;
+          width: 50% !important;
+        }
+
+        &.product-cb > * {
+          margin-left: auto;
+        }
+
+        &.product-remove > * {
+          margin: 0;
+        }
+
+        &.product-name {
+          font-size: 2.4rem;
+          font-weight: bold;
+        }
+      }
+
+      .product-thumbnail img {
+        max-width: 120px; // TODO
+      }
+    }
+  }
+}

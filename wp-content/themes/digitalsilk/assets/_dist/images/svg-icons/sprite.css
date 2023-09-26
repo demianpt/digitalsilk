@@ -1,0 +1,288 @@
+.svg-arrow {
+	background: url("svg-sprite.svg") 61.362698173622974% 55.6133472033288% no-repeat;
+}
+
+.svg-arrow-dims {
+	width: 12.428px;
+	height: 24.24px;
+}
+
+.svg-arrow-orange-right {
+	background: url("svg-sprite.svg") 80.21156270388282% 51.02091658279439% no-repeat;
+}
+
+.svg-arrow-orange-right-dims {
+	width: 25.809px;
+	height: 20.49px;
+}
+
+.svg-calendar {
+	background: url("svg-sprite.svg") 65.20861423220974% 55.37848605577689% no-repeat;
+}
+
+.svg-calendar-dims {
+	width: 20px;
+	height: 20px;
+}
+
+.svg-document-pdf {
+	background: url("svg-sprite.svg") 58.36575875486381% 53.668763102725364% no-repeat;
+}
+
+.svg-document-pdf-dims {
+	width: 60px;
+	height: 70px;
+}
+
+.svg-icon-filters {
+	background: url("svg-sprite.svg") 82.50084586466164% 50.84409136047666% no-repeat;
+}
+
+.svg-icon-filters-dims {
+	width: 24px;
+	height: 17px;
+}
+
+.svg-lib-icon-2 {
+	background: url("svg-sprite.svg") 50.40650406504065% 55.65217391304348% no-repeat;
+}
+
+.svg-lib-icon-2-dims {
+	width: 104px;
+	height: 104px;
+}
+
+.svg-lib-icon-3 {
+	background: url("svg-sprite.svg") 69.56521739130434% 51.45728643216081% no-repeat;
+}
+
+.svg-lib-icon-3-dims {
+	width: 30px;
+	height: 29px;
+}
+
+.svg-lib-icon-arrow1 {
+	background: url("svg-sprite.svg") 61.069418386491556% 58.08383233532934% no-repeat;
+}
+
+.svg-lib-icon-arrow1-dims {
+	width: 22px;
+	height: 22px;
+}
+
+.svg-lib-icon-arrow2 {
+	background: url("svg-sprite.svg") 83.88920930232558% 50.79365079365079% no-repeat;
+}
+
+.svg-lib-icon-arrow2-dims {
+	width: 13px;
+	height: 16px;
+}
+
+.svg-lib-icon-envelop {
+	background: url("svg-sprite.svg") 85.33666044776119% 50.59288537549407% no-repeat;
+}
+
+.svg-lib-icon-envelop-dims {
+	width: 16px;
+	height: 12px;
+}
+
+.svg-lib-icon-minus {
+	background: url("svg-sprite.svg") 86.5064126394052% 50.09784735812133% no-repeat;
+}
+
+.svg-lib-icon-minus-dims {
+	width: 12px;
+	height: 2px;
+}
+
+.svg-lib-icon-phone {
+	background: url("svg-sprite.svg") 73.99067164179104% 55.15873015873016% no-repeat;
+}
+
+.svg-lib-icon-phone-dims {
+	width: 16px;
+	height: 16px;
+}
+
+.svg-lib-icon-pin {
+	background: url("svg-sprite.svg") 75.20260223048327% 55.10406342913776% no-repeat;
+}
+
+.svg-lib-icon-pin-dims {
+	width: 12px;
+	height: 15px;
+}
+
+.svg-lib-icon-plus {
+	background: url("svg-sprite.svg") 68.40148698884758% 53.458498023715414% no-repeat;
+}
+
+.svg-lib-icon-plus-dims {
+	width: 12px;
+	height: 12px;
+}
+
+.svg-lib-icon-search {
+	background: url("svg-sprite.svg") 77.85661080074487% 55.04950495049505% no-repeat;
+}
+
+.svg-lib-icon-search-dims {
+	width: 14px;
+	height: 14px;
+}
+
+.svg-lib-icon-x {
+	background: url("svg-sprite.svg") 69.51672862453532% 53.458498023715414% no-repeat;
+}
+
+.svg-lib-icon-x-dims {
+	width: 12px;
+	height: 12px;
+}
+
+.svg-mail {
+	background: url("svg-sprite.svg") 68.88833562956751% 55.35554989167834% no-repeat;
+}
+
+.svg-mail-dims {
+	width: 19.584px;
+	height: 19.584px;
+}
+
+.svg-paper {
+	background: url("svg-sprite.svg") 66.47619047619048% 52.0854526958291% no-repeat;
+}
+
+.svg-paper-dims {
+	width: 38px;
+	height: 41px;
+}
+
+.svg-phone {
+	background: url("svg-sprite.svg") 67.05528006933642% 55.35566011624689% no-repeat;
+}
+
+.svg-phone-dims {
+	width: 19.586px;
+	height: 19.586px;
+}
+
+.svg-phone2 {
+	background: url("svg-sprite.svg") 72.44672897196261% 55.32338308457712% no-repeat;
+}
+
+.svg-phone2-dims {
+	width: 18px;
+	height: 19px;
+}
+
+.svg-pin {
+	background: url("svg-sprite.svg") 62.857142857142854% 52.244897959183675% no-repeat;
+}
+
+.svg-pin-dims {
+	width: 38px;
+	height: 44px;
+}
+
+.svg-print {
+	background: url("svg-sprite.svg") 63.19812030075188% 55.43369890329013% no-repeat;
+}
+
+.svg-print-dims {
+	width: 24px;
+	height: 21px;
+}
+
+.svg-search {
+	background: url("svg-sprite.svg") 70.72119713445487% 55.35543966754877% no-repeat;
+}
+
+.svg-search-dims {
+	width: 19.582px;
+	height: 19.582px;
+}
+
+.svg-shopping-cart {
+	background: url("svg-sprite.svg") 0 0 no-repeat;
+}
+
+.svg-shopping-cart-dims {
+	width: 576px;
+	height: 512px;
+}
+
+.svg-sign-in-alt {
+	background: url("svg-sprite.svg") 100% 0 no-repeat;
+}
+
+.svg-sign-in-alt-dims {
+	width: 512px;
+	height: 512px;
+}
+
+.svg-social-facebook {
+	background: url("svg-sprite.svg") 72.4007561436673% 51.40562248995984% no-repeat;
+}
+
+.svg-social-facebook-dims {
+	width: 30px;
+	height: 28px;
+}
+
+.svg-social-instagram {
+	background: url("svg-sprite.svg") 56.60377358490566% 58.49246231155779% no-repeat;
+}
+
+.svg-social-instagram-dims {
+	width: 28px;
+	height: 29px;
+}
+
+.svg-social-linkedin {
+	background: url("svg-sprite.svg") 76.53122087604847% 55.04950495049505% no-repeat;
+}
+
+.svg-social-linkedin-dims {
+	width: 15px;
+	height: 14px;
+}
+
+.svg-social-pinterest {
+	background: url("svg-sprite.svg") 58.967136150234744% 58.08383233532934% no-repeat;
+}
+
+.svg-social-pinterest-dims {
+	width: 23px;
+	height: 22px;
+}
+
+.svg-social-twitter {
+	background: url("svg-sprite.svg") 75.09433962264151% 51.40562248995984% no-repeat;
+}
+
+.svg-social-twitter-dims {
+	width: 28px;
+	height: 28px;
+}
+
+.svg-social-youtube {
+	background: url("svg-sprite.svg") 77.73584905660377% 51.40562248995984% no-repeat;
+}
+
+.svg-social-youtube-dims {
+	width: 28px;
+	height: 28px;
+}
+
+.svg-user-circle {
+	background: url("svg-sprite.svg") 0 100% no-repeat;
+}
+
+.svg-user-circle-dims {
+	width: 496px;
+	height: 512px;
+}
+

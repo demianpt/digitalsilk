@@ -1,0 +1,119 @@
+/**
+ * Woocommerce: Reviews
+ *
+ */
+$--wc-components__reviews-on-toggle: ON;
+
+@if $--wc-components__reviews-comments == ON {
+  .woocommerce {
+    --wc-review-comment-padding: 3.4rem 0 2.4rem;
+    --wc-review-comment-border: 1px dashed rgba(0, 134, 107, 0.5);
+    --wc-review-comment-default-lh: 1.5;
+
+    --wc-review-comment-author-color: var(--primary-text-color);
+    --wc-review-comment-author-fs: 1.6rem;
+    --wc-review-comment-author-fw: 600;
+    --wc-review-comment-date-color: var(--primary-text-color);
+    --wc-review-comment-date-fs: 1.6rem;
+    --wc-review-comment-date-fw: 400;
+    --wc-review-comment-description-color: var(--primary-text-color);
+    --wc-review-comment-description-fs: 1.6rem;
+    --wc-review-comment-description-fw: 1.6rem;
+
+    --wc-review-avatar: 72px;
+    --wc-review-avatar-margin: 3.6rem;
+    --wc-review-avatar-border-radius: 50%;
+  }
+
+  // Review comments
+  #review_form_wrapper {
+    &.is-toggle {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: max-height .3s ease, opacity .3s ease, visibility .3s ease;
+
+      &.is-active {
+        max-height: 1000px;
+        opacity: 1;
+        visibility: visible;
+        transition: max-height .3s ease, opacity .3s ease, visibility .3s ease;
+      }
+    }
+  }
+
+  #comments {
+    margin-bottom: var(--wc-vertical-space);
+
+    .commentlist {
+      margin-bottom: 1em;
+
+      > li:not(:last-child) {
+        border-bottom: var(--wc-review-comment-border);
+      }
+    }
+
+    .comment_container {
+      display: flex;
+      padding: var(--wc-review-comment-padding);
+
+      .avatar {
+        width: var(--wc-review-avatar);
+        height: var(--wc-review-avatar);
+        margin: 0 var(--wc-review-avatar-margin) var(--wc-review-avatar-margin) 0;
+        border-radius: var(--wc-review-avatar-border-radius);
+      }
+
+      .comment-text {
+        flex: 1;
+        padding-top: 10px;
+      }
+
+      .star-rating {
+        display: flex;
+
+        @include media(">phone-l") {
+          float: right;
+        }
+      }
+
+      .meta {
+        margin-bottom: 1.3em;
+      }
+
+      .description {
+        color: var(--wc-review-comment-description-color);
+        font-weight: var(--wc-review-comment-description-fw);
+        font-size: var(--wc-review-comment-description-fs);
+        line-height: var(--wc-review-comment-default-lh);
+
+        p:last-child {
+          margin: 0;
+        }
+      }
+    }
+
+    .woocommerce-review {
+      &__author {
+        display: block;
+        color: var(--primary-text-color);
+        font-weight: var(--wc-review-comment-author-fw);
+        font-size: var(--wc-review-comment-author-fs);
+        line-height: var(--wc-review-comment-default-lh);
+      }
+
+      &__dash {
+        display: none;
+      }
+
+      &__published-date {
+        color: var(--primary-text-color);
+        font-size: var(--wc-review-comment-date-fs);
+        font-weight: var(--wc-review-comment-date-fw);
+        line-height: var(--wc-review-comment-default-lh);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,107 @@
+/**
+ * Woocommerce: Product Tabs layout
+ *
+ */
+@if $--wc-components__tabs == ON {
+  .woocommerce {
+    --wc-tabs-height: 70px;
+    --wc-tabs-padding: 10px 20px;
+    --wc-tabs-bg: var(--primary-color2);
+    --wc-tab-color: #fff;
+    --wc-tab-fs: var(--base-text-size);
+    --wc-tab-fw: 400;
+    --wc-tab-lh: 1.2;
+  }
+  .woocommerce-tabs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vmin;
+    position: relative;
+    flex: 100%;
+    max-width: 100%;
+
+    @include media('>tablet') {
+      &::before {
+        content: '';
+        width: 100vw;
+        height: var(--wc-tabs-height);
+        display: inline-block;
+        position: absolute;
+        background: var(--wc-tabs-bg);
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        top: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+    }
+
+    ul.tabs {
+      list-style: none;
+      margin-left: 0;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8vmin;
+      flex-direction: column;
+      background: var(--wc-tabs-bg);
+      @include media(">tablet") {
+        flex-direction: row;
+        align-items: flex-end;
+        height: 72px;
+      }
+
+      li {
+        display: block;
+        position: relative;
+        text-transform: uppercase;
+        margin: 0;
+        text-align: center;
+
+        @include media('>tablet') {
+          margin: 0 10px;
+        }
+
+        @include media('>desktop') {
+          min-width: 195px;
+        }
+
+        a {
+          border-bottom: 3px solid transparent;
+          transition: border-bottom-color 0.3s;
+        }
+
+        &:hover,
+        &.active {
+          a {
+            border-bottom-color: var(--primary-color3);
+            transition: border-bottom-color 0.3s;
+          }
+        }
+
+        &.active {
+          a {
+            font-weight: 600;
+            transition: all .3s ease;
+          }
+        }
+
+        a {
+          font-size: var(--wc-tab-fs);
+          font-weight: var(--wc-tab-fw);
+          line-height: var(--wc-tab-lh);
+          padding: var(--wc-tab-padding);
+          color: var(--wc-tab-color);
+          height: var(--wc-tabs-height);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-transform: capitalize;
+          transition: all .3s ease;
+        }
+      }
+    }
+  }
+}

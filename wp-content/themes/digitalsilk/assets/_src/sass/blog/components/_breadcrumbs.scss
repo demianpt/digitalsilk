@@ -1,0 +1,23 @@
+.blog-breadcrumb {
+	font-size: var(--breadcrumb-size);
+	padding-top: 1em;
+	padding-bottom: 1em;
+	color: var(--breadcrumb-color-current);
+	background-color: var(--breadcrumb-bg);
+
+	> span {
+		margin: 0 var(--breadcrumb-gap);
+	}
+
+	a {
+		color: var(--breadcrumb-color);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.current-item {
+		color: var(--breadcrumb-color-current);
+	}
+}

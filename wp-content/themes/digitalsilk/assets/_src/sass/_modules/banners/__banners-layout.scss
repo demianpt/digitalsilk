@@ -1,0 +1,31 @@
+/**
+ ################
+ #   Module BANNERS: Base Layout
+ ################
+ */
+
+.l-banner {
+	width: 100%;
+	position: relative;
+	padding-top: var(--banner-top-padding, 0);
+	padding-bottom:  var(--banner-bot-padding, 0);
+	z-index: 2;
+
+	@include media('<=tablet') {
+		text-align: center;
+	}
+
+	&__media {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include media(">desktop") {
+			flex: 1 1 auto;
+		}
+		.c-image {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+}

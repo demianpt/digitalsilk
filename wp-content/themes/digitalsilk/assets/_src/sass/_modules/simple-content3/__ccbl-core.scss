@@ -1,0 +1,16 @@
+/**
+ ##########################
+ #   Custom Content Blocks
+ ##########################
+ */
+
+
+// Core Structure
+
+@import "layouts/layout-ccbl-core";
+
+// Variations
+
+@import "layouts/ver/layout-ccbl-v1",
+        "layouts/ver/layout-ccbl-v2",
+        "layouts/ver/layout-ccbl-v3";

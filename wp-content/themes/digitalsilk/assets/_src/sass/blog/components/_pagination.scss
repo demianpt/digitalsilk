@@ -1,0 +1,26 @@
+.blog-pagination {
+    text-align: center;
+    padding: 1em 0;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    li {
+        margin: 0 10px;
+    }
+    a {
+        &:hover {
+            color: var(--primary-color2);
+        }
+    }
+    .active a {
+        color: var(--primary-color2);
+        font-weight: 700;
+    }
+}
+
+.pagination-container {
+    text-align: center;
+    padding: 30px 0;
+}

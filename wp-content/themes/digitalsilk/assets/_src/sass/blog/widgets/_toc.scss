@@ -1,0 +1,206 @@
+.content-single {
+    position: relative;
+
+    #ez-toc-container {
+        background-color: var(--toc-bg);
+        padding: 0;
+        margin-bottom: 3em;
+        box-shadow: none;
+        border: none !important;
+        width: 100%;
+        transition: all var(--base-transition);
+        z-index: 10;
+
+        + * {
+            &:first-of-type,
+            &:first-child {
+                clear: both;
+            }
+        }
+
+        @include media(">desktop-m") {
+
+            &.is-float {
+                position: sticky;
+                max-width: 300px;
+                top: var(--header-hight, 100px);
+                right: 0;
+                float: right;
+                transform: translateX(110%);
+
+                .fixed-header & {
+                    top: var(--header-hight, 100px);
+                }
+
+                .ez-toc-title-container {
+                    padding: 10px;
+                }
+                .ez-toc-title {
+                    font-size: 1.8rem;
+                }
+                .ez-toc-link {
+                    padding: 5px 0;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                }
+                nav {
+                    position: static;
+                    max-width: none;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        nav {
+
+            > ul {
+                padding: 1em;
+            }
+
+            .ez-toc-viewed {
+                color: var(--primary-color2) !important;
+            }
+        }
+
+        ul {
+            height: auto !important;
+        }
+
+        .ez-toc-link {
+            display: block;
+            padding: 10px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--toc-color);
+
+            @include media(">desktop-l") {
+                font-size: var(--toc-link-l1-size);
+                font-weight: var(--toc-link-l1-weight);
+                padding: var(--toc-link-l1-padding);
+            }
+
+            &:visited {
+                color: var(--toc-color);
+            }
+            &:hover {
+                text-decoration: none;
+                color: var(--primary-color2) !important;
+            }
+        }
+
+        .ez-toc-page-1 {
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(var(--primary-color1-rgb), .3);
+            }
+        }
+
+        .ez-toc-btn {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-weight: normal;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            color: #333;
+            background-color: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+            background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
+            background-repeat: repeat-x;
+            padding: 6px 15px;
+            min-width: 100px;
+            border-radius: 20px;
+            font-size: 16px;
+            line-height: 18px;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            display: flex !important;
+
+            &:hover {
+                color: #333;
+                background-image: none;
+                background-color: #eeeeee;
+                border-color: #adadad;
+                text-decoration: none;
+            }
+
+            &:before {
+                content: "Show";
+                display: block;
+                left: 30px;
+                top: 5px;
+                font-weight: 400;
+                font-size: 16px;
+                vertical-align: middle;
+            }
+
+            &:active {
+                box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+                background-color: #e0e0e0;
+                border-color: #dbdbdb;
+            }
+
+            &:focus {
+                outline: thin dotted #333;
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px;
+            }
+
+            &.active {
+                &:before {
+                    content: 'Hide';
+                }
+
+                .ez-toc-icon-toggle {
+                    &:before {
+                        transform: rotate(0);
+                    }
+                }
+            }
+        }
+
+        .ez-toc-icon-toggle {
+            position: relative;
+            top: 0;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+
+            &:empty {
+                width: 1em;
+            }
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 17px;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-image: url("data:image/svg+xml,%3Csvg width='11' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.703 8L5.5 3.41 1.297 8 0 6.583 5.5.576 11 6.583 9.703 8z' fill='%232A425C'/%3E%3C/svg%3E");
+                transform: rotate(180deg);
+            }
+        }
+
+        .ez-toc-title-container {
+            background-color: var(--toc-title-bg);
+            padding: var(--toc-title-padding);
+        }
+
+        .ez-toc-title {
+            color: var(--toc-title-color);
+            font-size: var(--toc-title-size);
+            font-weight: var(--toc-title-weight);
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+    }
+
+}

@@ -1,0 +1,14 @@
+/* Banners */
+
+.m-banner {
+	--banner-height--small: 300px;
+	--banner-height--medium: 500px;
+	--banner-height--blog: 400px;
+	--banner-height--full: 100vh;
+	--banner-top-padding: 5vmin;
+	--banner-bot-padding: 5vmin;
+
+	--overlay-opacity: .9;
+	--overlay-color: var(--primary-color1);
+}
+

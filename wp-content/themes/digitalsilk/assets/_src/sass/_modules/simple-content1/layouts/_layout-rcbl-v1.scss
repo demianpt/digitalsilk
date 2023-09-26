@@ -1,0 +1,25 @@
+.l-rcbl-v1 {
+
+	.c-image {
+		position: absolute;
+		display: flex;
+		top: 0;
+		left: 0;
+	}
+
+	&.align-left {
+		--с-block-align: left;
+		.c-image {
+			justify-content: flex-start;
+		}
+	}
+
+	&.align-center {
+		--с-block-align: center;
+		.c-image {
+			justify-content: center;
+		}
+	}
+
+}
+

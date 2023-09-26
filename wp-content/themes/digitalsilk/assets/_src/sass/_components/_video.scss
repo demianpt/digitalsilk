@@ -1,0 +1,30 @@
+/**
+ ############################
+ #   Video Component
+ ############################
+ */
+
+/**
+ *************
+ **  Core
+ *************
+ *  Common properties of videos
+ */
+
+@import "video/c-video__core";
+
+/**
+ *************
+ **  Video Components
+ *************
+ */
+
+@import "video/blocks/media-controls";
+
+/**
+ ***************
+ **  Decoration and animations
+ ***************
+ */
+
+@import "video/visuals/decor";

@@ -1,0 +1,25 @@
+/**
+ ##################
+ #   Settings TABS:
+ ##################
+ */
+
+/* Tabs */
+
+.m-tabs {
+	--tbnav-size: 1.8rem;
+	--tbnav-weight: 500;
+	--tbnav-uppercase: none;
+	--tbnav-bg: #fff;
+	--tbnav-bg-active: #eee;
+	--tbnav-color: var(--primary-color1);
+	--tbnav-color-active: var(--primary-color3);
+	--tbnav-border: #eee;
+	--tbnav-border-active: #ccc;
+	--tbnav-padding: 15px 20px;
+	--tbnav-align: center;
+	--tbnav-gap: 5%;
+
+	--tbpanel-padding: 20px 0;
+	--tbpanel-bg: transparent;
+}

@@ -1,0 +1,51 @@
+.separators-custom-box {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 2.2rem;
+    margin: 1.5em 0;
+    @include media("<tablet") {
+        flex-direction: column;
+        text-align: center;
+    }
+    @include media(">desktop") {
+        padding: 30px;
+    }
+    > span, h4 {
+        color: #fff !important;
+        font-weight: bold;
+        font-size: 2.4rem;
+        margin: 0;
+        @include media("<tablet") {
+            margin-bottom: 20px;
+            text-align: center !important;
+        }
+        @include media(">=tablet") {
+            padding-right: 20px;
+        }
+    }
+    a {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 600;
+        height: 50px;
+        line-height: 50px;
+        white-space: nowrap;
+        background-color: var(--primary-color2);
+        background-position: right 15px center;
+        background-repeat: no-repeat;
+        padding: 0 30px;
+        border-radius: 30px;
+        transition: all var(--base-transition);
+        &:hover {
+            text-decoration: none !important;
+            opacity: .9;
+        }
+    }
+
+}

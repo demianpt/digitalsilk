@@ -1,0 +1,137 @@
+.blog-filter {
+	background-color: var(--filter-bg);
+
+	&__inner {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: var(--filter-vspace);
+		padding-bottom: var(--filter-vspace);
+	}
+
+	&__list {
+		display: flex;
+		@include media('<tablet') {
+			flex-wrap: wrap;
+			padding-right: 10px;
+		}
+
+		> li {
+			margin: 0 3em 0 0;
+			white-space: nowrap;
+			@include media('<tablet') {
+				margin: 0 5px 10px;
+			}
+		}
+
+		a {
+			color: var(--filter-link-color);
+			font-weight: var(--filter-link-weight);
+			font-size: var(--filter-link-size);
+
+			&:hover,
+			&.active_term {
+				color: var(--filter-link-color-active);
+			}
+		}
+	}
+
+	&__search {
+		.input {
+			max-width: 200px;
+			background-color: transparent;
+		}
+	}
+
+	&__tag {
+		padding-top: 30px;
+		padding-bottom: 30px;
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		label {
+			font-weight: 700;
+			text-transform: uppercase;
+			margin-right: 1em;
+		}
+
+		select {
+			background: #fff;
+			box-shadow: 0px 0px 25px #CDEAEC;
+			border-radius: 8px;
+			border: 1px solid #cdeaec;
+			height: 54px;
+			padding-left: 20px;
+		}
+	}
+
+	@include media('<=desktop') {
+		.-desktop {
+			display: none;
+		}
+	}
+	@include media('>desktop') {
+		.-mobile {
+			display: none;
+		}
+	}
+
+}
+
+.blog-filter__search {
+
+	@include media('<=desktop') {
+		display: none;
+	}
+
+	position: absolute;
+	height: 30px;
+	top: 50%;
+	margin-top: -15px;
+	display: flex;
+	right: 0;
+
+	&-field {
+		position: absolute;
+		right: 40px;
+		top: 50%;
+		color: #222;
+		transform: translateY(-50%);
+		width: 300px;
+		max-width: 0;
+		opacity: 0;
+		background: #fff;
+		box-shadow: 0px 0px 4px #CDEAEC;
+		border-radius: 8px;
+		padding: 5px 10px;
+		border: 1px solid #cdeaec;
+		transition: all var(--base-transition) !important;
+
+		&:focus, &:active {
+			opacity: 1;
+			width: 300px;
+			max-width: 300px;
+		}
+	}
+
+	&-btn {
+		background: transparent;
+		border: none;
+
+		.icon {
+			fill: #fff;
+			height: 24px;
+			width: 25px;
+		}
+	}
+
+	&:hover {
+		.blog-filter__search-field {
+			opacity: 1;
+			width: 300px;
+			max-width: 300px;
+		}
+	}
+}

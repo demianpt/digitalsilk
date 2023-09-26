@@ -1,0 +1,40 @@
+/**
+ * WooCommerce: Products Listing Header
+ */
+@if $--wc-shop__header == ON {
+  .woocommerce {
+    --wc-shop-header-width: 1060px;
+    --wc-shop-header-spacing: 70px;
+    --wc-shop-header-heading-lh: .8;
+    --wc-shop-header-heading-fw: 400;
+  }
+
+  .woocommerce-products-header {
+    .shop_subheader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      max-width: var(--wc-shop-header-width);
+      margin: 0 auto 30px;
+      text-align: center;
+      @include media('>desktop-l') {
+        margin: var(--wc-shop-header-spacing) auto var(--wc-shop-header-spacing);
+      }
+
+      .c-heading {
+        line-height: var(--wc-shop-header-heading-lh);
+        font-weight: var(--wc-shop-header-heading-fw);
+
+        &__title {
+        }
+      }
+    }
+  }
+
+  .is-sticky .site-header__top .site-header__row {
+    max-height: initial;
+    overflow: initial;
+    padding: var(--navbar-gap_v) var(--page-gutter);
+  }
+}

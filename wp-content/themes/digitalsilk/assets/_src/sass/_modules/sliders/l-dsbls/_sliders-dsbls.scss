@@ -1,0 +1,130 @@
+/* DSBLS Slider */
+
+.m-slider-v2 {
+
+    .m-slider {
+        &__container {
+            @include media('<=desktop') {
+                display: none;
+            }
+        }
+
+        &__slide {
+            height: auto;
+        }
+
+        &__arrows {
+            @include media('>desktop') {
+                display: none;
+            }
+            @include media('<=desktop') {
+                display: flex;
+            }
+        }
+
+    }
+
+    .m-slide {
+        @include media('>desktop') {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+        }
+        @include media('>desktop-l') {
+            max-height: 780px;
+        }
+        @include media('>desktop-m', '<=desktop-l') {
+            max-height: 680px;
+        }
+        @include media('>desktop', '<=desktop-m') {
+            max-height: 580px;
+        }
+
+        &__media {
+            &, img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .l-slider-nav {
+        @include media('>desktop') {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            right: 0;
+            z-index: 3;
+        }
+
+        &__container {
+            display: flex;
+            height: 100%;
+
+            &--fluid {
+                @include media('>desktop') {
+                    padding: 0;
+                }
+            }
+        }
+
+        &__inner {
+            height: 100%;
+            width: 100%;
+        }
+
+        &__pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            @include media('>desktop') {
+                display: none;
+            }
+
+            .swiper-pagination-bullet {
+                width: 24px;
+                height: 24px;
+                border: 1px solid rgba(#BBBBBB, 0.7);
+                background: transparent;
+                margin-right: 24px;
+                opacity: 1;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .swiper-pagination-bullet-active {
+                border: 1px solid transparent;
+                background: #268CCC;
+            }
+        }
+    }
+
+    &.container {
+        &:after,
+        .l-slider-nav {
+            left: var(--page-gutter);
+            right: var(--page-gutter);
+            width: auto;
+        }
+    }
+}
+
+
+.l-slider-double-cards {
+    padding-top: 0;
+    padding-bottom: 0;
+}

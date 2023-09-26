@@ -1,0 +1,74 @@
+/**
+ ####################
+ #   Module POSTS:
+ ####################
+ */
+
+.l-posts {
+	.c-block__media {
+		border-radius: var(--l-post-img-radius);
+		aspect-ratio: var(--l-post-img-ratio);
+		overflow: hidden;
+		width: 100%;
+
+		.c-image {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+		}
+
+		.c-image__src,
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&-link {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				.c-image__src, img {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+
+	.c-block__date {
+		margin-bottom: .5em;
+		font-size: var(--l-post-date-size);
+	}
+
+	.c-block__cats {
+		margin-bottom: .5em;
+	}
+
+	.c-block__tag {
+		font-size: var(--l-post-tag-size);
+		font-weight: var(--l-post-tag-weight);
+		text-transform: var(--l-post-tag-transform);
+		color: var(--l-post-tag-color);
+
+		&:not(:last-child) {
+			padding-right: 1em;
+		}
+
+		&:hover {
+			color: var(--btn-link-color-hover);
+		}
+	}
+
+	&__col {
+		@include media('<tablet') {
+			margin-bottom: var(--l-post-gap);
+		}
+	}
+}

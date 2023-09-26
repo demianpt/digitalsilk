@@ -1,0 +1,100 @@
+/**
+ * Woocommerce: Checkout page
+ * TODO: Refactor this...WIP
+ */
+
+.woocommerce {
+  --wc-checkout-review-col: 41.666666%;
+  --wc-checkout-privacy-policy-fs: 1.6rem;
+  --wc-checkout-privacy-policy-fw: 400;
+  --wc-checkout-privacy-policy-lh: 1.4;
+  --wc-checkout-privacy-policy-background: #fff;
+
+  @include media("<=desktop-m") {
+    --wc-checkout-review-col: 50%;
+  }
+}
+
+.woocommerce-shipping-fields {
+  margin-bottom: 6rem;
+}
+
+// Billing details/Your order wrapper
+form.woocommerce-checkout {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  @include media(">desktop") {
+    #customer_details {
+      float: left;
+      width: 50%;
+      padding-right: var(--page-gutter);
+    }
+
+    #order_review_heading,
+    #order_review {
+      float: right;
+      width: var(--wc-checkout-review-col);
+      padding-left: var(--page-gutter);
+    }
+  }
+
+  #customer_details {
+    margin-bottom: var(--wc-vertical-space);
+  }
+
+  .woocommerce-error {
+    display: block;
+  }
+}
+
+// Billing details section
+.woocommerce-billing-fields__field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .form-row {
+    flex: 0 0 calc(50% - 15px);
+    width: calc(50% - 15px);
+
+    @include media("<=tablet") {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+  }
+
+  #billing_address_1_field,
+  #billing_address_2_field {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+// Terms and conditions at the bottom
+.woocommerce-terms-and-conditions-wrapper {
+  padding: 1em;
+  background: var(--wc-checkout-privacy-policy-background);
+  margin-bottom: 15px;
+  border: 1px solid var(--wc-cart-table-totals-border-color);
+  border-radius: var(--wc-cart-table-totals-border-radius);
+
+  p {
+    font-size: var(--wc-checkout-privacy-policy-fs);
+    font-weight: var(--wc-checkout-privacy-policy-fw);
+    line-height: var(--wc-checkout-privacy-policy-lh);
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .validate-required {
+    margin: 0;
+  }
+}
+
+// Mobile Calendar Fix

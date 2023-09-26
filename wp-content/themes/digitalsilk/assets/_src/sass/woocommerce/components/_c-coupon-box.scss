@@ -1,0 +1,63 @@
+/**
+ * Woocommerce: Coupon box
+ */
+@if $--wc-components__coupons == ON {
+  .woocommerce {
+    --wc-quantity-input-coupon-width: 100%;
+    --wc-quantity-input-coupon-height: 50px;
+    --wc-quantity-input-coupon-fs: 1.8rem;
+
+    @include media('>phone-l') {
+      --wc-quantity-input-coupon-width: 224px;
+    }
+
+    .coupon, .checkout_coupon {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+      width: 100%;
+
+      @include media('>phone-l') {
+        flex-direction: row;
+      }
+
+      @include media('>tablet') {
+        width: 49%;
+      }
+
+      // Remove margin on Checkout row
+      .form-row {
+        margin: 0 1.25em 0 0;
+      }
+
+      label {
+        display: none;
+      }
+
+      input[name='coupon_code'] {
+        width: var(--wc-quantity-input-coupon-width);
+        font-size: var(--wc-quantity-input-coupon-fs);
+        background: transparent;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+        padding-left: 0;
+        margin-bottom: var(--wc-vertical-space);
+        @include media('>phone-l') {
+          margin-right: 1.25em;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include media('<=tablet') {
+      .coupon {
+        margin-bottom: var(--wc-vertical-space);
+        justify-content: center;
+      }
+    }
+  }
+}
+

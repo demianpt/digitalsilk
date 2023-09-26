@@ -1,0 +1,61 @@
+/**
+ * Woocommerce: Forms
+ * Input fields are connected to the DSMP core
+ */
+@import '_f-inputs.scss';
+@import '_f-checkboxes.scss';
+@import '_f-selects.scss';
+@import '_f-payments.scss';
+@import '_f-buttons.scss';
+
+.woocommerce {
+  --wc-label-margin-bottom: 0.5em;
+  --wc-input-line-height: 1.5;
+  --wc-color-error: var(--validation-error-color);
+  --wc-color-success: var(--validation-success-color);
+  --wc-color-notice: var(--validation-notice-color);
+
+  @include media("<=desktop") {
+    --input-font-size: 16px;
+  }
+}
+
+.required {
+  border-bottom: 0 !important;
+  color: var(--wc-color-error);
+}
+
+abbr[title], abbr[data-original-title] {
+  text-decoration: none;
+}
+
+.blockUI.blockOverlay {
+  z-index: 3 !important;
+}
+
+.wc-form-error {
+  display: inline-flex;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 1.4rem;
+  color: var(--validation-error-color);
+  @include media('>tablet') {
+    font-size: 1.6rem;
+  }
+}
+
+.woocommerce-password-strength {
+  margin: 5px 0;
+
+  &.short, &.bad {
+    color: var(--wc-color-error);
+  }
+
+  &.good {
+    color: var(--validation-notice-color);
+  }
+
+  &.strong {
+    color: var(--validation-success-color);
+  }
+}

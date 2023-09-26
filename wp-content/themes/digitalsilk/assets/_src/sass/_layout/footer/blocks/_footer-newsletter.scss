@@ -1,0 +1,78 @@
+.c-newsletter {
+
+    --c-nl-height: 40px;
+    --c-nl-radius: 10px;
+    --c-nl-title-size: 3.2rem;
+    --c-nl-title-weight: 700;
+
+    position: relative;
+
+    &__inner, .wpcf7-form {
+        display: flex;
+        align-items: center;
+    }
+    &__inner {
+        @include media("<tablet") {
+            width: 100%;
+            flex-direction: column;
+            > div {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &__title {
+        color: var(--primary-color1);
+        font-weight: var(--c-nl-title-weight);
+        font-size: var(--c-nl-title-size);
+        min-width: 30%;
+
+        @include media("<tablet") {
+            margin-bottom: 15px;
+        }
+    }
+
+    input[type=text],
+    input[type=email] {
+        max-width: 300px;
+        border: none;
+        padding: 5px 10px;
+        height: var(--c-nl-height);
+    }
+    input,
+    button {
+        height: var(--c-nl-height);
+        border-radius: var(--c-nl-radius);
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 1;
+        margin: 0;
+    }
+    label {
+        .wpcf7-not-valid-tip {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            transform: translateY(100%);
+        }
+        @include media("<tablet") {
+            margin-bottom: 15px;
+        }
+        @include media(">=tablet") {
+            margin: 0 10px 0 0;
+        }
+    }
+    .wpcf7-form-control-wrap {
+        position: relative;
+        height: 100%;
+        display: block;
+    }
+    .wpcf7-response-output {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 10px;
+        transform: translateY(105%);
+    }
+}

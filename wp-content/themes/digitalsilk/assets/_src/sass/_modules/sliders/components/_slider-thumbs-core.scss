@@ -1,0 +1,37 @@
+.c-slider-nav {
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+
+    &__thumb {
+        max-width: calc(var(--thumb-size) + 10px);
+    }
+
+    &__img {
+        overflow: hidden;
+        display: flex;
+        height: var(--thumb-size);
+        width: var(--thumb-size);
+        border-radius: var(--thumb-radius);
+        border: var(--thumb-bd-size) solid var(--thumb-bd-color);
+        cursor: pointer;
+        transition: all var(--base-transition);
+
+        .swiper-slide-thumb-active & {
+            --thumb-bd-color: var(--thumb-bd-color-active)
+        }
+
+        .swiper-fade & {
+            pointer-events: auto;
+        }
+        img {
+            max-width: 100%;
+            margin: auto;
+            object-fit: cover;
+        }
+    }
+
+}

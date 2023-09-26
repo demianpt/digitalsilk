@@ -1,0 +1,88 @@
+/**
+ ##########################
+ #   Dual content blocks: Layouts
+ ##########################
+ */
+
+.l-dcbl {
+	--columns-ratio: 50%;
+	--c-block-padding: 35px;
+	--c-block-img-ratio: auto;
+	--c-block-shadow: transparent;
+	--c-block-bg: transparent;
+
+	.c-block {
+		display: flex;
+
+		&__inner {
+			width: 100%;
+		}
+
+		&__content {
+			text-align: left;
+		}
+
+		@include media('<tablet') {
+			flex-direction: column-reverse;
+		}
+
+	}
+
+	@include media('>=tablet') {
+		&.order-reverse,
+		&.image-right {
+			.c-block {
+				flex-direction: row-reverse;
+			}
+		}
+	}
+
+	// Text Part Settings
+
+	.c-block__content {
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include media('>=desktop') {
+			padding: var(--c-block-padding, 30px);
+		}
+
+		&.align-top {
+			align-items: flex-start;
+		}
+
+		&.align-bottom {
+			align-items: flex-end;
+		}
+	}
+
+	.c-block__media {
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		@include media('<=desktop') {
+			width: 100%;
+		}
+
+		@include media('>desktop') {
+			flex: 0 0 var(--columns-ratio);
+			max-width: var(--columns-ratio);
+		}
+
+		.c-image__secondary {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+}
+

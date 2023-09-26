@@ -1,0 +1,277 @@
+/**
+ * Woocommerce: Shipping bar
+ */
+
+@if $--wc-components__shipping-bar == ON {
+  .woocommerce {
+    --wc-shipping-top: 300px;
+    --wc-shipping-width: 220px;
+    --wc-shipping-item-gap: 2rem;
+    --wc-shipping-pad-t: 20px;
+    --wc-shipping-pad-lr: 20px;
+    --wc-shipping-pad-b: 20px;
+    --wc-shipping-title-size: 1.4rem;
+    --wc-shipping-title-weight: 600;
+    --wc-shipping-text-size: 1.2rem;
+    --wc-shipping-icon-size: 34px;
+    --wc-shipping-text-color: var(--primary-text-color);
+    --wc-shipping-background: #fff;
+    --wc-shipping-border-color: var(--secondary-color2);
+    --wc-shipping-box-shadow: -4px 4px 14px 4px rgba(0, 0, 0, 0.2);
+
+    @include media("<=desktop-m") {
+      --wc-shipping-pad-lr: 1.8rem;
+      --wc-shipping-item-gap: 1.8rem;
+    }
+
+    @include media('<=desktop') {
+      --wc-shipping-title-size: 1.8rem;
+      --wc-shipping-text-size: 1.6rem;
+    }
+  }
+
+  .shipping-bar {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+
+    &::before,
+    &::after {
+      display: block;
+      width: 100%;
+      height: 0;
+      left: 0;
+      //border-top: 1px dashed #c4c4c4;
+      content: "";
+    }
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--wc-shipping-item-gap);
+      padding: var(--wc-shipping-pad-t) var(--wc-shipping-pad-lr) var(--wc-shipping-pad-b);
+      margin: 5px 0;
+      background-color: var(--wc-shipping-background);
+      border: 1px solid var(--wc-shipping-border-color);
+      border-radius: 10px;
+    }
+
+    &__item {
+      position: relative;
+      flex: 1;
+      text-align: center;
+
+      &:not(:last-child):after {
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        top: 0;
+        right: calc(var(--wc-shipping-item-gap) / -2);
+        background-color: rgba(0, 38, 31, 0.25);
+        content: "";
+      }
+
+      svg,
+      img {
+        display: inline-flex;
+        flex: 0 0 var(--wc-shipping-icon-size);
+        max-width: var(--wc-shipping-icon-size) !important;
+      }
+    }
+
+    &__body {
+      margin-top: 8px;
+
+      &_title {
+        margin-bottom: 0.3em;
+        font-size: var(--wc-shipping-title-size);
+        font-weight: var(--wc-shipping-title-weight);
+      }
+
+      &_text {
+        margin: 0;
+        font-size: var(--wc-shipping-text-size);
+      }
+
+      p {
+        line-height: 1.4;
+        color: var(--wc-shipping-text-color);
+        @include media('<=tablet') {
+          padding: 0 10px;
+        }
+      }
+    }
+
+    // Sticky section is visible only on larger screens
+    @include media(">desktop-m") {
+      // Sticky sidebar
+      &.sticky {
+        --wc-shipping-width: 185px;
+        --wc-shipping-item-gap: 1.8rem;
+        --wc-shipping-pad-lr: 2.4rem;
+        --wc-shipping-expandable-position: calc(
+                var(--wc-shipping-icon-size) + var(--wc-shipping-pad-lr) * 2 -
+                var(--wc-shipping-width)
+        );
+        --wc-shipping-expandable-body-offset: 5px;
+        --wc-shipping-icon-size: 30px;
+
+        position: fixed;
+        width: var(--wc-shipping-width);
+        top: var(--wc-shipping-top);
+        box-shadow: var(--wc-shipping-box-shadow);
+        z-index: 999;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        .shipping-bar {
+          &__wrapper {
+            flex-direction: column;
+            margin: 0;
+          }
+
+          &__item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            &:after {
+              width: 100%;
+              height: 1px;
+              top: initial;
+              bottom: calc(var(--wc-shipping-item-gap) / -2);
+            }
+          }
+
+          &__body {
+            position: relative;
+            margin-top: 0;
+
+            &_title {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        // Sticky sidebar on the right
+        &[data-position="right"] {
+          right: 0;
+          transition: right 0.3s ease;
+
+          @media (max-width: 1750px) {
+            right: var(--wc-shipping-expandable-position);
+
+            &:hover {
+              right: 0;
+            }
+
+            .shipping-bar__body {
+              left: var(--wc-shipping-expandable-body-offset);
+            }
+          }
+
+          .shipping-bar {
+            &__item {
+              svg,
+              img {
+                margin-right: var(--wc-shipping-pad-lr);
+              }
+
+              &:after {
+                left: 0;
+              }
+            }
+
+            &__body {
+              margin-left: calc(-1 * var(--wc-shipping-expandable-body-offset));
+            }
+          }
+        }
+
+        // Sticky sidebar on the left
+        &[data-position="left"] {
+          left: 0;
+          transition: left 0.3s ease;
+
+          @media (max-width: 1750px) {
+            left: var(--wc-shipping-expandable-position);
+
+            &:hover {
+              left: 0;
+            }
+
+            .shipping-bar__body {
+              right: var(--wc-shipping-expandable-body-offset);
+            }
+          }
+
+          .shipping-bar {
+            &__item {
+              flex-direction: row-reverse;
+              text-align: right;
+
+              svg,
+              img {
+                margin-left: var(--wc-shipping-pad-lr);
+              }
+
+              &:after {
+                right: 0;
+              }
+            }
+
+            &__body {
+              margin-right: calc(-1 * var(--wc-shipping-expandable-body-offset));
+            }
+          }
+        }
+      }
+
+      // Sticky sidebar that expands on hover
+      &.expandable {
+        align-items: center;
+
+        .shipping-bar__item:after {
+          width: var(--wc-shipping-icon-size);
+        }
+
+        // Expandable sidebar on the right
+        &[data-position="right"] {
+          right: var(--wc-shipping-expandable-position);
+
+          &:hover {
+            right: 0;
+
+            .shipping-bar__item::after {
+              width: 100%;
+            }
+          }
+
+          .shipping-bar__body {
+            left: var(--wc-shipping-expandable-body-offset);
+          }
+        }
+
+        // Expandable sidebar on the left
+        &[data-position="left"] {
+          left: var(--wc-shipping-expandable-position);
+
+          &:hover {
+            left: 0;
+
+            .shipping-bar__item::after {
+              width: 100%;
+            }
+          }
+
+          .shipping-bar__body {
+            right: var(--wc-shipping-expandable-body-offset);
+          }
+        }
+      }
+    }
+  }
+}

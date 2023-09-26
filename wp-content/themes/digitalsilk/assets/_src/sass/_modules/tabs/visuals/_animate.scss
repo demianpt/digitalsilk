@@ -1,0 +1,18 @@
+.l-tbpanel__item {
+
+    .c-block {
+        opacity: 0;
+        transform: translate(-30px);
+        transition-property: transform, opacity;
+        will-change: opacity, transform;
+        .wp-admin & {
+            opacity: 1;
+        }
+    }
+
+    &.is-active {
+        .c-block {
+            animation: fade-translate-reverse var(--base-transition) linear 1 forwards;
+        }
+    }
+}

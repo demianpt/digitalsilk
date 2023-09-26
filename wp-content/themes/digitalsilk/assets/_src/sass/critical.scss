@@ -1,0 +1,31 @@
+// Base styles for the first viewport
+
+// Helpers and utilities
+@import '__helpers/reboot';
+
+// Core settings
+
+@import '__core/core-mixins';
+@import '__core/core-settings';
+
+/**** Site Header */
+
+@import '_layout/_base';
+@import '_layout/_header';
+
+// Search component 							(remove if no search in header)
+@import "_layout/header/blocks/site_search";
+
+// Woocommerce 									(remove if no WooCommerce)
+@import "_layout/header/blocks/account";
+@import "_layout/header/blocks/cart";
+
+/**** End Header */
+
+/* Above the fold modules */
+
+@import "_modules/banners";
+@import "_modules/headings";
+
+@import "_components/buttons";
+@import "_components/с-block";

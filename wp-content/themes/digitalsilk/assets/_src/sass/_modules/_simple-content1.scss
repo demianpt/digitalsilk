@@ -1,0 +1,12 @@
+/**
+ ############################
+ #   MODULE: Repeatable Content Blocks (rcbl-)
+ ############################
+ */
+
+@import "simple-content1/_rcbl-core";
+
+// Variations
+
+@import "simple-content1/layouts/layout-rcbl-v1";
+@import "simple-content1/layouts/layout-rcbl-v2";

@@ -1,0 +1,56 @@
+/**
+ * WooCommerce: Variation Swatches
+ */
+
+@if $--wc-plugins__quick-buy == ON {
+  :root {
+    --wc-product-quantity-width: 100px;
+    --wc-product-quantity-height: 50px;
+    --wc-variations-reset-color: var(--primary-link-color);
+    --wc-variations-reset-color-hover: var(--primary-color2);
+    @include media('>phone-l') {
+      --wc-product-quantity-width: 125px;
+    }
+  }
+
+  .entry-summary {
+    .single_add_to_cart_button,
+    .single-add-to-cart-button {
+      border-radius: 50px;
+      margin: 0;
+      display: block;
+      padding: var(--btn-padding-top-bottom, 10px) var(--btn-padding-left-right, 20px);
+      font-size: var(--btn-font-size, 1.8rem);
+      color: #fff;
+      font-weight: var(--button-font-weight, 400);
+      text-transform: var(--btn-text-transform, none);
+      border: 0;
+      background: var(--secondary-color2);
+      height: 50px;
+
+      &:hover {
+        background: var(--primary-color2);
+      }
+    }
+
+    .single-add-to-cart-button {
+      background: transparent;
+      border: 1px solid var(--secondary-color2);
+      color: var(--primary-text-color);
+
+      &:hover {
+        background: var(--primary-color2);
+        border-color: var(--primary-color2);
+        color: #fff;
+      }
+    }
+
+    .single_add_to_cart_button {
+      margin-bottom: 10px;
+    }
+  }
+
+  body.quick-view-active {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,34 @@
+/* Buttons*/
+
+:root {
+	--btn-font-family: var(--font-family-primary);
+	--btn-font-size: 1.8rem;
+	--btn-font-weight: 500;
+	--btn-text-transform: none;
+	--btn-padding-top-bottom: 10px;
+	--btn-padding-left-right: 30px;
+	--btn-border-radius: 0px;
+
+	--btn-primary-color: var(--primary-color3);
+	--btn-primary-color-hover: var(--secondary-color1);
+	--btn-primary-bg: var(--primary-color2);
+	--btn-primary-bg-hover: var(--secondary-color2);
+	--btn-primary-border-color: var(--primary-color1);
+	--btn-primary-border-color-hover: var(--secondary-color3);
+	--btn-primary-border: 0px;
+	--btn-primary-shadow: none;
+
+	--btn-secondary-color: var(--primary-color2);
+	--btn-secondary-color-hover: var(--primary-color1);
+	--btn-secondary-bg: var(--secondary-color1);
+	--btn-secondary-bg-hover: var(--secondary-color2);
+	--btn-secondary-border-color: var(--secondary-color2);
+	--btn-secondary-border-color-hover: var(--secondary-color2);
+	--btn-secondary-border: 1px;
+	--btn-secondary-shadow: none;
+
+	--btn-link-color: var(--primary-color1);
+	--btn-link-color-hover: var(--primary-color2);
+	--link-icon-color: var(--primary-color2);
+	--button-flex-direction: row;
+}

@@ -1,0 +1,304 @@
+/**
+ * Woocommerce: Cart products table
+ */
+
+.woocommerce {
+  --wc-cart-table-th-fs: 2.2rem;
+  --wc-cart-table-th-fw: 600;
+  --wc-cart-table-th-lh: 1.2;
+  --wc-cart-table-th-color: var(--primary-text-color);
+
+  --wc-cart-table-td-product-fs: 2.4rem;
+  --wc-cart-table-td-product-fw: 400;
+  --wc-cart-table-td-product-lh: 1.3;
+  --wc-cart-table-td-product-ff: var(--font-family-secondary);
+  --wc-cart-table-td-product-color: var(--primary-text-color);
+
+  --wc-cart-table-td-price-fs: 1.8rem;
+  --wc-cart-table-td-price-fw: 600;
+  --wc-cart-table-td-price-lh: 1.3;
+  --wc-cart-table-td-price-ff: var(--font-family-primary);
+  --wc-cart-table-td-price-color: var(--primary-color1);
+}
+
+// Table for Products
+form.woocommerce-cart-form {
+  margin-bottom: var(--wc-vertical-space);
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  tr {
+    @include media('<=desktop') {
+      border-bottom: 0;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  }
+
+  th, td {
+    &:first-child {
+      padding-left: var(--wc-table-padding-l-first-column);
+    }
+
+    &:last-child {
+      padding-right: var(--wc-table-padding-l-last-column);
+    }
+  }
+
+  thead {
+    th {
+      font-weight: var(--wc-cart-table-th-fw);
+      font-size: var(--wc-cart-table-th-fs);
+      line-height: var(--wc-cart-table-th-lh);
+      color: var(--wc-cart-table-th-color);
+      text-align: center;
+      text-transform: uppercase;
+
+      &.product-name {
+        text-align: left;
+      }
+
+      @include media('<=desktop') {
+        display: none;
+      }
+    }
+  }
+
+  // Product table row
+  td {
+    &.product {
+      &-thumbnail {
+        padding-right: 0;
+
+        a {
+          display: block;
+        }
+
+        img {
+          width: var(--wc-cart-img-size);
+          height: var(--wc-cart-img-size);
+          object-fit: contain;
+        }
+
+        @include media('<=desktop') {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+
+      &-name {
+        font-weight: var(--wc-cart-table-td-product-fw);
+        font-size: var(--wc-cart-table-td-product-fs);
+        line-height: var(--wc-cart-table-td-product-lh);
+        font-family: var(--wc-cart-table-td-product-ff);
+        color: var(--wc-cart-table-td-product-color);
+        transition: all .3s ease;
+
+        &:hover {
+          @include media('>desktop') {
+            color: var(--primary-color2);
+            -webkit-text-fill-color: var(--primary-color2);
+            transition: all .3s ease;
+          }
+        }
+
+        @include media('<=desktop') {
+          overflow-wrap: anywhere;
+          word-break: break-word;
+          &::before {
+            float: left;
+          }
+        }
+
+      }
+
+      &-price, &-subtotal {
+        font-weight: var(--wc-cart-table-td-price-fw);
+        font-size: var(--wc-cart-table-td-price-fs);
+        line-height: var(--wc-cart-table-td-price-lh);
+        font-family: var(--wc-cart-table-td-price-ff);
+        color: var(--wc-cart-table-td-price-color);
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      &-quantity {
+        text-align: center;
+
+        .quantity {
+          display: inline-flex;
+          background: var(--input-background-color);
+          border: 1px solid var(--wc-quantity-input-border-color);
+          align-items: center;
+          justify-content: space-between;
+          height: var(--wc-quantity-quantity-height);
+
+          .item_qty {
+            padding: 5px;
+            cursor: pointer;
+            width: var(--wc-quantity-input-pm-width);
+            height: var(--wc-quantity-input-pm-height);
+            font-size: var(--wc-quantity-input-pm-fs);
+            font-weight: var(--wc-quantity-input-pm-fw);
+            color: var(--wc-quantity-input-pm-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all .3s ease;
+
+            &.minus {
+              border-right: 1px solid var(--wc-quantity-input-border-color);
+            }
+
+            &.plus {
+              border-left: 1px solid var(--wc-quantity-input-border-color);
+            }
+
+            &:hover {
+              background: var(--wc-quantity-input-hover);
+              color: var(--wc-quantity-input-hover-color);
+              border-color: var(--wc-quantity-input-hover);
+              transition: all .3s ease;
+            }
+          }
+        }
+
+        input[type="number"] {
+          width: var(--wc-quantity-input-width);
+          height: var(--wc-quantity-input-height);
+          text-align: center;
+          border: none;
+          font-size: var(--wc-quantity-input-fs);
+          font-weight: var(--wc-quantity-input-fw);
+          color: var(--wc-quantity-input-color);
+
+          // Remove input arrows
+          appearance: textfield;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            appearance: none;
+            margin: 0;
+          }
+        }
+
+        // Hide label
+        .screen-reader-text {
+          display: none;
+        }
+      }
+
+      &-remove {
+        text-align: center;
+        @include media('<=desktop') {
+          padding: 0;
+          margin: 0;
+          border: none;
+        }
+
+        .remove {
+          display: block;
+          padding: 10px;
+          font-size: 0;
+          color: transparent;
+          background-image: url(../../images/woocommerce/icon-delete.svg);
+          background-size: 16px auto;
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: opacity .3s ease;
+
+          &:hover {
+            opacity: 0.7;
+            transition: opacity .3s ease;
+          }
+
+          @include media('<=desktop') {
+            position: absolute;
+            font-size: 24px;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: contain;
+            background: var(--secondary-color2);
+            border: 4px solid #fff;
+            box-shadow: 0 6px 20px rgba(37, 52, 86, 0.5);
+            border-radius: 500px;
+          }
+        }
+
+      }
+    }
+
+    // Apply coupon and update cart buttons
+    &.actions {
+      padding: 2rem 0 6rem;
+      width: 100%;
+
+      .button {
+        //padding: var(--btn-padding-top-bottom, 10px) var(--btn-padding-left-right, 20px);
+        //line-height: var(--base-text-line-height, 1.4);
+        @include media('<=phone-l') {
+          width: 100%;
+        }
+      }
+
+      // Update cart button
+      //> .button {
+      //  float: right;
+      //}
+      @include media('>tablet') {
+        padding: 5rem 0 3.5rem;
+      }
+
+      .continue-shopping {
+        width: 100%;
+        @include media('>tablet') {
+          width: 50%;
+          display: inline-flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      }
+
+      @include media('<=tablet') {
+        flex-direction: column;
+        align-items: center;
+        .c-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+
+    @include media('<=desktop') {
+      display: flex;
+      text-align: right;
+      justify-content: space-between;
+      clear: both;
+      width: 100%;
+      &[data-title]:before {
+        font-weight: var(--wc-cart-table-td-price-fw);
+        font-size: var(--wc-cart-table-td-price-fs);
+        line-height: var(--wc-cart-table-td-price-lh);
+        font-family: var(--wc-cart-table-td-price-ff);
+        color: var(--primary-text-color);
+        text-align: center;
+        text-transform: uppercase;
+        content: attr(data-title) ": ";
+        align-self: center;
+      }
+    }
+  }
+}

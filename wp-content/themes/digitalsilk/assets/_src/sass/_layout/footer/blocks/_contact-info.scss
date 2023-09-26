@@ -1,0 +1,25 @@
+.contact-info {
+	&__item {
+		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+		@include media("<tablet") {
+			justify-content: center;
+		}
+	}
+
+	&__icon {
+		height: 22px;
+		width: 22px;
+		min-width: 22px;
+		color: #fff;
+		fill: #fff;
+		margin-right: 10px;
+	}
+
+	&__link {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

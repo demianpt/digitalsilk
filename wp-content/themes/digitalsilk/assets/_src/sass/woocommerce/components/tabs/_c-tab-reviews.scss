@@ -1,0 +1,68 @@
+/**
+ * Woocommerce: Reviews Tab
+ *
+ */
+
+$--wc-components__reviews-stars: ON;
+$--wc-components__reviews-comments: ON;
+$--wc-components__reviews-review-form: ON;
+
+@if $--wc-components__tabs-reviews == ON {
+  .woocommerce {
+    --wc-review-wrapper: 850px;
+  }
+
+  .woocommerce-Tabs-panel--reviews {
+    .woocommerce-Reviews {
+      width: var(--wc-review-wrapper);
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #comments {
+      background-position: top center;
+    }
+
+    .woocommerce-Reviews-title {
+      @extend .h2;
+      display: block;
+      margin-bottom: 30px;
+      text-align: center;
+
+      > span:first-of-type {
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 4rem;
+        margin-bottom: 7px;
+
+        + span {
+          display: block;
+          font-size: 1.6rem;
+          font-family: var(--font-family-primary);
+        }
+
+        .star-rating {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .woocommerce-Reviews-formToggle {
+      margin-top: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@import 'assets/_src/sass/woocommerce/components/reviews/c-stars-rating';
+@import 'assets/_src/sass/woocommerce/components/reviews/c-comments';
+@import 'assets/_src/sass/woocommerce/components/reviews/c-review-form';

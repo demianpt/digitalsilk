@@ -1,0 +1,91 @@
+/**
+ * Woocommerce: Reviews
+ *
+ */
+@if $--wc-components__pagination == ON {
+  .woocommerce {
+    --wc-pagination-padding: 0 20px;
+    --wc-pagination-margin: 0;
+    --wc-pagination-color: var(--primary-text-color);
+    --wc-pagination-active-color: var(--primary-color3);
+    --wc-pagination-bg: transparent;
+    --wc-pagination-font-size: 1.6rem;
+    --wc-pagination-border: none;
+    --wc-pagination-border-color: transparent;
+    --wc-pagination-nav-icon: url("data:image/svg+xml,%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12.3492L4.94673 7L0 1.65083L1.52664 0L8 7L1.52664 14L0 12.3492Z' fill='%2300261F'/%3E%3C/svg%3E%0A");
+    --wc-pagination-nav-icon-hover: url("data:image/svg+xml,%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12.3492L4.94673 7L0 1.65083L1.52664 0L8 7L1.52664 14L0 12.3492Z' fill='%23FCB650'/%3E%3C/svg%3E%0A");
+  }
+
+  // Pagination
+  .woocommerce-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ul.page-numbers {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: var(--smaller-text-size);
+      color: var(--wc-pagination-color);
+
+      li {
+        .page-numbers {
+          display: block;
+          padding: var(--wc-pagination-padding);
+          margin: var(--wc-pagination-margin);
+          font-size: var(--wc-pagination-font-size);
+          line-height: 1;
+          color: var(--wc-pagination-color);
+          background-color: var(--wc-pagination-bg);
+          border-right: var(--wc-pagination-border) var(--wc-pagination-border-color);
+          transition: color .3s ease;
+
+          &:hover {
+            color: var(--wc-pagination-active-color);
+            transition: color .3s ease;
+          }
+
+          &.current {
+            color: var(--wc-pagination-active-color);
+            font-weight: 700;
+          }
+
+          &.prev, &.next {
+            background-repeat: no-repeat;
+            background-position: center;
+            text-indent: -9999px;
+            transition: all .3s ease;
+
+            &:hover {
+              transition: all .3s ease;
+            }
+          }
+
+          &.prev {
+            background-image: var(--wc-pagination-nav-icon);
+            transform: rotate(-180deg);
+
+            &:hover {
+              background-image: var(--wc-pagination-nav-icon-hover);
+            }
+          }
+
+          &.next {
+            background-image: var(--wc-pagination-nav-icon);
+
+            &:hover {
+              background-image: var(--wc-pagination-nav-icon-hover);
+            }
+          }
+        }
+
+        &:last-child {
+          .page-numbers {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

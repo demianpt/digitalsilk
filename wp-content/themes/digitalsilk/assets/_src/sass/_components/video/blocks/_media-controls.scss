@@ -1,0 +1,48 @@
+.c-controls {
+	--btn-video-size: 80px;
+	@include media("<=tablet") {
+		--btn-video-size: 50px;
+	}
+	text-align: center;
+	position: relative;
+	z-index: 10;
+	&__link {
+		--btn-video-size: 30px;
+		gap: 10px;
+		.c-controls__play {
+			margin: 0;
+		}
+	}
+	&__option {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__label {
+		font-size: 1.6rem;
+		line-height: 1.5;
+	}
+
+	&__play {
+		@extend .icon-play-data !optional;
+		background-position: 50% 50%;
+		background-size: 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+		height: var(--btn-video-size);
+		width: var(--btn-video-size);
+		border-radius: 50%;
+		overflow: hidden;
+		text-indent: -100vw;
+		cursor: pointer;
+		transition: opacity var(--base-transition);
+		margin-bottom: 20px;
+
+		@include media("<=tablet") {
+			height: 64px;
+			width: 64px;
+			margin-bottom: 12px;
+		}
+	}
+}

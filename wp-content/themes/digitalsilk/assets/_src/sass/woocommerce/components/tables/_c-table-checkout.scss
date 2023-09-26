@@ -1,0 +1,96 @@
+/**
+ * Woocommerce: Table Checkout
+ */
+.woocommerce {
+
+}
+
+$wc-checkout-table-border: ON;
+
+table.woocommerce-checkout-review-order-table {
+  background: var(--wc-cart-table-totals-background);
+  border-collapse: var(--wc-cart-table-totals-border-collapse);
+  border-spacing: var(--wc-cart-table-totals-border-spacing);
+
+  @if $wc-checkout-table-border == ON {
+    padding: var(--wc-cart-table-totals-padding);
+    position: relative;
+  }
+
+  @if $wc-checkout-table-border == ON {
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      position: absolute;
+      border: 1px solid var(--wc-cart-table-totals-border-color);
+      border-radius: var(--wc-cart-table-totals-border-radius);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+    }
+  }
+
+  thead, tbody, tfoot {
+    tr {
+      th, td {
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  thead {
+    tr:first-child {
+      th, td {
+        padding-top: 0;
+      }
+    }
+  }
+
+  tfoot {
+    tr:last-child {
+      th, td {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+
+  }
+
+  th {
+    padding: var(--wc-cart-table-totals-th-padding);
+  }
+
+  td {
+    padding: var(--wc-cart-table-totals-td-padding);
+
+    &:last-child {
+      text-align: right;
+      padding-right: 0;
+    }
+  }
+}
+
+.woocommerce-additional-fields {
+  textarea {
+    height: 125px;
+    resize: none;
+  }
+}
+
+.woocommerce-shipping-calculator {
+  .shipping-calculator-form {
+    margin-top: 5px;
+    @include media('<=phone-l') {
+      .button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

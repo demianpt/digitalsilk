@@ -61,12 +61,12 @@ module.exports = {
     dist: env.STATIC_DIST,
   },
   critical: {
-    jsondir: env.CRITICAL_PATH,
+    jsondir: path.resolve(env.CRITICAL_PATH),
     jsonfile: env.CRITICAL_JSON,
     screenshots: env.CRITICAL_OPT_SS === 'true',
     width: env.CRITICAL_OPT_WIDTH,
     height: env.CRITICAL_OPT_HEIGHT,
-    destdir: env.CRITICAL_OPT_DIR,
+    destdir: path.resolve(env.CRITICAL_OPT_DIR),
     srcfile: env.CRITICAL_OPT_CSS,
     fontface: env.CRITICAL_OPT_IGNORE_FONTFACE === 'true',
     aut: env.CRITICAL_AUTH_STAGING === 'true',
@@ -77,9 +77,9 @@ module.exports = {
     port: Number(8888),
     proxy: {
       target: 'http://localhost',
-      publicPath: 'http://localhost:8888/onboarding/wp-content/themes/digitalsilk/assets/' || path.join('/', 'js'),
+      publicPath: path.resolve(__dirname, '../onboarding/wp-content/themes/digitalsilk/assets/') || path.join('/', 'js'),
       files: [
-        path.join('../assets/_dist', '*.php'),
+        path.resolve(__dirname, '../assets/_dist', '*.php'),
       ],
     },
   },
